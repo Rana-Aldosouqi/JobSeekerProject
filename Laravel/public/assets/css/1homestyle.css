@@ -1,0 +1,52 @@
+* { margin: 0;
+    padding: 0;
+    }
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    overflow-x: hidden;
+}
+#lgoo{
+    color: #22a4ee;
+    font: normal 40px 'Cookie', cursive;
+    margin-right: 10px;
+}
+#full-width-div {
+
+    background-color: #FFFFFF;
+}
+
+#sli{
+    width: 100%;
+
+}
+#Signin icon{
+    padding-right: 4px;
+}
+
+#chatbtn{
+    width: 80%;
+    margin-right: 5px;
+    text-decoration-color: white;
+}
+#postlink:link, #postlink:visited {
+    height: 40px;
+    width:15%;
+    padding-top: 14px;
+    background-color: #008bff;
+    color: white;
+    border-color: #007bff;
+    border-width: 5px;
+
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#postlink:hover, #postlink:active {
+    background-color: #004bff ;
+}
+#exampleFormControlTextarea1{
+    width:95%;
+}
