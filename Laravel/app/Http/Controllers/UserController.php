@@ -32,17 +32,17 @@ class UserController extends Controller
 //        }
         return view('user.ResumeBuilder');
     }
-    public function getPersonalView()
-    {
-//        $user = User::find($id);
-//        if($user == null){
-//            return redirect('/');
-//        }
-//        if (Auth::check()) {
-//            return redirect('/ResumeBuilder');
-//        }
-        return view('user.ResumeBuilder/personal');
-    }
+//    public function getPersonalView()
+//    {
+////        $user = User::find($id);
+////        if($user == null){
+////            return redirect('/');
+////        }
+////        if (Auth::check()) {
+////            return redirect('/ResumeBuilder');
+////        }
+//        return view('user.ResumeBuilder/personal');
+//    }
 
 //    public function doUploadImage(Request $request)
 //    {

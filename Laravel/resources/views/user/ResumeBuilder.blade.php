@@ -11,12 +11,12 @@
         </div>
         <div class="row mt-4"></div>
         <div class="row">
-            <div class="col-md-10 p-3 rounded bg-light shadow offset-1 offset-md-1">
+            <div class="card col-md-10 p-3 rounded bg-light shadow offset-1 offset-md-1 mb-5">
                 <div class="card-body">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link {{request()->is('user.ResumeBuilder/personal') ? 'active' : null}}"
-                               href="{{url('user.ResumeBuilder/personal')}}" role="tab">Personal Details</a>
+                            <a class="nav-link {{request()->is('personal') ? 'active' : null}}"
+                               href="{{url('personal')}}" role="tab">Personal Details</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{request()->is('social') ? 'active' : null}}"
@@ -48,8 +48,8 @@
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane{{request()->is('user.ResumeBuilder/personal') ? 'active' : null}}"
-                             id="{{url('user.ResumeBuilder/personal')}}" role="tabpanel" >
+                        <div class="tab-pane{{request()->is('personal') ? 'active' : null}}"
+                             id="{{url('personal')}}" role="tabpanel" >
                             <form action="" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @if (Session::has('error'))
