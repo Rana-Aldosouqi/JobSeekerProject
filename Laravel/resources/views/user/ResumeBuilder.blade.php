@@ -1,4 +1,4 @@
-@extends('common.template')
+@extends('user.shared.template')
 @section('content')
     <div class="container container-fluid"
          style=" font-family: 'Permanent Marker', cursive; font-family: 'Alegreya', serif;">
@@ -15,8 +15,8 @@
                 <div class="card-body">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link {{request()->is('personal') ? 'active' : null}}"
-                               href="{{url('personal')}}" role="tab">Personal Details</a>
+                            <a class="nav-link {{request()->is('user.ResumeBuilder/personal') ? 'active' : null}}"
+                               href="{{url('user.ResumeBuilder/personal')}}" role="tab">Personal Details</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{request()->is('social') ? 'active' : null}}"
@@ -28,15 +28,15 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{request()->is('skills') ? 'active' : null}}"
-                             href="{{url('skills')}}" role="tab">Skills</a>
+                               href="{{url('skills')}}" role="tab">Skills</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{request()->is('education') ? 'active' : null}}"
-                           href="{{url('education')}}" role="tab">Education</a>
+                               href="{{url('education')}}" role="tab">Education</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{request()->is('courses') ? 'active' : null}}"
-                            href="{{url('courses')}}" role="tab">Courses</a>
+                               href="{{url('courses')}}" role="tab">Courses</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{request()->is('certificates') ? 'active' : null}}"
@@ -48,8 +48,8 @@
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane{{request()->is('personal') ? 'active' : null}}"
-                             id="{{url('personal')}}" role="tabpanel" >
+                        <div class="tab-pane{{request()->is('user.ResumeBuilder/personal') ? 'active' : null}}"
+                             id="{{url('user.ResumeBuilder/personal')}}" role="tabpanel" >
                             <form action="" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @if (Session::has('error'))
@@ -59,7 +59,7 @@
                                         </p>
                                     </div>
                                 @endif
-                                @include('common.errors')
+                                @include('user.shared.errors')
                                 <div class="form-row input-group mt-4">
                                     <div class="custom-file">
                                         <input type="file" name="image" id="image"
@@ -87,7 +87,7 @@
                                         <label for="FirstName">First Name</label>
                                         <fieldset disabled>
                                             <input type="text" id="disabledTextInput" class="form-control"
-                                                    name="firstName" placeholder="{{Auth::user()->first_name}}">
+                                                   name="firstName" placeholder="{{Auth::user()->first_name}}">
                                         </fieldset>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -270,7 +270,7 @@
                                         <fieldset disabled>
                                             <div class="form-group">
                                                 <input type="text" id="disabledTextInput" class="form-control"
-                                                     name=""  placeholder="Skill One" >
+                                                       name=""  placeholder="Skill One" >
                                             </div>
                                         </fieldset>
                                     </div>
@@ -280,13 +280,13 @@
                                         </button>
                                     </div>
                                     <div class="col-2">
-{{--                                        <span>{{round($newskill->rate, 2)}} / 5.0</span>--}}
-{{--                                        <div class="rateYo" data-rateyo-rating="{{$skill->rate}}"></div>--}}
-{{--                                        <span class="fa fa-star" style="color: orange;"></span>--}}
-{{--                                        <span class="fa fa-star" style="color: orange;"></span>--}}
-{{--                                        <span class="fa fa-star" style="color: orange;"></span>--}}
-{{--                                        <span class="fa fa-star"></span>--}}
-{{--                                        <span class="fa fa-star"></span>--}}
+                                        {{--                                        <span>{{round($newskill->rate, 2)}} / 5.0</span>--}}
+                                        {{--                                        <div class="rateYo" data-rateyo-rating="{{$skill->rate}}"></div>--}}
+                                        {{--                                        <span class="fa fa-star" style="color: orange;"></span>--}}
+                                        {{--                                        <span class="fa fa-star" style="color: orange;"></span>--}}
+                                        {{--                                        <span class="fa fa-star" style="color: orange;"></span>--}}
+                                        {{--                                        <span class="fa fa-star"></span>--}}
+                                        {{--                                        <span class="fa fa-star"></span>--}}
                                     </div>
                                 </div>
                                 <div class="form-row mt-2">

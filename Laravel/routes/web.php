@@ -57,19 +57,59 @@ Route::put('/{id}','postscontroller@update')->name('shared.update');
 
 
 
-//eman
+//Eman
 Route::get('/Login','AuthController@getLoginView')->name('login');
 Route::post('/Login','AuthController@doLogin');
 Route::get('/Register','AuthController@getRegisterView');
 Route::post('/Register','AuthController@doRegistration');
 Route::get('/Logout','AuthController@doLogout');
 
+Route::get('/ResumeBuilder','UserController@getResumeBuilderView')->name('ResumeBuilder');
+Route::get('/ResumeBuilder/personal','UserController@getPersonalView');
+Route::post('/ResumeBuilder/personal','UserController@doPersonal');
 
+//Route::post('/personal', 'UserController@doUploadImage');
+Route::post('/social','UserController@doSocial');
+Route::post('/experiences','UserController@doExperience');
 
+//Route::get('/ResumeBuilder/personal','UserController@getPersonalView');
+//Route::get('/ResumeBuilder/social/{id}','UserController@getSocialView');
+//Route::get('/ResumeBuilder/experiences/{id}','UserController@getExperienceView');
+//Route::get('/ResumeBuilder/skills/{id}','UserController@getSkillView');
+//Route::get('/ResumeBuilder/education/{id}','UserController@getEducationView');
+//Route::get('/ResumeBuilder/courses/{id}','UserController@getCourseView');
+//Route::get('/ResumeBuilder/certificates/{id}','UserController@getCertificateView');
+//Route::get('/ResumeBuilder/color/{id}','UserController@getColorView');
 
+Route::get('/personal',function (){
+    return view ('ResumeBuilder');
+});
+Route::get('/social',function (){
+    return view ('ResumeBuilder');
+});
+Route::get('/experiences',function (){
+    return view ('ResumeBuilder');
+});
+Route::get('/skills',function (){
+    return view ('ResumeBuilder');
+});
+Route::get('/education',function (){
+    return view ('ResumeBuilder');
+});
+Route::get('/courses',function (){
+    return view ('ResumeBuilder');
+});
+Route::get('/certificates',function (){
+    return view ('ResumeBuilder');
+});
+Route::get('/color',function (){
+    return view ('ResumeBuilder');
+});
 
-
-
+//Route::get('/ResetPassword', 'AuthController@passwordResetTokenView');
+//Route::post('/ResetPassword', 'AuthController@sendPasswordResetToken');
+//Route::get('/ResetPasswordSendToken/{token}', 'AuthController@PasswordResetView');
+//Route::post('/ResetPasswordSendToken/{token}', 'AuthController@resetPassword');
 
 
 
@@ -91,7 +131,7 @@ Route::get('/', function () {
 //dd($post->languages);
 
 //$lang=\App\Language::find(1);
- //dd($lang->user_id);
+    //dd($lang->user_id);
 
 
 //post with category id=19
@@ -99,12 +139,12 @@ Route::get('/', function () {
 //dd($cat->posts);
 
 //category of post with id=6
-$posts=\App\Post::find(6);
-dd($posts->Category->category);
+    $posts=\App\Post::find(6);
+    dd($posts->Category->category);
 
 //language of post with id=15
-   // $post=\App\Post::find(15);
-   // dd($post->Language->post_id);
+    // $post=\App\Post::find(15);
+    // dd($post->Language->post_id);
 //$lang=\App\Language::find(5);
 //dd($lang->posts);
 

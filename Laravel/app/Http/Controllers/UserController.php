@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function getIndexView()
-    {
-        return view('/index');
-
-    }
+//    public function getIndexView()
+//    {
+//        return view('/index');
+//
+//    }
     public function getResumeBuilderView()
     {
 //        $user = User::find($id);
@@ -30,52 +30,64 @@ class UserController extends Controller
 //        if (Auth::check()) {
 //            return redirect('/ResumeBuilder');
 //        }
-        return view('ResumeBuilder');
+        return view('user.ResumeBuilder');
     }
-    public function doUploadImage(Request $request)
+    public function getPersonalView()
     {
+//        $user = User::find($id);
+//        if($user == null){
+//            return redirect('/');
+//        }
+//        if (Auth::check()) {
+//            return redirect('/ResumeBuilder');
+//        }
+        return view('user.ResumeBuilder/personal');
+    }
+
+//    public function doUploadImage(Request $request)
+//    {
 //        $user = User::find($id);
 //        if($user == null|| $user->id != Auth::user()->id)
 //        {
 //            return redirect('/');
 //        }
-        $rules = [
-            'image' => 'max:2048|mimes:jpg,jpeg,png'
-        ];
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect('/')->back()
-                ->withInput($request->all())
-                ->withErrors($validator->errors());
-        }
-        $image = $request->file('image');
-        $ext = $image->getClientOriginalExtension();
-        $name = $image->getClientOriginalName();
-        $newname = sha1(time()) . $ext;
-        storage::disk('public')->put($newname, File::get($image));
-    }
-    public function doUploadFile(Request $request,$id)
-    {
-//        $user = User::find($id);
-//        if($user == null|| $user->id != Auth::user()->id)
-//        {
-//            return redirect('/');
+//        $rules = [
+//            'image' => 'max:2048|mimes:jpg,jpeg,png'
+//        ];
+//        $validator = Validator::make($request->all(), $rules);
+//        if ($validator->fails()) {
+//            return redirect('/')->back()
+//                ->withInput($request->all())
+//                ->withErrors($validator->errors());
 //        }
-        $rules = [
-            'file' => 'max:2048|mimes:docx,pdf'
-        ];
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect('/')->back()
-                ->withInput($request->all())
-                ->withErrors($validator->errors());
-        }
-        $file = $request->file('file');
-        $ext = $file->getClientOriginalExtension();
-        $name = $file->getClientOriginalName();
-        $newname = sha1(time()) . $ext;
-        storage::disk('public')->put($newname, File::get($file));
-    }
+//        $image = $request->file('image');
+//        $ext = $image->getClientOriginalExtension();
+//        $name = $image->getClientOriginalName();
+//        $newname = sha1(time()) . $ext;
+//        storage::disk('public')->put($newname, File::get($image));
+//    }
+//    public function doUploadFile(Request $request,$id)
+//    {
+////        $user = User::find($id);
+////        if($user == null|| $user->id != Auth::user()->id)
+////        {
+////            return redirect('/');
+////        }
+//        $rules = [
+//            'file' => 'max:2048|mimes:docx,pdf'
+//        ];
+//        $validator = Validator::make($request->all(), $rules);
+//        if ($validator->fails()) {
+//            return redirect('/')->back()
+//                ->withInput($request->all())
+//                ->withErrors($validator->errors());
+//        }
+//        $file = $request->file('file');
+//        $ext = $file->getClientOriginalExtension();
+//        $name = $file->getClientOriginalName();
+//        $newname = sha1(time()) . $ext;
+//        storage::disk('public')->put($newname, File::get($file));
+//    }
     public function doPersonal(Request $request)
     {
 //        Auth::user()->id;

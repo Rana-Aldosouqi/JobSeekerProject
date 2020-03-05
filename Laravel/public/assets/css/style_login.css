@@ -7,25 +7,25 @@ html, body{
 	
 }
 .formb{
-    height: 100%;
-    width: 70%;
+    /*height: 100%;*/
+    /*width: 90%;*/
     border-style: groove;
-     margin: auto;
-     margin-top: 9%;
-     border-radius: 5px;
-     margin-bottom:9%;
+     /*margin: auto;*/
+     /*margin-top: 9%;*/
+    border-radius: 5px;
+     /*margin-bottom:9%;*/
 }
-.card{
-     margin: auto;
-     margin-top: 8%;
-     width: 70%;
-     background-color: white;
-      border-radius: 5px;
-	  margin-bottom: 8%;
-   /**
- *  background-color:#3b3a36;
- */
-}
+/*.card{*/
+/*     margin: auto;*/
+/*     margin-top: 8%;*/
+/*     width: 70%;*/
+/*     background-color: white;*/
+/*      border-radius: 5px;*/
+/*	  margin-bottom: 8%;*/
+/*   !***/
+/* *  background-color:#3b3a36;*/
+/* *!*/
+/*}*/
 .siz{
     width: 70%;
     margin: auto;

@@ -10,13 +10,13 @@
 
 
     <link rel="stylesheet" href="{{asset('/assets/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{'/assets/css/all.min.css'}}">
-    <link rel="stylesheet" href="{{'/assets/css/fontawesome.min.css'}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/fontawesome.min.css')}}">
 
 
-    <link rel="stylesheet" href="{{'/assets/css/homestyle.css'}}">
-    <link rel="stylesheet" href="{{'/assets/css/demo.css'}}">
-    <link rel="stylesheet" href="{{'/assets/css/footer-distributed-with-address-and-phones.css'}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/homestyle.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/demo.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/footer-distributed-with-address-and-phones.css')}}">
 
 
 
