@@ -6,7 +6,7 @@
 @section('content')
     <div class="container">
         <div class="row mt-5"></div>
-        <div class="row my-5">
+        <div class="row mt-1">
             <div class="col-2"></div>
             <div class="card bg-light shadow col-8"
                  style="font-family: 'Permanent Marker', cursive; font-family: 'Alegreya', serif;">
@@ -62,7 +62,7 @@
                                         </select>
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-12">
+                                        <div class="col-sm-12 mb-1">
                                             <button type="submet" class="btn btn-primary btn-md mb-2 mt-2 marg">
                                                 Register
                                             </button>

@@ -5,10 +5,11 @@
 @section('content')
     <div class="container">
         <div class="row mt-5"></div>
-        <div class="row my-4">
-            <div class="card bg-light shadow mt-5"
+        <div class="row mt-1">
+            <div class="col-2"></div>
+            <div class="card bg-light shadow mt-5 col-8"
                  style="font-family: 'Permanent Marker', cursive; font-family: 'Alegreya', serif;">
-                <div class="card-body mt-5">
+                <div class="card-body my-5">
                     <form class="formb text-center " action="" method="POST">
                         @csrf
                         <div class="row">
@@ -32,7 +33,7 @@
                                 <a href="/Register" class="stretched-link" id="btn"><h6> Create an Account?</h6>
                                 </a>
                             </div>
-                            <div class="col-12" style="margin-left: 35% !important mt-4 ">
+                            <div class="col-12 mb-1" style="margin-left: 35% !important mt-4 ">
                                 <a href="/ResetPassword" class="stretched-link" id="btn">
                                     <h6>Forget Password?</h6></a>
                             </div>
@@ -55,6 +56,5 @@
              </div>
         </div>
     </div>
-
 @endsection
 
