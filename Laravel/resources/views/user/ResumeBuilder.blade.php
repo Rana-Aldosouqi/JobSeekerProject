@@ -52,13 +52,17 @@
                              id="{{url('personal')}}" role="tabpanel" >
                             <form action="" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                @if (Session::has('error'))
-                                    <div class="alert alert-danger">
-                                        <p class="m-0">
-                                            {{Session::get('error')}}
-                                        </p>
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        @if (Session::has('error'))
+                                            <div class="alert alert-danger">
+                                                <p class="m-0">
+                                                    {{Session::get('error')}}
+                                                </p>
+                                            </div>
+                                        @endif
                                     </div>
-                                @endif
+                                </div>
                                 @include('user.shared.errors')
                                 <div class="form-row input-group mt-4">
                                     <div class="custom-file">
@@ -158,6 +162,18 @@
                              id="{{url('social')}}" role="tabpanel" >
                             <form action="" method="POST" >
                                 @csrf
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        @if (Session::has('error'))
+                                            <div class="alert alert-danger">
+                                                <p class="m-0">
+                                                    {{Session::get('error')}}
+                                                </p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                @include('user.shared.errors')
                                 <div class="form-group row mt-3">
                                     <div class="col-md-6">
                                         <label for="faceBookUrl">FaceBook Url</label>
@@ -196,6 +212,18 @@
                              id="{{url('experiences')}}" role="tabpanel" >
                             <form action="" method="POST" >
                                 @csrf
+{{--                                <div class="row mt-4">--}}
+{{--                                    <div class="col-12">--}}
+{{--                                        @if (Session::has('error'))--}}
+{{--                                            <div class="alert alert-danger">--}}
+{{--                                                <p class="m-0">--}}
+{{--                                                    {{Session::get('error')}}--}}
+{{--                                                </p>--}}
+{{--                                            </div>--}}
+{{--                                        @endif--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                @include('user.shared.errors')--}}
                                 <div class="form-row mt-3">
                                     <div class="col-6">
                                         <label for="jobTitle">Job Title</label>
@@ -265,6 +293,18 @@
                              id="{{url('skills')}}" role="tabpanel" >
                             <form action="" method="POST">
                                 @csrf
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        @if (Session::has('error'))
+                                            <div class="alert alert-danger">
+                                                <p class="m-0">
+                                                    {{Session::get('error')}}
+                                                </p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                @include('user.shared.errors')
                                 <div class="form-row mt-4">
                                     <div class="col-7">
                                         <fieldset disabled>
@@ -318,6 +358,18 @@
                              id="{{url('education')}}" role="tabpanel">
                             <form action="" method="POST">
                                 @csrf
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        @if (Session::has('error'))
+                                            <div class="alert alert-danger">
+                                                <p class="m-0">
+                                                    {{Session::get('error')}}
+                                                </p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                @include('user.shared.errors')
                                 <div class="form-row mt-3">
                                     <div class="col-6">
                                         <label for="inputState6">Degree</label>
@@ -413,6 +465,18 @@
                              id="{{url('courses')}}" role="tabpanel" >
                             <form action="" method="POST">
                                 @csrf
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        @if (Session::has('error'))
+                                            <div class="alert alert-danger">
+                                                <p class="m-0">
+                                                    {{Session::get('error')}}
+                                                </p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                @include('user.shared.errors')
                                 <div class="form-row mt-3">
                                     <div class="col-7">
                                         <fieldset disabled>
@@ -467,6 +531,18 @@
                              id="{{url('certificates')}}" role="tabpanel" >
                             <form action="" method="POST">
                                 @csrf
+                                <div class="row mt-4">
+                                    <div class="col-12">
+                                        @if (Session::has('error'))
+                                            <div class="alert alert-danger">
+                                                <p class="m-0">
+                                                    {{Session::get('error')}}
+                                                </p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                @include('user.shared.errors')
                                 <div class="form-row mt-3">
                                     <div class="col-7">
                                         <fieldset disabled>

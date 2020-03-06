@@ -65,13 +65,23 @@ Route::post('/Register','AuthController@doRegistration');
 Route::get('/Logout','AuthController@doLogout');
 
 Route::get('/ResumeBuilder','UserController@getResumeBuilderView')->name('ResumeBuilder');
+
+Route::get('/personal',function (){
+    return view ('user.ResumeBuilder');
+});
+//Route::post('/personal', 'UserController@doUploadImage');
 Route::post('/personal','UserController@doPersonal');
+
+Route::get('/social',function (){
+    return view ('user.ResumeBuilder');
+});
 Route::post('/social','UserController@doSocial');
 
-//Route::post('/personal', 'UserController@doUploadImage');
+Route::get('/experiences',function (){
+    return view ('user.ResumeBuilder');
+});
 Route::post('/experiences','UserController@doExperience');
 
-//Route::get('/ResumeBuilder/personal','UserController@getPersonalView');
 //Route::get('/ResumeBuilder/social/{id}','UserController@getSocialView');
 //Route::get('/ResumeBuilder/experiences/{id}','UserController@getExperienceView');
 //Route::get('/ResumeBuilder/skills/{id}','UserController@getSkillView');
@@ -80,15 +90,9 @@ Route::post('/experiences','UserController@doExperience');
 //Route::get('/ResumeBuilder/certificates/{id}','UserController@getCertificateView');
 //Route::get('/ResumeBuilder/color/{id}','UserController@getColorView');
 
-Route::get('/personal',function (){
-    return view ('user.ResumeBuilder');
-});
-Route::get('/social',function (){
-    return view ('user.ResumeBuilder');
-});
-Route::get('/experiences',function (){
-    return view ('user.ResumeBuilder');
-});
+
+
+
 Route::get('/skills',function (){
     return view ('user.ResumeBuilder');
 });

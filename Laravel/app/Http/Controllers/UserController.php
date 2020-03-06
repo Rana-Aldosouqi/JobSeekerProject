@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Education;
 use App\Experience;
-
+use DB;
 use App\Skill;
 use App\User;
 use Illuminate\Http\Request;
@@ -90,13 +90,6 @@ class UserController extends Controller
 //    }
     public function doPersonal(Request $request)
     {
-//        Auth::user()->id;
-
-//        $user = User::find($id);
-//        if($user == null|| $user->id != Auth::user()->id)
-//        {
-//            return redirect('/');
-//        }
         $rules = [
             'phoneNumber' => 'required|min:10|max:20',
             'birthDate' => 'required|date',
@@ -110,6 +103,7 @@ class UserController extends Controller
                 ->withErrors($validator->errors()->all());
 
         }
+
 //        $user_id = Auth::user()->id;
         $user = Auth::user();
         $user->phone_number = $request->get('phoneNumber');
@@ -126,11 +120,6 @@ class UserController extends Controller
     }
     public function doSocial(Request $request)
     {
-//        $user = User::find($id);
-//        if($user == null|| $user->id != Auth::user()->id)
-//        {
-//            return redirect('/');
-//        }
         $rules=[
             'faceBookUrl' => 'url',
             'linkedInUrl' => 'url',
@@ -159,17 +148,13 @@ class UserController extends Controller
     }
     public function doExperience(Request $request)
     {
-//        $user = User::find($id);
-//        if($user == null|| $user->id != Auth::user()->id)
-//        {
-//            return redirect('/');
-//        }
         $rules = [
             'jobName' => 'required|min:1|max:50',
             'company' => 'required|min:1|max:100',
             'startDate' => 'required|date',
             'endDate' => 'required|date|after:startDate',
         ];
+
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
             return redirect()->back()
@@ -178,8 +163,14 @@ class UserController extends Controller
 
         }
 
-        $newExperience = new Experience();
-//        $newExperience->user_id = Auth::user()->id;
+//        $user = User::find($id);
+
+//        $newExperience = $user->id;
+        $newExperience = DB::table('users')
+            ->select('users.id')
+            ->leftJoin('experiences','users.id','=','experiences.user_id')
+            ->get();
+//        $newExperience = new Experience();
         $newExperience->job_name = $request->get('jobName');
         $newExperience->company = $request->get('company');
         $newExperience->start_date = $request->get('startDate');
