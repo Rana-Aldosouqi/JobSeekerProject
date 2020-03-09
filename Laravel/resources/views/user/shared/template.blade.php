@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{asset('/assets/css/homestyle.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/css/demo.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/css/footer-distributed-with-address-and-phones.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/jquery.rateyo.min.css')}}">
 
 
 
@@ -39,6 +40,8 @@
 
 <script  src="{{'/assets/js/jquery-3.4.1.min.js'}}"></script>
 <script  src="{{'/assets/js/bootstrap.js'}}"></script>
+<script  src="{{'/assets/js/jquery.rateyo.min.js'}}"></script>
+
 @yield('more_js')
 
 </body>

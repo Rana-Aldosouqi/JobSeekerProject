@@ -293,18 +293,6 @@
                              id="{{url('skills')}}" role="tabpanel" >
                             <form action="" method="POST">
                                 @csrf
-                                <div class="row mt-4">
-                                    <div class="col-12">
-                                        @if (Session::has('error'))
-                                            <div class="alert alert-danger">
-                                                <p class="m-0">
-                                                    {{Session::get('error')}}
-                                                </p>
-                                            </div>
-                                        @endif
-                                    </div>
-                                </div>
-                                @include('user.shared.errors')
                                 <div class="form-row mt-4">
                                     <div class="col-7">
                                         <fieldset disabled>
@@ -319,14 +307,8 @@
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </div>
-                                    <div class="col-2">
-                                        {{--                                        <span>{{round($newskill->rate, 2)}} / 5.0</span>--}}
-                                        {{--                                        <div class="rateYo" data-rateyo-rating="{{$skill->rate}}"></div>--}}
-                                        {{--                                        <span class="fa fa-star" style="color: orange;"></span>--}}
-                                        {{--                                        <span class="fa fa-star" style="color: orange;"></span>--}}
-                                        {{--                                        <span class="fa fa-star" style="color: orange;"></span>--}}
-                                        {{--                                        <span class="fa fa-star"></span>--}}
-                                        {{--                                        <span class="fa fa-star"></span>--}}
+                                    <div class="rateYo col-2 mx-auto" data-rateyo-rating="4.5">
+{{--                                        <span>{{round($newskill->rating, 2)}} / 5.0</span>--}}
                                     </div>
                                 </div>
                                 <div class="form-row mt-2">
@@ -339,7 +321,7 @@
                                     </div>
                                     <div class="col-2">
                                         <div class="rateYo" data-rateyo-rating="0"></div>
-                                        <input type="hidden" name="rate" id="rating" value="0"
+                                        <input type="hidden" name="rating" id="rating" value="0"
                                                class="form-control">
                                     </div>
                                 </div>
@@ -481,14 +463,13 @@
                                     <div class="col-7">
                                         <fieldset disabled>
                                             <div class="form-group">
-                                                <input type="text" id="disabledTextInput" class="form-control"
-                                                       placeholder="Course One" style="height: 40px;">
+                                                <input type="text" id="course" class="form-control" placeholder="Course One" style="height: 40px;">
                                             </div>
                                         </fieldset>
                                     </div>
                                     <div class="col-1">
                                         <button class="btn btn-sm bg-danger btn-dark border-danger rounded">
-                                            <i class="fa fa-times"></i>
+                                            <i class="fa fa-times" id="delet"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -499,21 +480,14 @@
                                                 <span class="input-group-text" id="inputGroup-sizing-sm"></span>
                                             </div>
                                             <input type="text" class="form-control" aria-label="Sizing example input"
-                                                   placeholder="Add Course" aria-describedby="inputGroup-sizing-sm"
+                                                   placeholder="Add Course" id="addedCourse"
+                                                   aria-describedby="inputGroup-sizing-sm"
                                                    style="height: 40px;">
                                         </div>
                                     </div>
                                     <div class="col-1">
                                         <button class="btn btn-sm btn-dark rounded">
                                             <i class="fa fa-plus"></i></button>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input text-left" id="inputGroupFile01"
-                                               aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="inputGroupFile01"
-                                               style="height: 40px;">Choose file</label>
                                     </div>
                                 </div>
                                 <div class="form-row mt-3">
@@ -628,10 +602,40 @@
     <script>
         $(document).ready(function (e) {
             $(".rateYo").rateYo({
-                // tarWidth: "40px",
                 readonly:false
             });
+
+            $
         });
+    function myFunction() {
+    var input = document.getElementById('course')[0].value;
+    var div = document.createElement('div');
+    document.body.appendChild(div);
+
+    var output = ' <fieldset disabled>\n' +
+                 ' <div class="form-group">\n' +
+                 '<input type="text" id="course" class="form-control" placeholder="Course One" \n' +
+                 'style="height: 40px;"> \n '+
+                 '</div> </fieldset>' ;
+    div.innerHTML = output;
+    //create your delete button after you click try it
+    var del = document.createElement('button');
+    del.style.textDecoration = 'none';
+    // del.innerHTML = 'Remove this person?';
+    // del.style.color = 'white';
+    // del.style.backgroundColor = 'blue';
+    //assign a function for it when clicked
+    del.onclick = function() { deleteButton(div,this)};
+    document.body.appendChild(del);
+    <!--  deleteButton(div);  -->
+    }
+    function deleteButton(x,y) {
+    var parent = document.getElementsByTagName("BODY")[0];
+    //remove the div
+    parent.removeChild(x);
+    //remore the button
+    parent.removeChild(y);
+    }
     </script>
 @endsection
 

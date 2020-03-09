@@ -17,7 +17,7 @@ class CreateSkillsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable(true);
             $table->string('name',50)->nullable(false);
-            $table->float('rate')->default(0)->nullable(false);
+            $table->float('rating')->default(0)->nullable(true);
             $table->timestamps();
 
             $table->foreign('user_id')->

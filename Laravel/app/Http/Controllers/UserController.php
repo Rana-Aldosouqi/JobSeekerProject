@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Education;
 use App\Experience;
+use App\Feedback;
 use DB;
 use App\Skill;
 use App\User;
@@ -16,11 +17,9 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-//    public function getIndexView()
-//    {
-//        return view('/index');
-//
-//    }
+    public function viewMyResume(){
+        return view('user.MyResume');
+    }
     public function getResumeBuilderView()
     {
 //        $user = User::find($id);
@@ -101,7 +100,6 @@ class UserController extends Controller
             return redirect()->back()
                 ->withInput($request->all())
                 ->withErrors($validator->errors()->all());
-
         }
 
 //        $user_id = Auth::user()->id;
@@ -166,11 +164,11 @@ class UserController extends Controller
 //        $user = User::find($id);
 
 //        $newExperience = $user->id;
-        $newExperience = DB::table('users')
-            ->select('users.id')
-            ->leftJoin('experiences','users.id','=','experiences.user_id')
-            ->get();
-//        $newExperience = new Experience();
+//        $newExperience = DB::table('users')
+//            ->select('users.id')
+//            ->leftJoin('experiences','users.id','=','experiences.user_id')
+//            ->get();
+        $newExperience = new Experience();
         $newExperience->job_name = $request->get('jobName');
         $newExperience->company = $request->get('company');
         $newExperience->start_date = $request->get('startDate');
@@ -205,7 +203,7 @@ class UserController extends Controller
         $newskill = new Skill();
 //        $newskill->user_id = Auth::user()->id;
         $newskill->name = $request->get('name');
-        $newskill->rate = $request->get('rate');
+        $newskill->rating = $request->get('rating');
         $newskill->save();
 
         $result = Auth::attempt([
