@@ -21,8 +21,11 @@ class CreateExperiencesTable extends Migration
             $table->date('end_date')->nullable(true);
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onUpdate('CASCADE')->onDelete('SET NULL');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('CASCADE')
+                ->onDelete('SET NULL');
         });
     }
 

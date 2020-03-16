@@ -16,8 +16,5 @@ $factory->define(\App\Education::class, function (Faker $faker) {
         'school'=>$faker->text(50),
         'start_date'=>$faker->dateTime($max = 'now', $timezone = null),
         'end_date'=>$faker->dateTime($max = 'now', $timezone = null),
-        'file_path'=>$faker->text(100),
-        'file_extension'=>$faker->randomFloat(6,0,99999),
-        'size'=>$faker->randomFloat($nbMaxDecimals = 10.0, $min = 2.0, $max = 10.0)
     ];
 });

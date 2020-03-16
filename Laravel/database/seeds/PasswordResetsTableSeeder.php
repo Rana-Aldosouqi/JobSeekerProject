@@ -11,6 +11,6 @@ class PasswordResetsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\PasswordReset::class,20)->create();
+        Factory(\App\PasswordReset::class,20)->create();
     }
 }

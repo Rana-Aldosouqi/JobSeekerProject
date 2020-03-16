@@ -20,8 +20,11 @@ class CreateSkillsTable extends Migration
             $table->float('rating')->default(0)->nullable(true);
             $table->timestamps();
 
-            $table->foreign('user_id')->
-            references('id')->on('users')->onUpdate('CASCADE')->onDelete('SET NULL');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('CASCADE')
+                ->onDelete('SET NULL');
         });
     }
 

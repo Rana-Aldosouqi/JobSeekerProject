@@ -15,19 +15,22 @@ class CreatePostAppliedsTable extends Migration
     {
         Schema::create('post_applieds', function (Blueprint $table) {
             $table->bigIncrements('id');
-            
             $table->unsignedBigInteger('user_id')->nullable(true);
             $table->unsignedBigInteger('post_id')->nullable(true);
 
-            
             $table->timestamps();
             
-            $table->foreign('user_id')->references('id')
-                ->on('users')->onUpdate('CASCADE')->onDelete('SET NULL');
-            $table->foreign('post_id')->references('id')
-                ->on('posts')->onUpdate('CASCADE')->onDelete('SET NULL');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('CASCADE')
+                ->onDelete('SET NULL');
 
-            
+            $table->foreign('post_id')
+                ->references('id')
+                ->on('posts')
+                ->onUpdate('CASCADE')
+                ->onDelete('SET NULL');
         });
     }
 

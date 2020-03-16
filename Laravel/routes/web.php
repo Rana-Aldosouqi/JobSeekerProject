@@ -108,6 +108,10 @@ Route::get('/color',function (){
     return view ('user.ResumeBuilder');
 });
 
+Route::get('/sendemail', 'SendEmailController@index');
+Route::post('/sendemail/send', 'SendEmailController@send');
+
+
 //Route::get('/ResetPassword', 'AuthController@passwordResetTokenView');
 //Route::post('/ResetPassword', 'AuthController@sendPasswordResetToken');
 //Route::get('/ResetPasswordSendToken/{token}', 'AuthController@PasswordResetView');

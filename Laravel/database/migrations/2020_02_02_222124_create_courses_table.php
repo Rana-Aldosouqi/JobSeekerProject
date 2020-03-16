@@ -17,13 +17,16 @@ class CreateCoursesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable(true);
             $table->string('name',30)->nullable(false);
-            $table->string('file_path',125)->nullable(true);
-            $table->string('file_extension',6)->nullable(true);
-            $table->float('size')->default(0)->nullable(true);
+//            $table->string('file_path',125)->nullable(true);
+//            $table->string('file_extension',6)->nullable(true);
+//            $table->float('size')->default(0)->nullable(true);
             $table->timestamps();
 
             $table->foreign('user_id')->
-            references('id')->on('users')->onUpdate('CASCADE')->onDelete('SET NULL');
+            references('id')
+                ->on('users')
+                ->onUpdate('CASCADE')
+                ->onDelete('SET NULL');
         });
     }
 

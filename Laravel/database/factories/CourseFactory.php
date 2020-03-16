@@ -13,8 +13,5 @@ $factory->define(\App\Course::class, function (Faker $faker) {
     return [
         'user_id'=>$userIDs[$randIndex],
         'name'=>$faker->text(30),
-        'file_path'=>$faker->text(125),
-        'file_extension'=>$faker->randomFloat(6,0,99999),
-        'size'=>$faker->randomFloat($nbMaxDecimals = 10.0, $min = 2.0, $max = 10.0)
     ];
 });

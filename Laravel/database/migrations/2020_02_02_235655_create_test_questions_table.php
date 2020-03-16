@@ -24,9 +24,11 @@ class CreateTestQuestionsTable extends Migration
             $table->unsignedInteger('true_ans')->nullable(true);
             $table->timestamps();
          
-            $table->foreign('test_id')->references('id')
-                ->on('tests')->onUpdate('CASCADE')->onDelete('SET NULL');
-            
+            $table->foreign('test_id')
+                ->references('id')
+                ->on('tests')
+                ->onUpdate('CASCADE')
+                ->onDelete('SET NULL');
         });
     }
 

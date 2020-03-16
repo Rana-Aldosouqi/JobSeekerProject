@@ -39,11 +39,17 @@ class CreateUsersTable extends Migration
             $table->integer('rating')->nullable(true)->default(0);
             $table->timestamps();
 
-            $table->foreign('image_id')->
-            references('id')->on('images')->onUpdate('CASCADE')->onDelete('SET NULL');
+            $table->foreign('image_id')
+                ->references('id')
+                ->on('images')
+                ->onUpdate('CASCADE')
+                ->onDelete('SET NULL');
 
-            $table->foreign('gender_id')->
-            references('id')->on('genders')->onUpdate('CASCADE')->onDelete('SET NULL');
+            $table->foreign('gender_id')
+                ->references('id')
+                ->on('genders')
+                ->onUpdate('CASCADE')
+                ->onDelete('SET NULL');
         });
     }
 

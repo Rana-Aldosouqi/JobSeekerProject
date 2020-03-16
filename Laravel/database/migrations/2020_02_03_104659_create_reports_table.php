@@ -19,8 +19,11 @@ class CreateReportsTable extends Migration
             $table->text('reports')->nullable(false);
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onUpdate('CASCADE')->onDelete('SET NULL');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('CASCADE')
+                ->onDelete('SET NULL');
         });
     }
 

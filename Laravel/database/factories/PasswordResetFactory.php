@@ -6,12 +6,15 @@ use App\Model;
 use Faker\Generator as Faker;
 
 $factory->define(\App\PasswordReset::class, function (Faker $faker) {
+
     $userIDs=\App\User::pluck('id')->toArray();
     $randIndex= array_rand($userIDs);
 
     return [
         'user_id'=>$userIDs[$randIndex],
+//        'username'=>$faker->name,
+        'email'=>$faker->email,
         'new_password'=>$faker->password,
-        'token'=>$faker->text(100),
+//        'token'=>$faker->text(100),
     ];
 });
