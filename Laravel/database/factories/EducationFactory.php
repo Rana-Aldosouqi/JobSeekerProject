@@ -14,6 +14,7 @@ $factory->define(\App\Education::class, function (Faker $faker) {
         'user_id'=>$userIDs[$randIndex],
         'degree'=>$faker->text(30),
         'school'=>$faker->text(50),
+        'language'=>$faker->text,
         'start_date'=>$faker->dateTime($max = 'now', $timezone = null),
         'end_date'=>$faker->dateTime($max = 'now', $timezone = null),
     ];
