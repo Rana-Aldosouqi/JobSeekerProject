@@ -20,6 +20,7 @@ class CreateEducationsTable extends Migration
             $table->string('school',50)->nullable(false);
             $table->date('start_date')->nullable(false);
             $table->date('end_date')->nullable(true);
+            $table->string('language')->nullable(true);
 //            $table->string('file_path')->nullable(true);
 //            $table->string('file_extension',6)->nullable(true);
 //            $table->float('size')->default(0)->nullable(true);
