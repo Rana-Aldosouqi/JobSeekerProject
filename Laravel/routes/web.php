@@ -30,20 +30,10 @@ Route::get('/Home','HomeController@getHomeView');
 Route::get('/Home','HomeController@getHomePostsView');
 
 //amina
-Route::get('/AccountSettings(Employee)', function () {
-    return view('user.AccountSettings(Employee)');
-});
-
-Route::Post('/AccountSettings(Employee),SettingController@sendChange');
-Route::get('/AccountSettings(Employee),SettingController@settingView');
-Route::get('/AccountSettings(Employee),SettingController@store');
-
-
-//new amina
 Route::get('/userprofile','Settingcontroller@received');
-Route::get('/userprofile,SettingController@store');
-Route::get('/{id}/settings(Employee)','Settingcontroller@edit');
-Route::put('/{id}','Settingcontroller@update');
+Route::post('/userprofile,SettingController@store');
+Route::get('/settingsemployee','Settingcontroller@getUpdate');
+Route::post('/settingsemployee','Settingcontroller@update');
 
 
 //shimaa

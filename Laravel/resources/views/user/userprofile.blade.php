@@ -1,19 +1,19 @@
 @extends('user.shared.template')
-
+@section('title')
+    user profile
+@endsection
 @section('content')
     <div class=" card col-8 container emp-profile bg-light shadow mt-5 h6 "  style="font-family: 'Permanent Marker', cursive; font-family: 'Alegreya', serif;">
         <form action="" method="get">
             <div class="row" style="height:50%;">
                 <div class="col-4">
                     <div class="profile-img">
-                        <img src="{{asset('/assets/images/profil.jpg')}}"/>
+                        <img src="{{asset('/assets/images/'. $user->name)}}" class="img-responsive"/>
                     </div>
                 </div>
                 <div class="col-md-6 ">
                     <div class="profile-head">
-                        @foreach($names as $user)
-                            <p>{{$user->first_name}}</p>
-                        @endforeach()
+
                         <br>
                         <h5 style="color:#004bff">
                             Web Developer and Designer
@@ -85,29 +85,17 @@
                                 <label>Name:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($names as $user)
-                                    <p>{{$user->username}}</p>
-                                @endforeach()
+                                <h5  class="" id="inputEmail"name="first_name" >{{Auth::user()->first_name}}</h5>
                             </div>
                         </div>
 
-                        <div class="row ">
-                            <div class="col-md-4" >
-                                <label>Job Title:</label>
-                            </div>
-                            <div class="col-md-8" style="color:#004bff;">
-                                <p>Kshiti Ghelani</p>
-                            </div>
-                        </div>
 
                         <div class="row">
                             <div class="col-md-4" >
                                 <label>Email:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($emails as $user )
-                                    <p>{{$user->email}}</p>
-                                @endforeach
+                                <h5  class="" id="inputEmail"name="email" >{{Auth::user()->email}}</h5>
                             </div>
                         </div>
                         <div class="row">
@@ -115,9 +103,7 @@
                                 <label>Phone:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($phone as $user )
-                                    <p>{{$user ->phone_number}}</p>
-                                @endforeach
+                                <h5  class="" id="inputEmail"name="phone_number" >{{Auth::user()->phone_number}}</h5>
                             </div>
                         </div>
                         <div class="row">
@@ -125,9 +111,7 @@
                                 <label>Age:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($age as $user)
-                                    <p>{{$user->age}}</p>
-                                @endforeach
+                                <h5  class="" id="inputEmail"name="age" > </h5>
                             </div>
                         </div>
 
@@ -136,9 +120,9 @@
                                 <label>Gender:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($genders as $gender)
-                                    <p>{{$gender->name}}</p>
-                                @endforeach
+{{--                                @foreach($genders as $gender)--}}
+{{--                                    <p>{{$gender->name}}</p>--}}
+{{--                                @endforeach--}}
                             </div>
                         </div>
 
@@ -147,7 +131,7 @@
                                 <label>Address:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                <p>Cairo</p>
+                                <h5  class="" id="inputEmail"name="address" >{{Auth::user()->address}}</h5>
                             </div>
                         </div>
 
@@ -156,9 +140,9 @@
                                 <label>Profession:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($profession as $experience)
-                                    <p>{{$experience->job_name}}</p>
-                                @endforeach
+{{--                                @foreach($profession as $experience)--}}
+{{--                                    <p>{{$experience->job_name}}</p>--}}
+{{--                                @endforeach--}}
                             </div>
                         </div>
 
@@ -167,9 +151,9 @@
                                 <label>Education:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($educations as $education)
-                                    <p>{{$education->school}}</p>
-                                @endforeach
+{{--                                @foreach($educations as $education)--}}
+{{--                                    <p>{{$education->school}}</p>--}}
+{{--                                @endforeach--}}
                             </div>
                         </div>
 
@@ -178,9 +162,9 @@
                                 <label>Experience:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($workfield as $experiences)
-                                    <p>{{$experiences->job_name}}</p>
-                                @endforeach
+{{--                                @foreach($workfield as $experiences)--}}
+{{--                                    <p>{{$experiences->job_name}}</p>--}}
+{{--                                @endforeach--}}
                             </div>
                         </div>
 
@@ -189,9 +173,9 @@
                                 <label>Courses:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($courses as $course)
-                                    <p>{{$course->name}}</p>
-                                @endforeach
+{{--                                @foreach($courses as $course)--}}
+{{--                                    <p>{{$course->name}}</p>--}}
+{{--                                @endforeach--}}
                             </div>
                         </div>
 
@@ -200,9 +184,9 @@
                                 <label>Certificate:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($certificates as $certificate)
-                                    <p>{{$certificate->name}}</p>
-                                @endforeach
+{{--                                @foreach($certificates as $certificate)--}}
+{{--                                    <p>{{$certificate->name}}</p>--}}
+{{--                                @endforeach--}}
                             </div>
                         </div>
 
@@ -211,9 +195,9 @@
                                 <label>Hourly Rate:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($rate as $user)
-                                    <p>{{$user->rating}}</p>
-                                @endforeach
+{{--                                @foreach($rate as $user)--}}
+{{--                                    <p>{{$user->rating}}</p>--}}
+{{--                                @endforeach--}}
                             </div>
                         </div>
                         <div class="row">
@@ -221,19 +205,19 @@
                                 <label>Total Projects:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($totalproject as $experience)
-                                    <p>{{$experience->$total_projects}}</p>
-                                @endforeach
+{{--                                @foreach($totalproject as $experience)--}}
+{{--                                    <p>{{$experience->$total_projects}}</p>--}}
+{{--                                @endforeach--}}
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4" >
-                                <label>English Level:</label>
+                                <label>Language:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($englishlevel as $language)
-                                    <p>{{$language->$english_level}}</p>
-                                @endforeach
+{{--                                @foreach($englishlevel as $language)--}}
+{{--                                    <p>{{$language->$english_level}}</p>--}}
+{{--                                @endforeach--}}
                             </div>
                         </div>
                         <div class="row">

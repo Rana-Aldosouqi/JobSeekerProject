@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('password',100)->nullable(true);
             $table->string('username',100)->nullable(true);
             $table->date('birth_date')->nullable(true);
+            $table->integer('age')->nullable(true);
+            $table->string('address')->nullable(true);
             $table->boolean('is_admin')->nullable(true)->default(false);
             $table->string('user_type',7)->nullable(true);
             $table->string('color')->nullable(true)->default('lightblue');
