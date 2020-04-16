@@ -1,4 +1,70 @@
 @extends('user.shared.template')
+@section('more_css')
+    <link href=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var postURL = "<?php echo url('skills'); ?>";
+            var i = 1;
+            $('#add').click(function () {
+                i++;
+                $('#dynamic_field').append
+                ('<tr id="row' + i + '" class="dynamic-added"><td>' +
+                    '<input type="text" name="name[]" placeholder="Enter Skill" ' +
+                    'class="form-control name_list" /></td><td><button type="button" ' +
+                    'name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button></td></tr>');
+            });
+            $(document).on('click', '.btn_remove', function () {
+                var button_id = $(this).attr("id");
+                $('#row' + button_id + '').remove();
+            });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('#submit').click(function () {
+                $.ajax({
+                    url: postURL,
+                    method: "POST",
+                    data: $('#add_name').serialize(),
+                    type: 'json',
+                    success: function (data) {
+                        if (data.error) {
+                            printErrorMsg(data.error);
+                        } else {
+                            i = 1;
+                            $('.dynamic-added').remove();
+                            $('#add_name')[0].reset();
+                            $(".print-success-msg").find("ul").html('');
+                            $(".print-success-msg").css('display', 'block');
+                            $(".print-error-msg").css('display', 'none');
+                            $(".print-success-msg").find("ul").append
+                            ('<li>Skills Inserted Successfully.</li>');
+                        }
+                    }
+                });
+            });
+            function printErrorMsg(msg) {
+                $(".print-error-msg").find("ul").html('');
+                $(".print-error-msg").css('display', 'block');
+                $(".print-success-msg").css('display', 'none');
+                $.each(msg, function (key, value) {
+                    $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
+                });
+            }
+        });
+        $(document).ready(function (e) {
+            $(".rateYo").rateYo({
+                readonly: false
+            });
+
+            $
+        });
+    </script>
+
+@endsection
 @section('content')
     <div class="container container-fluid"
          style=" font-family: 'Permanent Marker', cursive; font-family: 'Alegreya', serif;">
@@ -44,12 +110,12 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{request()->is('color') ? 'active' : null}}"
-                               href="{{url('color')}}" role="tab" >Color</a>
+                               href="{{url('color')}}" role="tab">Color</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane{{request()->is('personal') ? 'active' : null}}"
-                             id="{{url('personal')}}" role="tabpanel" >
+                             id="{{url('personal')}}" role="tabpanel">
                             <form action="" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mt-4">
@@ -72,7 +138,8 @@
                                     </div>
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary"
-                                                type="button" id="inputGroupFileAddon04">Upload Image</button>
+                                                type="button" id="inputGroupFileAddon04">Upload Image
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="form-row mt-3 ">
@@ -147,6 +214,16 @@
                                                class="form-control">
                                     </div>
                                 </div>
+                                <div class="items">
+
+                                    <div class="form-group"><label>Author Email:</label>
+                                        <input id="author_email" class="form-control" name="author" required="required"
+                                               type="EMAIL"/></div>
+
+                                </div>
+
+                                <button type="button" class="add_field_button">Add Field</button>
+
                                 <div class="form-row mt-3">
                                     <div class="col-5"></div>
                                     <div class="col-2">
@@ -159,8 +236,8 @@
                             </form>
                         </div>
                         <div class="tab-pane  {{request()->is('social') ? 'active' : null}}"
-                             id="{{url('social')}}" role="tabpanel" >
-                            <form action="" method="POST" >
+                             id="{{url('social')}}" role="tabpanel">
+                            <form action="" method="POST">
                                 @csrf
                                 <div class="row mt-4">
                                     <div class="col-12">
@@ -209,21 +286,27 @@
                             </form>
                         </div>
                         <div class="tab-pane {{request()->is('experiences') ? 'active' : null}}"
-                             id="{{url('experiences')}}" role="tabpanel" >
-                            <form action="" method="POST" >
+                             id="{{url('experiences')}}" role="tabpanel">
+                            <form action="" method="POST">
                                 @csrf
-{{--                                <div class="row mt-4">--}}
-{{--                                    <div class="col-12">--}}
-{{--                                        @if (Session::has('error'))--}}
-{{--                                            <div class="alert alert-danger">--}}
-{{--                                                <p class="m-0">--}}
-{{--                                                    {{Session::get('error')}}--}}
-{{--                                                </p>--}}
-{{--                                            </div>--}}
-{{--                                        @endif--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                @include('user.shared.errors')--}}
+                                <div class="form-row mt-3">
+                                    <div class="col-8 offset-2 offset-md-2">
+                                        <h3>You can add More Than One Work Experience</h3>
+                                    </div>
+                                </div>
+
+                                {{--                                <div class="row mt-4">--}}
+                                {{--                                    <div class="col-12">--}}
+                                {{--                                        @if (Session::has('error'))--}}
+                                {{--                                            <div class="alert alert-danger">--}}
+                                {{--                                                <p class="m-0">--}}
+                                {{--                                                    {{Session::get('error')}}--}}
+                                {{--                                                </p>--}}
+                                {{--                                            </div>--}}
+                                {{--                                        @endif--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+                                {{--                                @include('user.shared.errors')--}}
                                 <div class="form-row mt-3">
                                     <div class="col-6">
                                         <label for="jobTitle">Job Title</label>
@@ -248,37 +331,37 @@
                                                class="form-control" name="endDate">
                                     </div>
                                 </div>
-                                <div class="form-row p-0 mt-3 collapse hide" id="collapseOne" aria-labelledby="headingOne" data-parent="#accordion">
-                                    <div class="col-6">
-                                        <label for="jobTitle">Job Title</label>
-                                        <input type="text" class="form-control" id="jobTitle"
-                                               name="jobName" placeholder="Job Title">
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="company">Company</label>
-                                        <input type="text" class="form-control" id="company"
-                                               name="company" placeholder="Company">
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="inputState3">Start Date</label>
-                                        <input type="date" id="inputState3"
-                                               class="form-control" name="startDate">
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="inputState4">End Date</label>
-                                        <input type="date" id="inputState4"
-                                               class="form-control" name="endDate">
-                                    </div>
-                                </div>
-                                <div class="form-row mt-3" id="accordion">
-                                    <div class="col-12" id="headingOne">
-                                        <div class=""
-                                             data-toggle="collapse" data-target="#collapseOne"
-                                             aria-expanded="true" aria-controls="collapseOne">
-                                            <i class="fa fa-plus text-primary"><a><u>Add Work Experience</u></a></i>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{--                                <div class="form-row p-0 mt-3 collapse hide" id="collapseOne" aria-labelledby="headingOne" data-parent="#accordion">--}}
+                                {{--                                    <div class="col-6">--}}
+                                {{--                                        <label for="jobTitle">Job Title</label>--}}
+                                {{--                                        <input type="text" class="form-control" id="jobTitle"--}}
+                                {{--                                               name="jobName" placeholder="Job Title">--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <div class="col-6">--}}
+                                {{--                                        <label for="company">Company</label>--}}
+                                {{--                                        <input type="text" class="form-control" id="company"--}}
+                                {{--                                               name="company" placeholder="Company">--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <div class="col-6">--}}
+                                {{--                                        <label for="inputState3">Start Date</label>--}}
+                                {{--                                        <input type="date" id="inputState3"--}}
+                                {{--                                               class="form-control" name="startDate">--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <div class="col-6">--}}
+                                {{--                                        <label for="inputState4">End Date</label>--}}
+                                {{--                                        <input type="date" id="inputState4"--}}
+                                {{--                                               class="form-control" name="endDate">--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+                                {{--                                <div class="form-row mt-3" id="accordion">--}}
+                                {{--                                    <div class="col-12" id="headingOne">--}}
+                                {{--                                        <div class=""--}}
+                                {{--                                             data-toggle="collapse" data-target="#collapseOne"--}}
+                                {{--                                             aria-expanded="true" aria-controls="collapseOne">--}}
+                                {{--                                            <i class="fa fa-plus text-primary"><a><u>Add Work Experience</u></a></i>--}}
+                                {{--                                        </div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
                                 <div class="form-row mt-3">
                                     <div class="col-5"></div>
                                     <div class="col-2">
@@ -290,49 +373,58 @@
                             </form>
                         </div>
                         <div class="tab-pane container {{request()->is('skills') ? 'active' : null}}"
-                             id="{{url('skills')}}" role="tabpanel" >
-                            <form action="" method="POST">
-                                @csrf
-                                <div class="form-row mt-4">
-                                    <div class="col-7">
-                                        <fieldset disabled>
-                                            <div class="form-group">
-                                                <input type="text" id="disabledTextInput" class="form-control"
-                                                       name=""  placeholder="Skill One" >
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-1">
-                                        <button class="btn btn-sm bg-danger btn-dark border-danger rounded">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </div>
-                                    <div class="rateYo col-2 mx-auto" data-rateyo-rating="4.5">
-{{--                                        <span>{{round($newskill->rating, 2)}} / 5.0</span>--}}
-                                    </div>
+                             id="{{url('skills')}}" role="tabpanel">
+                            {{--                                <div class="form-row mt-4">--}}
+                            {{--                                    <div class="col-7">--}}
+                            {{--                                        <fieldset disabled>--}}
+                            {{--                                            <div class="form-group">--}}
+                            {{--                                                <input type="text" id="disabledTextInput" class="form-control"--}}
+                            {{--                                                       name=""  placeholder="Skill One" >--}}
+                            {{--                                            </div>--}}
+                            {{--                                        </fieldset>--}}
+                            {{--                                    </div>--}}
+                            {{--                                    <div class="col-1">--}}
+                            {{--                                        <button class="btn btn-danger">--}}
+                            {{--                                            <i class="fa fa-times"></i>--}}
+                            {{--                                        </button>--}}
+                            {{--                                    </div>--}}
+                            {{--                                    <div class="rateYo col-2 mx-auto" data-rateyo-rating="4.5">--}}
+                            {{--                                        <span>{{round($newskill->rating, 2)}} / 5.0</span>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+
+                            {{--                                    <div class="col-2">--}}
+                            {{--                                        <div class="rateYo" data-rateyo-rating="0"></div>--}}
+                            {{--                                        <input type="hidden" name="rating" id="rating" value="0"--}}
+                            {{--                                               class="form-control">--}}
+                            {{--                                    </div>--}}
+                            {{--                                </div>--}}
+                            <form name="add_name" id="add_name" class="mt-3">
+                                <div class="alert alert-danger print-error-msg" style="display:none">
+                                    <ul></ul>
                                 </div>
-                                <div class="form-row mt-2">
-                                    <div class="col-9">
-                                        <input type="text" class="form-control" id="Skill-data" placeholder="">
-                                    </div>
-                                    <div class="col-1">
-                                        <button class="btn btn-sm btn-dark rounded">
-                                            <i class="fa fa-plus"></i></button>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="rateYo" data-rateyo-rating="0"></div>
-                                        <input type="hidden" name="rating" id="rating" value="0"
-                                               class="form-control">
-                                    </div>
+                                <div class="alert alert-success print-success-msg" style="display:none">
+                                    <ul></ul>
                                 </div>
-                                <div class="form-row mt-4">
-                                    <div class="col-5">
+                                <div class="table-responsive">
+                                    <table class="table" id="dynamic_field">
+                                        <tr>
+                                            <td><input type="text" name="name[]"
+                                                       placeholder="Enter Skill"
+                                                       class="form-control name_list"/></td>
+                                            <td>
+                                                <button type="button" name="add" id="add"
+                                                        class="btn btn-success">Add More
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="col-5"></div>
+                                    <div class="col-2 ">
+                                        <input type="button" name="submit" id="submit"
+                                               class="btn btn-primary" value="Submit"/>
                                     </div>
-                                    <div class="col-2">
-                                        <button type="submit" class="btn btn-block btn-primary"
-                                                style="height: 40px;"><b>Submet</b>
-                                        </button>
-                                    </div>
+
                                 </div>
                             </form>
                         </div>
@@ -340,7 +432,12 @@
                              id="{{url('education')}}" role="tabpanel">
                             <form action="" method="POST">
                                 @csrf
-                                <div class="row mt-4">
+                                <div class="form-row mt-3">
+                                    <div class="col-8 offset-2 offset-md-2">
+                                        <h3>You can add More Than One Education History</h3>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
                                     <div class="col-12">
                                         @if (Session::has('error'))
                                             <div class="alert alert-danger">
@@ -355,7 +452,7 @@
                                 <div class="form-row mt-3">
                                     <div class="col-6">
                                         <label for="inputState6">Degree</label>
-                                        <select class="custom-select">
+                                        <select class="custom-select" name="degree">
                                             <option selected>Degree</option>
                                             <option value="1">High School Deploma</option>
                                             <option value="2">High School Deploma</option>
@@ -372,71 +469,71 @@
                                     <div class="col-6">
                                         <label for="inputState5">Start Date</label>
                                         <input type="date" id="inputState5"
-                                               class="form-control">
+                                               class="form-control" name="startDate">
                                     </div>
                                     <div class="col-6">
                                         <label for="inputState6">End Date</label>
                                         <input type="date" id="inputState6"
-                                               class="form-control">
+                                               class="form-control" name="endDate">
                                     </div>
                                 </div>
-                                <div class="form-row mt-3">
-                                    <label for="inputState5">Upload Certificate</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                               aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                    </div>
-                                </div>
+                                {{--                                <div class="form-row mt-3">--}}
+                                {{--                                    <label for="inputState5">Upload Certificate</label>--}}
+                                {{--                                    <div class="custom-file">--}}
+                                {{--                                        <input type="file" class="custom-file-input" id="inputGroupFile01"--}}
+                                {{--                                               aria-describedby="inputGroupFileAddon01">--}}
+                                {{--                                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
 
-                                <div class="form-row p-0 mt-3 collapse hide" id="collapseOne" aria-labelledby="headingOne" data-parent="#accordion">
-                                    <div class="col-6 ">
-                                        <label for="inputState6">Degree</label>
-                                        <select class="custom-select">
-                                            <option selected>Degree</option>
-                                            <option value="1">High School Deploma</option>
-                                            <option value="2">High School Deploma</option>
-                                            <option value="3">High School Deploma</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="school">School</label>
-                                        <input type="text" class="form-control" id="school"
-                                               name="school" placeholder="School One">
-                                    </div>
-                                    <div class="col-6 mt-3">
-                                        <label for="inputState5">Start Date</label>
-                                        <input type="date" id="inputState5"
-                                               class="form-control">
-                                    </div>
-                                    <div class="col-6 mt-3">
-                                        <label for="inputState6">End Date</label>
-                                        <input type="date" id="inputState6"
-                                               class="form-control">
-                                    </div>
-                                    <div class="col-12 mt-3">
-                                        <label for="inputState5">Upload Certificate</label>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                   aria-describedby="inputGroupFileAddon01">
-                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                        </div>
-                                    </div>
+                                {{--                                <div class="form-row p-0 mt-3 collapse hide" id="collapseOne" aria-labelledby="headingOne" data-parent="#accordion">--}}
+                                {{--                                    <div class="col-6 ">--}}
+                                {{--                                        <label for="inputState6">Degree</label>--}}
+                                {{--                                        <select class="custom-select">--}}
+                                {{--                                            <option selected>Degree</option>--}}
+                                {{--                                            <option value="1">High School Deploma</option>--}}
+                                {{--                                            <option value="2">High School Deploma</option>--}}
+                                {{--                                            <option value="3">High School Deploma</option>--}}
+                                {{--                                        </select>--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <div class="col-6">--}}
+                                {{--                                        <label for="school">School</label>--}}
+                                {{--                                        <input type="text" class="form-control" id="school"--}}
+                                {{--                                               name="school" placeholder="School One">--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <div class="col-6 mt-3">--}}
+                                {{--                                        <label for="inputState5">Start Date</label>--}}
+                                {{--                                        <input type="date" id="inputState5"--}}
+                                {{--                                               class="form-control">--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <div class="col-6 mt-3">--}}
+                                {{--                                        <label for="inputState6">End Date</label>--}}
+                                {{--                                        <input type="date" id="inputState6"--}}
+                                {{--                                               class="form-control">--}}
+                                {{--                                    </div>--}}
+                                {{--                                    <div class="col-12 mt-3">--}}
+                                {{--                                        <label for="inputState5">Upload Certificate</label>--}}
+                                {{--                                        <div class="custom-file">--}}
+                                {{--                                            <input type="file" class="custom-file-input" id="inputGroupFile01"--}}
+                                {{--                                                   aria-describedby="inputGroupFileAddon01">--}}
+                                {{--                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>--}}
+                                {{--                                        </div>--}}
+                                {{--                                    </div>--}}
 
-                                </div>
-                                <div class="form-row mt-3" id="accordion">
-                                    <div class="col-12" id="headingOne">
-                                        <div class="" data-toggle="collapse" data-target="#collapseOne"
-                                             aria-expanded="true" aria-controls="collapseOne">
-                                            <i class="fa fa-plus text-primary"><a><u>Add Education</u></a></i>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{--                                </div>--}}
+                                {{--                                <div class="form-row mt-3" id="accordion">--}}
+                                {{--                                    <div class="col-12" id="headingOne">--}}
+                                {{--                                        <div class="" data-toggle="collapse" data-target="#collapseOne"--}}
+                                {{--                                             aria-expanded="true" aria-controls="collapseOne">--}}
+                                {{--                                            <i class="fa fa-plus text-primary"><a><u>Add Education</u></a></i>--}}
+                                {{--                                        </div>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
                                 <div class="form-row mt-4">
                                     <div class="col-5">
                                     </div>
                                     <div class="col-2">
-                                        <button type="submit" class="btn btn-dark btn-block bg-dark"
+                                        <button type="submit" class="btn btn-primary btn-block"
                                                 style="height: 40px;"><b>Submet</b>
                                         </button>
                                     </div>
@@ -444,7 +541,7 @@
                             </form>
                         </div>
                         <div class="tab-pane  {{request()->is('courses') ? 'active' : null}}"
-                             id="{{url('courses')}}" role="tabpanel" >
+                             id="{{url('courses')}}" role="tabpanel">
                             <form action="" method="POST">
                                 @csrf
                                 <div class="row mt-4">
@@ -463,7 +560,8 @@
                                     <div class="col-7">
                                         <fieldset disabled>
                                             <div class="form-group">
-                                                <input type="text" id="course" class="form-control" placeholder="Course One" style="height: 40px;">
+                                                <input type="text" id="course" class="form-control"
+                                                       placeholder="Course One" style="height: 40px;">
                                             </div>
                                         </fieldset>
                                     </div>
@@ -494,7 +592,7 @@
                                     <div class="col-5">
                                     </div>
                                     <div class="col-2">
-                                        <button type="submit" class="btn btn-dark btn-block bg-dark"
+                                        <button type="submit" class="btn btn-primary btn-block"
                                                 style=" height: 40px;"><b>Submet</b>
                                         </button>
                                     </div>
@@ -502,7 +600,7 @@
                             </form>
                         </div>
                         <div class="tab-pane  {{request()->is('certificates') ? 'active' : null}}"
-                             id="{{url('certificates')}}" role="tabpanel" >
+                             id="{{url('certificates')}}" role="tabpanel">
                             <form action="" method="POST">
                                 @csrf
                                 <div class="row mt-4">
@@ -548,44 +646,54 @@
                                             <i class="fa fa-plus"></i></button>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                               aria-describedby="inputGroupFileAddon01">
-                                        <label class="custom-file-label" for="inputGroupFile01"
-                                               style="height: 40px;">Choose file</label>
+
+                                {{--                                <div class="form-row">--}}
+                                {{--                                    <div class="custom-file">--}}
+                                {{--                                        <input type="file" class="custom-file-input" id="inputGroupFile01"--}}
+                                {{--                                               aria-describedby="inputGroupFileAddon01">--}}
+                                {{--                                        <label class="custom-file-label" for="inputGroupFile01"--}}
+                                {{--                                               style="height: 40px;">Choose file</label>--}}
+                                {{--                                    </div>--}}
+                                {{--                                </div>--}}
+                                <div class="form-row mt-3">
+                                    <div class="col-5">
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="submit" class="btn btn-primary btn-block"
+                                                style=" height: 40px;"><b>Submet</b>
+                                        </button>
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="tab-pane  {{request()->is('color') ? 'active' : null}}"
-                             id="{{url('color')}}" role="tabpanel" >
+                             id="{{url('color')}}" role="tabpanel">
                             <form action="" method="POST" class="mt-3">
                                 @csrf
                                 <div class="form-row">
                                     <div class="col-1 mr-5"></div>
-                                    <button class="btn btn-sm rounded-pill mr-5"
-                                            style="background: #3AC587;height: 20px;width: 40px;"></button>
-                                    <button class="btn btn-sm rounded-pill mr-5"
-                                            style="background: #002B5B;height: 20px;width: 40px;"></button>
-                                    <button class="btn btn-sm rounded-pill mr-5"
-                                            style="background: #6DA8BA;height: 20px;width: 40px;"></button>
-                                    <button class="btn btn-sm rounded-pill mr-5"
-                                            style="background: #00848C;height: 20px;width: 40px;"></button>
-                                    <button class="btn btn-sm rounded-pill mr-5"
-                                            style="background: #F85C50;height: 20px;width: 40px;"></button>
-                                    <button class="btn btn-sm rounded-pill mr-5"
-                                            style="background: #4876D6;height: 20px;width: 40px;"></button>
-                                    <button class="btn btn-sm rounded-pill mr-5"
-                                            style="background: #808285;height: 20px;width: 40px;"></button>
-                                    <button class="btn btn-sm rounded-pill "
-                                            style="background: #333333;height: 20px;width: 40px;"></button>
+                                    <input class="btn btn-sm rounded-pill mr-5"
+                                            style="background: #3AC587;height: 20px;width: 40px;" value="3AC587"/>
+                                    <input class="btn btn-sm rounded-pill mr-5"
+                                            style="background: #002B5B;height: 20px;width: 40px;" value="002B5B"/>
+                                    <input class="btn btn-sm rounded-pill mr-5"
+                                            style="background: #6DA8BA;height: 20px;width: 40px;" value="6DA8BA"/>
+                                    <input class="btn btn-sm rounded-pill mr-5"
+                                            style="background: #00848C;height: 20px;width: 40px;" value="00848C"/>
+                                    <input class="btn btn-sm rounded-pill mr-5"
+                                            style="background: #F85C50;height: 20px;width: 40px;" value="F85C50"/>
+                                    <input class="btn btn-sm rounded-pill mr-5"
+                                            style="background: #4876D6;height: 20px;width: 40px;" value="4876D6"/>
+                                    <input class="btn btn-sm rounded-pill mr-5"
+                                            style="background: #808285;height: 20px;width: 40px;" value="808285"/>
+                                    <input class="btn btn-sm rounded-pill "
+                                            style="background: #333333;height: 20px;width: 40px;" value="333333"/>
                                 </div>
-                                <div class="form-row mt-4">
+                                <div class="form-row mt-3">
                                     <div class="col-5">
                                     </div>
                                     <div class="col-2">
-                                        <button type="submit" class="btn btn-dark btn-block bg-dark"
+                                        <button type="submit" class="btn btn-primary btn-block"
                                                 style=" height: 40px;"><b>Submet</b>
                                         </button>
                                     </div>
@@ -599,44 +707,67 @@
     </div>
 @endsection
 @section('more-js')
-    <script>
-        $(document).ready(function (e) {
-            $(".rateYo").rateYo({
-                readonly:false
-            });
+{{--    <script type="text/javascript">--}}
+{{--        $(document).ready(function () {--}}
+{{--            var postURL = "<?php echo url('skills'); ?>";--}}
+{{--            var i = 1;--}}
+{{--            $('#add').click(function () {--}}
+{{--                i++;--}}
+{{--                $('#dynamic_field').append--}}
+{{--                ('<tr id="row' + i + '" class="dynamic-added"><td>' +--}}
+{{--                    '<input type="text" name="name[]" placeholder="Enter Skill" ' +--}}
+{{--                    'class="form-control name_list" /></td><td><button type="button" ' +--}}
+{{--                    'name="remove" id="' + i + '" class="btn btn-danger btn_remove">X</button></td></tr>');--}}
+{{--            });--}}
+{{--            $(document).on('click', '.btn_remove', function () {--}}
+{{--                var button_id = $(this).attr("id");--}}
+{{--                $('#row' + button_id + '').remove();--}}
+{{--            });--}}
+{{--            $.ajaxSetup({--}}
+{{--                headers: {--}}
+{{--                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+{{--                }--}}
+{{--            });--}}
+{{--            $('#submit').click(function () {--}}
+{{--                $.ajax({--}}
+{{--                    url: postURL,--}}
+{{--                    method: "POST",--}}
+{{--                    data: $('#add_name').serialize(),--}}
+{{--                    type: 'json',--}}
+{{--                    success: function (data) {--}}
+{{--                        if (data.error) {--}}
+{{--                            printErrorMsg(data.error);--}}
+{{--                        } else {--}}
+{{--                            i = 1;--}}
+{{--                            $('.dynamic-added').remove();--}}
+{{--                            $('#add_name')[0].reset();--}}
+{{--                            $(".print-success-msg").find("ul").html('');--}}
+{{--                            $(".print-success-msg").css('display', 'block');--}}
+{{--                            $(".print-error-msg").css('display', 'none');--}}
+{{--                            $(".print-success-msg").find("ul").append--}}
+{{--                            ('<li>Skills Inserted Successfully.</li>');--}}
+{{--                        }--}}
+{{--                    }--}}
+{{--                });--}}
+{{--            });--}}
+{{--            function printErrorMsg(msg) {--}}
+{{--                $(".print-error-msg").find("ul").html('');--}}
+{{--                $(".print-error-msg").css('display', 'block');--}}
+{{--                $(".print-success-msg").css('display', 'none');--}}
+{{--                $.each(msg, function (key, value) {--}}
+{{--                    $(".print-error-msg").find("ul").append('<li>' + value + '</li>');--}}
+{{--                });--}}
+{{--            }--}}
+{{--        });--}}
+{{--        $(document).ready(function (e) {--}}
+{{--            $(".rateYo").rateYo({--}}
+{{--                readonly: false--}}
+{{--            });--}}
 
-            $
-        });
-    function myFunction() {
-    var input = document.getElementById('course')[0].value;
-    var div = document.createElement('div');
-    document.body.appendChild(div);
+{{--            $--}}
+{{--        });--}}
+{{--    </script>--}}
 
-    var output = ' <fieldset disabled>\n' +
-                 ' <div class="form-group">\n' +
-                 '<input type="text" id="course" class="form-control" placeholder="Course One" \n' +
-                 'style="height: 40px;"> \n '+
-                 '</div> </fieldset>' ;
-    div.innerHTML = output;
-    //create your delete button after you click try it
-    var del = document.createElement('button');
-    del.style.textDecoration = 'none';
-    // del.innerHTML = 'Remove this person?';
-    // del.style.color = 'white';
-    // del.style.backgroundColor = 'blue';
-    //assign a function for it when clicked
-    del.onclick = function() { deleteButton(div,this)};
-    document.body.appendChild(del);
-    <!--  deleteButton(div);  -->
-    }
-    function deleteButton(x,y) {
-    var parent = document.getElementsByTagName("BODY")[0];
-    //remove the div
-    parent.removeChild(x);
-    //remore the button
-    parent.removeChild(y);
-    }
-    </script>
 @endsection
 
 

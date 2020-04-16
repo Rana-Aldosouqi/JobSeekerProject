@@ -16,7 +16,7 @@ class CreateSkillsTable extends Migration
         Schema::create('skills', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable(true);
-            $table->string('name',50)->nullable(false);
+            $table->string('name',50)->nullable(true);
             $table->float('rating')->default(0)->nullable(true);
             $table->timestamps();
 

@@ -117,8 +117,9 @@
                         </div>
                     </div>
                     <div class="col-10 ml-0">
-                        <p class="h5" style="color:#b3b7bb;"><b>Job Title One</b></p>
-                        <p class="h6" style="color:#b3b7bb;">Company Name &nbsp; - Address One</p>
+
+                            <p class="h5" style="color:#b3b7bb;"><b>{{$experience->job_name}}</b></p>
+                            <p class="h6" style="color:#b3b7bb;">Company Name &nbsp; - Address One</p>
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -130,10 +131,12 @@
                             <p class="h5" style="color:#b3b7bb;">dd/mm/yy-</p>
                         </div>
                     </div>
+
                     <div class="col-10 ml-0">
                         <p class="h5" style="color:#b3b7bb;"><b>Job Title Two</b></p>
                         <p class="h6" style="color:#b3b7bb;">Company Name &nbsp; - Address Two</p>
                     </div>
+
                 </div>
             </div>
         </div>

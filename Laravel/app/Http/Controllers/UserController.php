@@ -158,22 +158,24 @@ class UserController extends Controller
             return redirect()->back()
                 ->withInput($request->all())
                 ->withErrors($validator->errors()->all());
-
         }
 
-//        $user = User::find($id);
-
+//        $user = User::findOrFail()->id;
 //        $newExperience = $user->id;
-//        $newExperience = DB::table('users')
-//            ->select('users.id')
-//            ->leftJoin('experiences','users.id','=','experiences.user_id')
+
+//        $user = new Experience();
+//        $userId = Auth::user()->id;
+//        $user = User::join('experiences','experiences.user_id','=','users.id')
+//            ->select('users.*')
 //            ->get();
-        $newExperience = new Experience();
-        $newExperience->job_name = $request->get('jobName');
-        $newExperience->company = $request->get('company');
-        $newExperience->start_date = $request->get('startDate');
-        $newExperience->end_date = $request->get('endDate');
-        $newExperience->save();
+//        $experience = Auth::user()->id;
+        $experience = new Experience();
+        $experience->user_id = Auth::user()->id;
+        $experience->job_name = $request->get('jobName');
+        $experience->company = $request->get('company');
+        $experience->start_date = $request->get('startDate');
+        $experience->end_date = $request->get('endDate');
+        $experience->save();
 
         $result = Auth::attempt([
             'username' => $request->get('username'),
@@ -182,36 +184,62 @@ class UserController extends Controller
         return redirect('/skills');
 
     }
-    public function doSkill(Request $request)
+
+//    public function addSkillView()
+//    {
+//        return view("skills");
+//    }
+
+    public function addSkill(Request $request)
     {
-//        $user = User::find($id);
-//        if($user == null|| $user->id != Auth::user()->id)
-//        {
-//            return redirect('/');
-//        }
-        $rules = [
-            'name' => 'required|min:1|max:50',
-            'rate' =>''
-        ];
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect('/skills')->back()
-                ->withInput($request->all())
-                ->withErrors($validator->errors()->all());
-
+        $rules = [];
+        foreach($request->input('name') as $key => $value) {
+            $rules["name.{$key}"] = 'required';
         }
-        $newskill = new Skill();
-//        $newskill->user_id = Auth::user()->id;
-        $newskill->name = $request->get('name');
-        $newskill->rating = $request->get('rating');
-        $newskill->save();
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->passes()) {
+            foreach($request->input('name') as $key => $value) {
+                Skill::create(['name'=>$value]);
+            }
 
-        $result = Auth::attempt([
-            'username' => $request->get('username'),
-            'password' => $request->get('password')
-        ]);
-        return redirect('/education');
+            return response()->json(['success'=>'done']);
+        }
+        $user = User::join('skills','skills.user_id','=','users.id')
+            ->select('users.*')
+            ->get();
+        return response()->json(['error'=>$validator->errors()->all()]);
     }
+//    public function doSkill(Request $request)
+//    {
+////        $user = User::find($id);
+////        if($user == null|| $user->id != Auth::user()->id)
+////        {
+////            return redirect('/');
+////        }
+//        $rules = [
+//            'name' => 'required|min:1|max:50',
+//            'rate' =>''
+//        ];
+//        $validator = Validator::make($request->all(), $rules);
+//        if ($validator->fails()) {
+//            return redirect('/skills')->back()
+//                ->withInput($request->all())
+//                ->withErrors($validator->errors()->all());
+//
+//        }
+//        $newskill = new Skill();
+////        $newskill->user_id = Auth::user()->id;
+//        $newskill->name = $request->get('name');
+//        $newskill->rating = $request->get('rating');
+//        $newskill->save();
+//
+//        $result = Auth::attempt([
+//            'username' => $request->get('username'),
+//            'password' => $request->get('password')
+//        ]);
+//        return redirect('/education');
+//    }
+
     public function doEducation(Request $request)
     {
 //        $user = User::find($id);
@@ -229,17 +257,23 @@ class UserController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return redirect('/education')->back()
+            return redirect()->back()
                 ->withInput($request->all())
                 ->withErrors($validator->errors()->all());
 
         }
-        $newEducation = new Education();
-//        $newEducation->user_id = Auth::user()->id;
-        $newEducation-> degree = $request->get('degree');
-        $newEducation-> school = $request->get('school');
-        $newEducation-> start_date = $request->get('startDate');
-        $newEducation-> end_date = $request->get('endDate');
+        $education = new Education();
+        $education->user_id = Auth::user()->id;
+        $education-> degree = $request->get('degree');
+        $education-> school = $request->get('school');
+        $education-> start_date = $request->get('startDate');
+        $education-> end_date = $request->get('endDate');
+        $education->save();
+
+        $result = Auth::attempt([
+            'username' => $request->get('username'),
+            'password' => $request->get('password')
+        ]);
         return redirect('/courses');
     }
     public function doCourse(Request $request)
