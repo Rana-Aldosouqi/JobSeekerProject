@@ -34,6 +34,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
@@ -121,6 +124,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1XMfMiAxgTPtNiH2wQ4AHMxPhP2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -130,7 +134,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Blade" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/assets/js" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -144,6 +148,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\RANA\Desktop\MY-Git\JobSeekerProject\Laravel\public\assets\js" />
+      <recent name="C:\xampp\htdocs\JobSeeker\public\assets\js" />
       <recent name="C:\xampp\htdocs\JobSeeker\public\assets\css" />
       <recent name="C:\xampp\htdocs\JobSeeker\public\css" />
       <recent name="C:\xampp\htdocs\JobSeeker\public\assets" />
@@ -197,7 +203,15 @@
       <workItem from="1582818241119" duration="2473000" />
       <workItem from="1582970586459" duration="8662000" />
       <workItem from="1583076249370" duration="13000" />
-      <workItem from="1583077114362" duration="21107000" />
+      <workItem from="1583077114362" duration="21712000" />
+      <workItem from="1583270392815" duration="34000" />
+      <workItem from="1583270453737" duration="617000" />
+      <workItem from="1583271510493" duration="46000" />
+      <workItem from="1583271580562" duration="7000" />
+      <workItem from="1583271614473" duration="15509000" />
+      <workItem from="1583764935340" duration="10313000" />
+      <workItem from="1584820246793" duration="887000" />
+      <workItem from="1584898432689" duration="18342000" />
     </task>
     <servers />
   </component>
@@ -213,10 +227,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="434" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1583150332330" />
-    <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1581626206691">
+    <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583781277754">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1581626206691" />
+    <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1583781277754" />
+    <state x="463" y="123" key="FileChooserDialogImpl" timestamp="1584825618650">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="123" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1584825618650" />
     <state x="172" y="0" key="SettingsEditor" timestamp="1580929832839">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -229,5 +247,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="331" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1581118162465" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1583289431467">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1583289431467" />
   </component>
 </project>

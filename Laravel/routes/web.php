@@ -17,7 +17,7 @@
 //Route::get('/Home',function (){
 //    return view('user.Home');
 //});
-
+//rana-------------------------------------------------------------------------------------------------------
 use App\Post;
 
 Route::get('/index','PostController@getPostView');
@@ -26,9 +26,19 @@ Route::get('/posts','PostController@getPostsView');
 
 //for Home Page
 Route::get('/Home','HomeController@getHomeView');
-
 Route::get('/Home','HomeController@getHomePostsView');
+//for all jobs
+Route::get('/Alljobs','AlljobsController@getPostsView');
+Route::get('/Alljobs','AlljobsController@getAllPostsView');
 
+//for catPosts
+Route::get('/categories/{id}','CategoryController@getCategoryView');
+Route::get('/categories/{id}', 'CategoryController@getCatPostsView');
+
+//for search
+Route::any('/search','PostController@dosearch');
+
+//----------------------------------------------------------------------------------------------------------------------
 //amina
 Route::get('/AccountSettings(Employee)', function () {
     return view('user.AccountSettings(Employee)');
@@ -98,9 +108,18 @@ Route::get('/', function () {
 //$cat=\App\Category::find(19);
 //dd($cat->posts);
 
-//category of post with id=6
+//category of post with id=6 woooork
+
 $posts=\App\Post::find(6);
 dd($posts->Category->category);
+
+
+//$catposts1=\App\Post::where('category','=','5');
+//    dd($catposts1->Category->category);
+
+//$catposts=\App\Category::where('category','<=','5');
+//dd($catposts->Post);
+
 
 //language of post with id=15
    // $post=\App\Post::find(15);
