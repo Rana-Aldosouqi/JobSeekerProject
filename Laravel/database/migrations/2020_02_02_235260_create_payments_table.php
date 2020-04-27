@@ -20,13 +20,20 @@ class CreatePaymentsTable extends Migration
             $table->string('method')->nullable(false);
             $table->float('amount')->nullable(false);
             $table->date('payment_date')->nullable(false);
-            
-            
+
             $table->timestamps();
             
-        $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('SET NULL');
-        $table->foreign('post_applied_id')->references('id')->on('post_applieds')->onUpdate('CASCADE')->onDelete('SET NULL');
-        
+        $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onUpdate('CASCADE')
+            ->onDelete('SET NULL');
+
+        $table->foreign('post_applied_id')
+            ->references('id')
+            ->on('post_applieds')
+            ->onUpdate('CASCADE')
+            ->onDelete('SET NULL');
         });
     }
 

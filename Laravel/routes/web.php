@@ -40,20 +40,10 @@ Route::any('/search','PostController@dosearch');
 
 //----------------------------------------------------------------------------------------------------------------------
 //amina
-Route::get('/AccountSettings(Employee)', function () {
-    return view('user.AccountSettings(Employee)');
-});
-
-Route::Post('/AccountSettings(Employee),SettingController@sendChange');
-Route::get('/AccountSettings(Employee),SettingController@settingView');
-Route::get('/AccountSettings(Employee),SettingController@store');
-
-
-//new amina
 Route::get('/userprofile','Settingcontroller@received');
-Route::get('/userprofile,SettingController@store');
-Route::get('/{id}/settings(Employee)','Settingcontroller@edit');
-Route::put('/{id}','Settingcontroller@update');
+Route::post('/userprofile,SettingController@store');
+Route::get('/settingsemployee','Settingcontroller@getUpdate');
+Route::post('/settingsemployee','Settingcontroller@update');
 
 
 //shimaa
@@ -67,19 +57,71 @@ Route::put('/{id}','postscontroller@update')->name('shared.update');
 
 
 
-//eman
+//Eman
 Route::get('/Login','AuthController@getLoginView')->name('login');
 Route::post('/Login','AuthController@doLogin');
 Route::get('/Register','AuthController@getRegisterView');
 Route::post('/Register','AuthController@doRegistration');
 Route::get('/Logout','AuthController@doLogout');
+Route::get('/MyResume','UserController@viewMyResume');
+Route::get('/ContactUs','ContactUsController@contactUSView');
+Route::post('/ContactUs','ContactUsController@doContact');
+
+Route::get('/ResumeBuilder','UserController@getResumeBuilderView')->name('ResumeBuilder');
+
+Route::get('/personal',function (){
+    return view ('user.ResumeBuilder');
+});
+//Route::post('/personal', 'UserController@doUploadImage');
+Route::post('/personal','UserController@doPersonal');
+
+Route::get('/social',function (){
+    return view ('user.ResumeBuilder');
+});
+Route::post('/social','UserController@doSocial');
+
+Route::get('/experiences',function (){
+    return view ('user.ResumeBuilder');
+});
+Route::post('/experiences','UserController@doExperience');
+
+Route::get('/skills',function (){
+    return view ('user.ResumeBuilder');
+});
+Route::post('/skills','UserController@addSkill');
+
+Route::get('/education',function (){
+    return view ('user.ResumeBuilder');
+});
+Route::post('/education','UserController@doEducation');
+
+//Route::get('/ResumeBuilder/experiences/{id}','UserController@getExperienceView');
+//Route::get('/ResumeBuilder/skills/{id}','UserController@getSkillView');
+//Route::get('/ResumeBuilder/education/{id}','UserController@getEducationView');
+//Route::get('/ResumeBuilder/courses/{id}','UserController@getCourseView');
+//Route::get('/ResumeBuilder/certificates/{id}','UserController@getCertificateView');
+//Route::get('/ResumeBuilder/color/{id}','UserController@getColorView');
 
 
 
+Route::get('/courses',function (){
+    return view ('user.ResumeBuilder');
+});
+Route::get('/certificates',function (){
+    return view ('user.ResumeBuilder');
+});
+Route::get('/color',function (){
+    return view ('user.ResumeBuilder');
+});
+
+Route::get('/sendemail', 'SendEmailController@index');
+Route::post('/sendemail/send', 'SendEmailController@send');
 
 
-
-
+//Route::get('/ResetPassword', 'AuthController@passwordResetTokenView');
+//Route::post('/ResetPassword', 'AuthController@sendPasswordResetToken');
+//Route::get('/ResetPasswordSendToken/{token}', 'AuthController@PasswordResetView');
+//Route::post('/ResetPasswordSendToken/{token}', 'AuthController@resetPassword');
 
 
 
@@ -101,29 +143,35 @@ Route::get('/', function () {
 //dd($post->languages);
 
 //$lang=\App\Language::find(1);
- //dd($lang->user_id);
+    //dd($lang->user_id);
 
 
 //post with category id=19
 //$cat=\App\Category::find(19);
 //dd($cat->posts);
 
-//category of post with id=6 woooork
 
-$posts=\App\Post::find(6);
-dd($posts->Category->category);
-
-
-//$catposts1=\App\Post::where('category','=','5');
-//    dd($catposts1->Category->category);
-
-//$catposts=\App\Category::where('category','<=','5');
-//dd($catposts->Post);
+////category of post with id=6 woooork
+//
+//$posts=\App\Post::find(6);
+//dd($posts->Category->category);
+//=======
+////category of post with id=6
+//    $posts=\App\Post::find(6);
+//    dd($posts->Category->category);
+//>>>>>>> e86a55f20ea09e4b65f35c66709b52b16247071a
+//
+//
+////$catposts1=\App\Post::where('category','=','5');
+////    dd($catposts1->Category->category);
+//
+////$catposts=\App\Category::where('category','<=','5');
+////dd($catposts->Post);
 
 
 //language of post with id=15
-   // $post=\App\Post::find(15);
-   // dd($post->Language->post_id);
+    // $post=\App\Post::find(15);
+    // dd($post->Language->post_id);
 //$lang=\App\Language::find(5);
 //dd($lang->posts);
 

@@ -13,6 +13,6 @@ $factory->define(\App\Skill::class, function (Faker $faker) {
     return [
         'user_id'=>$userIDs[$randIndex],
         'name' => $faker ->text(50),
-        'rate' => $faker ->randomDigit(5),
+        'rating' => $faker ->randomDigit(5),
     ];
 });

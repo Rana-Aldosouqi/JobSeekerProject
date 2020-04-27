@@ -33,12 +33,17 @@ class CreatePostsTable extends Migration
 
             $table->timestamps();
 
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('CASCADE')
+                ->onDelete('SET NULL');
 
-            $table->foreign('user_id')->references('id')
-                ->on('users')->onUpdate('CASCADE')->onDelete('SET NULL');
-
-            $table->foreign('category_id')->references('id')
-                ->on('categories')->onUpdate('CASCADE')->onDelete('SET NULL');
+            $table->foreign('category_id')
+                ->references('id')
+                ->on('categories')
+                ->onUpdate('CASCADE')
+                ->onDelete('SET NULL');
 
            // $table->foreign('language_id')->references('id')
             //   ->on('languages')->onUpdate('CASCADE')->onDelete('SET NULL');

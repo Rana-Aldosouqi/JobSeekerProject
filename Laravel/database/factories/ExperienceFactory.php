@@ -11,6 +11,7 @@ $factory->define(\App\Experience::class, function (Faker $faker) {
 
     return [
         'user_id'=>$userIDs[$randIndex],
+        'company'=>$faker->company,
         'job_name'=>$faker->jobTitle,
         'start_date'=>$faker->date(),
         'end_date'=>$faker->date()

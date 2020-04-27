@@ -19,8 +19,11 @@ class CreateTestsTable extends Migration
             $table->string('test_name',50)->nullable(true);
             $table->timestamps(); 
             
-            $table->foreign('post_id')->references('id')
-                ->on('posts')->onUpdate('CASCADE')->onDelete('SET NULL');
+            $table->foreign('post_id')
+                ->references('id')
+                ->on('posts')
+                ->onUpdate('CASCADE')
+                ->onDelete('SET NULL');
             
         });
     }

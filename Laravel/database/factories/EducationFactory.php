@@ -14,10 +14,8 @@ $factory->define(\App\Education::class, function (Faker $faker) {
         'user_id'=>$userIDs[$randIndex],
         'degree'=>$faker->text(30),
         'school'=>$faker->text(50),
+        'language'=>$faker->text,
         'start_date'=>$faker->dateTime($max = 'now', $timezone = null),
         'end_date'=>$faker->dateTime($max = 'now', $timezone = null),
-        'file_path'=>$faker->text(100),
-        'file_extension'=>$faker->randomFloat(6,0,99999),
-        'size'=>$faker->randomFloat($nbMaxDecimals = 10.0, $min = 2.0, $max = 10.0)
     ];
 });

@@ -10,13 +10,14 @@
 
 
     <link rel="stylesheet" href="{{asset('/assets/css/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{'/assets/css/all.min.css'}}">
-    <link rel="stylesheet" href="{{'/assets/css/fontawesome.min.css'}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/fontawesome.min.css')}}">
 
 
-    <link rel="stylesheet" href="{{'/assets/css/homestyle.css'}}">
-    <link rel="stylesheet" href="{{'/assets/css/demo.css'}}">
-    <link rel="stylesheet" href="{{'/assets/css/footer-distributed-with-address-and-phones.css'}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/homestyle.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/demo.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/footer-distributed-with-address-and-phones.css')}}">
+    <link rel="stylesheet" href="{{asset('/assets/css/jquery.rateyo.min.css')}}">
 
 
 
@@ -39,7 +40,12 @@
 
 <script  src="{{'/assets/js/jquery-3.4.1.min.js'}}"></script>
 <script  src="{{'/assets/js/bootstrap.js'}}"></script>
+<<<<<<< HEAD
 <script  src="{{'/assets/js/shuffle.min.js'}}"></script>
+=======
+<script  src="{{'/assets/js/jquery.rateyo.min.js'}}"></script>
+
+>>>>>>> e86a55f20ea09e4b65f35c66709b52b16247071a
 @yield('more_js')
 
 </body>

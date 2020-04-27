@@ -22,6 +22,8 @@ $factory->define(\App\User::class, function (Faker $faker) {
         'email'=>$faker->unique()->safeEmail,
         'password'=>bcrypt('password'),
         'birth_date'=>$faker->date(),
+        'age'=>$faker->randomDigit,
+        'address'=>$faker->text(100),
         'is_admin'=>$faker->boolean,
         'user_type'=>$faker->text(7),
         'color'=>$faker->hexcolor,

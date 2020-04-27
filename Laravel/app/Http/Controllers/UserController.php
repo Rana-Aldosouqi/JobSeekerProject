@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Education;
 use App\Experience;
-
+use App\Feedback;
+use DB;
 use App\Skill;
 use App\User;
 use Illuminate\Http\Request;
@@ -16,10 +17,8 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function getIndexView()
-    {
-        return view('/index');
-
+    public function viewMyResume(){
+        return view('user.MyResume');
     }
     public function getResumeBuilderView()
     {
@@ -30,61 +29,66 @@ class UserController extends Controller
 //        if (Auth::check()) {
 //            return redirect('/ResumeBuilder');
 //        }
-        return view('ResumeBuilder');
+        return view('user.ResumeBuilder');
     }
-    public function doUploadImage(Request $request)
-    {
+//    public function getPersonalView()
+//    {
+////        $user = User::find($id);
+////        if($user == null){
+////            return redirect('/');
+////        }
+////        if (Auth::check()) {
+////            return redirect('/ResumeBuilder');
+////        }
+//        return view('user.ResumeBuilder/personal');
+//    }
+
+//    public function doUploadImage(Request $request)
+//    {
 //        $user = User::find($id);
 //        if($user == null|| $user->id != Auth::user()->id)
 //        {
 //            return redirect('/');
 //        }
-        $rules = [
-            'image' => 'max:2048|mimes:jpg,jpeg,png'
-        ];
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect('/')->back()
-                ->withInput($request->all())
-                ->withErrors($validator->errors());
-        }
-        $image = $request->file('image');
-        $ext = $image->getClientOriginalExtension();
-        $name = $image->getClientOriginalName();
-        $newname = sha1(time()) . $ext;
-        storage::disk('public')->put($newname, File::get($image));
-    }
-    public function doUploadFile(Request $request,$id)
-    {
-//        $user = User::find($id);
-//        if($user == null|| $user->id != Auth::user()->id)
-//        {
-//            return redirect('/');
+//        $rules = [
+//            'image' => 'max:2048|mimes:jpg,jpeg,png'
+//        ];
+//        $validator = Validator::make($request->all(), $rules);
+//        if ($validator->fails()) {
+//            return redirect('/')->back()
+//                ->withInput($request->all())
+//                ->withErrors($validator->errors());
 //        }
-        $rules = [
-            'file' => 'max:2048|mimes:docx,pdf'
-        ];
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect('/')->back()
-                ->withInput($request->all())
-                ->withErrors($validator->errors());
-        }
-        $file = $request->file('file');
-        $ext = $file->getClientOriginalExtension();
-        $name = $file->getClientOriginalName();
-        $newname = sha1(time()) . $ext;
-        storage::disk('public')->put($newname, File::get($file));
-    }
+//        $image = $request->file('image');
+//        $ext = $image->getClientOriginalExtension();
+//        $name = $image->getClientOriginalName();
+//        $newname = sha1(time()) . $ext;
+//        storage::disk('public')->put($newname, File::get($image));
+//    }
+//    public function doUploadFile(Request $request,$id)
+//    {
+////        $user = User::find($id);
+////        if($user == null|| $user->id != Auth::user()->id)
+////        {
+////            return redirect('/');
+////        }
+//        $rules = [
+//            'file' => 'max:2048|mimes:docx,pdf'
+//        ];
+//        $validator = Validator::make($request->all(), $rules);
+//        if ($validator->fails()) {
+//            return redirect('/')->back()
+//                ->withInput($request->all())
+//                ->withErrors($validator->errors());
+//        }
+//        $file = $request->file('file');
+//        $ext = $file->getClientOriginalExtension();
+//        $name = $file->getClientOriginalName();
+//        $newname = sha1(time()) . $ext;
+//        storage::disk('public')->put($newname, File::get($file));
+//    }
     public function doPersonal(Request $request)
     {
-//        Auth::user()->id;
-
-//        $user = User::find($id);
-//        if($user == null|| $user->id != Auth::user()->id)
-//        {
-//            return redirect('/');
-//        }
         $rules = [
             'phoneNumber' => 'required|min:10|max:20',
             'birthDate' => 'required|date',
@@ -96,8 +100,8 @@ class UserController extends Controller
             return redirect()->back()
                 ->withInput($request->all())
                 ->withErrors($validator->errors()->all());
-
         }
+
 //        $user_id = Auth::user()->id;
         $user = Auth::user();
         $user->phone_number = $request->get('phoneNumber');
@@ -114,11 +118,6 @@ class UserController extends Controller
     }
     public function doSocial(Request $request)
     {
-//        $user = User::find($id);
-//        if($user == null|| $user->id != Auth::user()->id)
-//        {
-//            return redirect('/');
-//        }
         $rules=[
             'faceBookUrl' => 'url',
             'linkedInUrl' => 'url',
@@ -147,32 +146,36 @@ class UserController extends Controller
     }
     public function doExperience(Request $request)
     {
-//        $user = User::find($id);
-//        if($user == null|| $user->id != Auth::user()->id)
-//        {
-//            return redirect('/');
-//        }
         $rules = [
             'jobName' => 'required|min:1|max:50',
             'company' => 'required|min:1|max:100',
             'startDate' => 'required|date',
             'endDate' => 'required|date|after:startDate',
         ];
+
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
             return redirect()->back()
                 ->withInput($request->all())
                 ->withErrors($validator->errors()->all());
-
         }
 
-        $newExperience = new Experience();
-//        $newExperience->user_id = Auth::user()->id;
-        $newExperience->job_name = $request->get('jobName');
-        $newExperience->company = $request->get('company');
-        $newExperience->start_date = $request->get('startDate');
-        $newExperience->end_date = $request->get('endDate');
-        $newExperience->save();
+//        $user = User::findOrFail()->id;
+//        $newExperience = $user->id;
+
+//        $user = new Experience();
+//        $userId = Auth::user()->id;
+//        $user = User::join('experiences','experiences.user_id','=','users.id')
+//            ->select('users.*')
+//            ->get();
+//        $experience = Auth::user()->id;
+        $experience = new Experience();
+        $experience->user_id = Auth::user()->id;
+        $experience->job_name = $request->get('jobName');
+        $experience->company = $request->get('company');
+        $experience->start_date = $request->get('startDate');
+        $experience->end_date = $request->get('endDate');
+        $experience->save();
 
         $result = Auth::attempt([
             'username' => $request->get('username'),
@@ -181,36 +184,62 @@ class UserController extends Controller
         return redirect('/skills');
 
     }
-    public function doSkill(Request $request)
+
+//    public function addSkillView()
+//    {
+//        return view("skills");
+//    }
+
+    public function addSkill(Request $request)
     {
-//        $user = User::find($id);
-//        if($user == null|| $user->id != Auth::user()->id)
-//        {
-//            return redirect('/');
-//        }
-        $rules = [
-            'name' => 'required|min:1|max:50',
-            'rate' =>''
-        ];
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect('/skills')->back()
-                ->withInput($request->all())
-                ->withErrors($validator->errors()->all());
-
+        $rules = [];
+        foreach($request->input('name') as $key => $value) {
+            $rules["name.{$key}"] = 'required';
         }
-        $newskill = new Skill();
-//        $newskill->user_id = Auth::user()->id;
-        $newskill->name = $request->get('name');
-        $newskill->rate = $request->get('rate');
-        $newskill->save();
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->passes()) {
+            foreach($request->input('name') as $key => $value) {
+                Skill::create(['name'=>$value]);
+            }
 
-        $result = Auth::attempt([
-            'username' => $request->get('username'),
-            'password' => $request->get('password')
-        ]);
-        return redirect('/education');
+            return response()->json(['success'=>'done']);
+        }
+        $user = User::join('skills','skills.user_id','=','users.id')
+            ->select('users.*')
+            ->get();
+        return response()->json(['error'=>$validator->errors()->all()]);
     }
+//    public function doSkill(Request $request)
+//    {
+////        $user = User::find($id);
+////        if($user == null|| $user->id != Auth::user()->id)
+////        {
+////            return redirect('/');
+////        }
+//        $rules = [
+//            'name' => 'required|min:1|max:50',
+//            'rate' =>''
+//        ];
+//        $validator = Validator::make($request->all(), $rules);
+//        if ($validator->fails()) {
+//            return redirect('/skills')->back()
+//                ->withInput($request->all())
+//                ->withErrors($validator->errors()->all());
+//
+//        }
+//        $newskill = new Skill();
+////        $newskill->user_id = Auth::user()->id;
+//        $newskill->name = $request->get('name');
+//        $newskill->rating = $request->get('rating');
+//        $newskill->save();
+//
+//        $result = Auth::attempt([
+//            'username' => $request->get('username'),
+//            'password' => $request->get('password')
+//        ]);
+//        return redirect('/education');
+//    }
+
     public function doEducation(Request $request)
     {
 //        $user = User::find($id);
@@ -228,17 +257,23 @@ class UserController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
-            return redirect('/education')->back()
+            return redirect()->back()
                 ->withInput($request->all())
                 ->withErrors($validator->errors()->all());
 
         }
-        $newEducation = new Education();
-//        $newEducation->user_id = Auth::user()->id;
-        $newEducation-> degree = $request->get('degree');
-        $newEducation-> school = $request->get('school');
-        $newEducation-> start_date = $request->get('startDate');
-        $newEducation-> end_date = $request->get('endDate');
+        $education = new Education();
+        $education->user_id = Auth::user()->id;
+        $education-> degree = $request->get('degree');
+        $education-> school = $request->get('school');
+        $education-> start_date = $request->get('startDate');
+        $education-> end_date = $request->get('endDate');
+        $education->save();
+
+        $result = Auth::attempt([
+            'username' => $request->get('username'),
+            'password' => $request->get('password')
+        ]);
         return redirect('/courses');
     }
     public function doCourse(Request $request)
