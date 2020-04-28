@@ -21,11 +21,11 @@
 
 
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Engneering</a>
-                    <a class="dropdown-item" href="#">Medicine</a>
-                    <a class="dropdown-item" href="#">Business</a>
-                    <a class="dropdown-item" href="#">Design</a>
-                    <a class="dropdown-item" href="#">Other</a>
+                    @foreach(\App\Category::take(5)->get() as $cat)
+                    <a class="dropdown-item" href="/categories/{{$cat->id}}">
+                        {{$cat->name}}
+                    </a>
+                    @endforeach
                 </div>
             </li>
 

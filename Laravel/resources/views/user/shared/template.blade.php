@@ -40,8 +40,12 @@
 
 <script  src="{{'/assets/js/jquery-3.4.1.min.js'}}"></script>
 <script  src="{{'/assets/js/bootstrap.js'}}"></script>
+<<<<<<< HEAD
+<script  src="{{'/assets/js/shuffle.min.js'}}"></script>
+=======
 <script  src="{{'/assets/js/jquery.rateyo.min.js'}}"></script>
 
+>>>>>>> e86a55f20ea09e4b65f35c66709b52b16247071a
 @yield('more_js')
 
 </body>

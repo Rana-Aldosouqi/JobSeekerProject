@@ -86,7 +86,7 @@ class AuthController extends Controller
             'username'=>$request->get('username'),
             'password'=>$request->get('password')
         ]);
-        return redirect('/');
+        return redirect('/Home');
     }
 
     //ResetPassword

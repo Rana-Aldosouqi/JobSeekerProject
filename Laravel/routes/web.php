@@ -1,3 +1,30 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+
+@EmanHamdy97
+Rana-Aldosouqi
+/
+JobSeekerProject
+2
+01
+Code
+Issues 0
+Pull requests 2 Actions
+Projects 0
+Wiki
+Security 0
+Insights
+JobSeekerProject/Laravel/routes/web.php /
+@Rana-Aldosouqi Rana-Aldosouqi add Eman file
+44d693b yesterday
+@EmanHamdy97@Rana-Aldosouqi@amina963
+184 lines (135 sloc)  5.41 KB
+
 <?php
 
 /*
@@ -17,7 +44,7 @@
 //Route::get('/Home',function (){
 //    return view('user.Home');
 //});
-
+//rana-------------------------------------------------------------------------------------------------------
 use App\Post;
 
 Route::get('/index','PostController@getPostView');
@@ -26,9 +53,19 @@ Route::get('/posts','PostController@getPostsView');
 
 //for Home Page
 Route::get('/Home','HomeController@getHomeView');
-
 Route::get('/Home','HomeController@getHomePostsView');
+//for all jobs
+Route::get('/Alljobs','AlljobsController@getPostsView');
+Route::get('/Alljobs','AlljobsController@getAllPostsView');
 
+//for catPosts
+Route::get('/categories/{id}','CategoryController@getCategoryView');
+Route::get('/categories/{id}', 'CategoryController@getCatPostsView');
+
+//for search
+Route::any('/search','PostController@dosearch');
+
+//----------------------------------------------------------------------------------------------------------------------
 //amina
 Route::get('/userprofile','Settingcontroller@received');
 Route::post('/userprofile,SettingController@store');
@@ -53,11 +90,8 @@ Route::post('/Login','AuthController@doLogin');
 Route::get('/Register','AuthController@getRegisterView');
 Route::post('/Register','AuthController@doRegistration');
 Route::get('/Logout','AuthController@doLogout');
-
-Route::get('/MyResume','UserController@getMyResumeView');
-Route::get('/MyResume','UserController@getExperienceView');
-
-Route::get('/ContactUs','ContactUsController@getContactUSView');
+Route::get('/MyResume','UserController@viewMyResume');
+Route::get('/ContactUs','ContactUsController@contactUSView');
 Route::post('/ContactUs','ContactUsController@doContact');
 
 Route::get('/ResumeBuilder','UserController@getResumeBuilderView')->name('ResumeBuilder');
@@ -143,9 +177,24 @@ Route::get('/', function () {
 //$cat=\App\Category::find(19);
 //dd($cat->posts);
 
-//category of post with id=6
-    $posts=\App\Post::find(6);
-    dd($posts->Category->category);
+
+////category of post with id=6 woooork
+//
+//$posts=\App\Post::find(6);
+//dd($posts->Category->category);
+//=======
+////category of post with id=6
+//    $posts=\App\Post::find(6);
+//    dd($posts->Category->category);
+//>>>>>>> e86a55f20ea09e4b65f35c66709b52b16247071a
+//
+//
+////$catposts1=\App\Post::where('category','=','5');
+////    dd($catposts1->Category->category);
+//
+////$catposts=\App\Category::where('category','<=','5');
+////dd($catposts->Post);
+
 
 //language of post with id=15
     // $post=\App\Post::find(15);
@@ -160,3 +209,15 @@ Route::get('/', function () {
 //dd($lang->);
 
 });
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About

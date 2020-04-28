@@ -28,7 +28,34 @@
     </div>
 
     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Filter</h4>
+                        <hr>
+                        <div class="col-12 col-lg-6 ">
+                            <div class="btn-group">
+                                <button class="btn btn-info">
+                                   full time
+                                </button>
+                                <button class="btn btn-primary">
+                                    Part-time
+                                </button>
+                                <button class="btn btn-success">
+                                    Freelance
+                                </button>
+                            </div>
 
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
      <div class="card-body">
          <div class="justify-content-center ">
 
@@ -44,11 +71,12 @@
          </div>
          <div>
              @foreach($topPosts as $topPost)
-                 <div class="row mt-3">
+
+                 <div class="row mt-3" id="postscontainer">
 
                      <div class="row justify-content-center " style=" width:100% !important;" >
                          <div class="col-10 shadow " >
-                             <div class="media mt-2 " style="width:100% !important; ">
+                             <div class="media mt-2 " style="width:100% !important; " data-groups='["cat-1"{{$topPost->type=1?',"fulltime"':''}}]'>
                                  <img src="{{asset('assets/img1/55.jpg')}}"height="120" width="150" class="mr-3" alt="...">
                                  <div class="media-body" >
                                      <h5 class="mt-2">{{$topPost->job_title}}</h5>
