@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ContactUsController extends Controller
 {
-    public function contactUsView(){
+    public function getContactUSView(){
         return view('user.ContactUs');
     }
     public function doContact(Request $request){
@@ -25,15 +25,16 @@ class ContactUsController extends Controller
                 ->withErrors($validator->errors()->all());
         }
         $feedback = new Feedback();
-        $feedback -> name =$request -> get('name');
-        $feedback -> email =$request -> get('email');
+        $feedback -> user_id = Auth::user()->id;
+        $feedback -> name = $request -> get('name');
+        $feedback -> email = $request -> get('email');
         $feedback -> message = $request -> get('message');
-        $feedback->save();
+        $feedback ->save();
 
-        $result = Auth::attempt([
-            'username' => $request->get('username'),
-            'password' => $request->get('password')
-        ]);
+//        $result = Auth::attempt([
+//            'username' => $request->get('username'),
+//            'password' => $request->get('password')
+//        ]);
         return redirect('/user.ContactUs');
     }
 }

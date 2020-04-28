@@ -53,8 +53,11 @@ Route::post('/Login','AuthController@doLogin');
 Route::get('/Register','AuthController@getRegisterView');
 Route::post('/Register','AuthController@doRegistration');
 Route::get('/Logout','AuthController@doLogout');
-Route::get('/MyResume','UserController@viewMyResume');
-Route::get('/ContactUs','ContactUsController@contactUSView');
+
+Route::get('/MyResume','UserController@getMyResumeView');
+Route::get('/MyResume','UserController@getExperienceView');
+
+Route::get('/ContactUs','ContactUsController@getContactUSView');
 Route::post('/ContactUs','ContactUsController@doContact');
 
 Route::get('/ResumeBuilder','UserController@getResumeBuilderView')->name('ResumeBuilder');

@@ -17,32 +17,18 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function viewMyResume(){
+    public function getMyResumeView(){
         return view('user.MyResume');
+    }
+    public function getExperienceView(){
+        $experiences = Experience::orderBy('created_at','DESC');
+
+        return view('user.MyResume',['experiences' => $experiences]);
     }
     public function getResumeBuilderView()
     {
-//        $user = User::find($id);
-//        if($user == null){
-//            return redirect('/');
-//        }
-//        if (Auth::check()) {
-//            return redirect('/ResumeBuilder');
-//        }
         return view('user.ResumeBuilder');
     }
-//    public function getPersonalView()
-//    {
-////        $user = User::find($id);
-////        if($user == null){
-////            return redirect('/');
-////        }
-////        if (Auth::check()) {
-////            return redirect('/ResumeBuilder');
-////        }
-//        return view('user.ResumeBuilder/personal');
-//    }
-
 //    public function doUploadImage(Request $request)
 //    {
 //        $user = User::find($id);
