@@ -19,11 +19,29 @@ class UserController extends Controller
 {
     public function getMyResumeView(){
         return view('user.MyResume');
+
     }
     public function getExperienceView(){
-        $experiences = Experience::orderBy('created_at','DESC');
 
-        return view('user.MyResume',['experiences' => $experiences]);
+        $allExperiences = Experience::orderBy('created_at','DESC')
+            ->where('user_id', Auth::user()->id)->get();
+        ;
+
+        return view('user.MyResume',[
+            'data' => $allExperiences
+        ]);
+
+    }
+    public function getEductionView(){
+
+        $allEduction = Education::orderBy('created_at','DESC')
+            ->where('user_id', Auth::user()->id)->get();
+        ;
+
+        return view('user.MyResume',[
+            'data' => $allEduction
+        ]);
+
     }
     public function getResumeBuilderView()
     {
@@ -167,7 +185,7 @@ class UserController extends Controller
             'username' => $request->get('username'),
             'password' => $request->get('password')
         ]);
-        return redirect('/skills');
+        return redirect('/experiences');
 
     }
 
@@ -260,7 +278,7 @@ class UserController extends Controller
             'username' => $request->get('username'),
             'password' => $request->get('password')
         ]);
-        return redirect('/courses');
+        return redirect('/education');
     }
     public function doCourse(Request $request)
     {

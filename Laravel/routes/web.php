@@ -1,30 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
-
-@EmanHamdy97
-Rana-Aldosouqi
-/
-JobSeekerProject
-2
-01
-Code
-Issues 0
-Pull requests 2 Actions
-Projects 0
-Wiki
-Security 0
-Insights
-JobSeekerProject/Laravel/routes/web.php /
-@Rana-Aldosouqi Rana-Aldosouqi add Eman file
-44d693b yesterday
-@EmanHamdy97@Rana-Aldosouqi@amina963
-184 lines (135 sloc)  5.41 KB
-
 <?php
 
 /*
@@ -90,8 +63,12 @@ Route::post('/Login','AuthController@doLogin');
 Route::get('/Register','AuthController@getRegisterView');
 Route::post('/Register','AuthController@doRegistration');
 Route::get('/Logout','AuthController@doLogout');
-Route::get('/MyResume','UserController@viewMyResume');
-Route::get('/ContactUs','ContactUsController@contactUSView');
+
+Route::get('/MyResume','UserController@getMyResumeView');
+Route::get('/MyResume','UserController@getExperienceView');
+Route::get('/MyResume','UserController@getEductionView');
+
+Route::get('/ContactUs','ContactUsController@getContactUSView');
 Route::post('/ContactUs','ContactUsController@doContact');
 
 Route::get('/ResumeBuilder','UserController@getResumeBuilderView')->name('ResumeBuilder');
@@ -155,8 +132,6 @@ Route::post('/sendemail/send', 'SendEmailController@send');
 
 
 
-
-
 Route::get('/', function () {
 
 //find the requirements of post with id=444
@@ -209,15 +184,3 @@ Route::get('/', function () {
 //dd($lang->);
 
 });
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
