@@ -92,12 +92,18 @@ Route::post('/experiences','UserController@doExperience');
 Route::get('/skills',function (){
     return view ('user.ResumeBuilder');
 });
-Route::post('/skills','UserController@addSkill');
+Route::get("/skills","UserController@getSkillView");
+Route::post("/skills","UserController@addSkill");
+//Route::get('/skills', 'UserController@index');
+//Route::post('/skills/insert', 'UserController@insert')->name('skills.insert');
+
+//Route::post('/skills','UserController@addSkill');
 
 Route::get('/education',function (){
     return view ('user.ResumeBuilder');
 });
 Route::post('/education','UserController@doEducation');
+
 
 //Route::get('/ResumeBuilder/experiences/{id}','UserController@getExperienceView');
 //Route::get('/ResumeBuilder/skills/{id}','UserController@getSkillView');
@@ -117,6 +123,7 @@ Route::get('/certificates',function (){
 Route::get('/color',function (){
     return view ('user.ResumeBuilder');
 });
+Route::post('/color','UserController@changeColor');
 
 Route::get('/sendemail', 'SendEmailController@index');
 Route::post('/sendemail/send', 'SendEmailController@send');

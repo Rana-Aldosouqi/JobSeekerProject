@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
+
+
     use Notifiable;
 
     /**
@@ -36,6 +39,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+//    protected $fillable = ['color'];
 
     public function image()
     {
@@ -91,6 +95,7 @@ class User extends Authenticatable
     }
     public function passwordresets()
     {
-        return $this->hasMany(PasswordResets::class,'user_id','id');
+        return $this->hasMany(PasswordReset::class,'user_id','id');
     }
 }
+
