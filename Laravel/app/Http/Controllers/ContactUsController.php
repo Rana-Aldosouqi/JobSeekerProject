@@ -24,17 +24,27 @@ class ContactUsController extends Controller
                 ->withInput($request->all())
                 ->withErrors($validator->errors()->all());
         }
-        $feedback = new Feedback();
-        $feedback -> user_id = Auth::user()->id;
-        $feedback -> name = $request -> get('name');
-        $feedback -> email = $request -> get('email');
-        $feedback -> message = $request -> get('message');
-        $feedback ->save();
+        if(Auth::check()){
+            $feedback = new Feedback();
+            $feedback -> user_id = Auth::user()->id;
+            $feedback -> name = $request -> get('name');
+            $feedback -> email = $request -> get('email');
+            $feedback -> message = $request -> get('message');
+            $feedback ->save();
+        }
+        else{
+            $feedback = new Feedback();
 
-//        $result = Auth::attempt([
-//            'username' => $request->get('username'),
-//            'password' => $request->get('password')
-//        ]);
-        return redirect('/user.ContactUs');
+            $feedback -> name = $request -> get('name');
+            $feedback -> email = $request -> get('email');
+            $feedback -> message = $request -> get('message');
+            $feedback ->save();
+        }
+        
+        $result = Auth::attempt([
+            'username' => $request->get('username'),
+            'password' => $request->get('password')
+        ]);
+        return redirect('/ContactUs');
     }
 }
