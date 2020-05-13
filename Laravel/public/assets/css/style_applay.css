@@ -2,14 +2,11 @@ html, body{
 	margin:0;
     padding: 0;
 	font-size: 100%;
-    
-     
-	
+
+
+
 }
 .card h5{
     color: #004bff !important ;
     font-size:18px;
-}
-.card{
-  margin-top: 4%;  
 }

@@ -19,6 +19,7 @@
 //});
 //rana-------------------------------------------------------------------------------------------------------
 use App\Post;
+use App\User;
 
 Route::get('/index','PostController@getPostView');
 Route::Post('/index','PostController@doPost');
@@ -37,6 +38,27 @@ Route::get('/categories/{id}', 'CategoryController@getCatPostsView');
 
 //for search
 Route::any('/search','PostController@dosearch');
+
+//for apply page
+Route::get('/apply/{id}','AlljobsController@getPostDetailsView');
+Route::get('/apply/{id}', 'AlljobsController@getPostDetails');
+Route::get('/apply/{id}/done', function($id){
+    $user = DB::table('posts')->where('id', '=', $id)->decrement('vacancies');
+    //register the applied post with user id
+    //i should make apply button disabled until test is done and payment is done
+
+    return redirect("/response");
+});
+
+Route::get('/response', function(){
+
+    return view('user.response');
+});
+
+//Route::get('/apply/{id}',function (){
+//    return view ('user.Apply');
+//});
+
 
 //----------------------------------------------------------------------------------------------------------------------
 //amina
@@ -152,9 +174,11 @@ Route::get('/', function () {
 //$cat=\App\Category::find(19);
 //dd($cat->posts);
 
+$post=\App\Post::find(1);
+dd($post->User->username);
 
 ////category of post with id=6 woooork
-//
+// this is select method
 //$posts=\App\Post::find(6);
 //dd($posts->Category->category);
 //=======

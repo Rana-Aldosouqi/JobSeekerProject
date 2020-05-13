@@ -18,6 +18,7 @@ class CategoryController extends Controller
     function getCatPostsView($id)
     {
         $cat =\App\Category::find($id);
+        // do it with where method like in alljobscontroller
 //        where('id','=',$id)->simplePaginate(4);
 
         if ($cat == null) {
