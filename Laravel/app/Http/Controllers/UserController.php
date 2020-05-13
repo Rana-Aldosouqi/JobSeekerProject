@@ -189,14 +189,46 @@ class UserController extends Controller
 
     }
 
-//    public function addSkillView()
+//    public function index()
 //    {
-//        return view("skills");
+//        return view("user.ResumeBuilder");
 //    }
-
+//    function insert(Request $request){
+//        if($request->ajax())
+//        {
+//            $rules = array(
+//                'name.*'  => 'required'
+//            );
+//            $error = Validator::make($request->all(), $rules);
+//            if($error->fails())
+//            {
+//                return response()->json([
+//                    'error'  => $error->errors()->all()
+//                ]);
+//            }
+//            $name = $request-> name;
+//            for($count = 0; $count < count($name); $count++)
+//            {
+//                $data = array(
+//                    'name'  => $name[$count]
+//                );
+//                $insert_data[] = $data;
+//            }
+//
+//            Skill::insert($insert_data);
+//            return response()->json([
+//                'success'  => 'Data Added successfully.'
+//            ]);
+//        }
+//    }
+    public function getSkillView(){
+        return view('user.ResumeBuilder');
+    }
     public function addSkill(Request $request)
     {
-        $rules = [];
+        $rules = [
+
+        ];
         foreach($request->input('name') as $key => $value) {
             $rules["name.{$key}"] = 'required';
         }
@@ -208,9 +240,9 @@ class UserController extends Controller
 
             return response()->json(['success'=>'done']);
         }
-        $user = User::join('skills','skills.user_id','=','users.id')
-            ->select('users.*')
-            ->get();
+//        $user = User::join('skills','skills.user_id','=','users.id')
+//            ->select('users.*')
+//            ->get();
         return response()->json(['error'=>$validator->errors()->all()]);
     }
 //    public function doSkill(Request $request)
@@ -297,6 +329,29 @@ class UserController extends Controller
 //            return redirect('/');
 //        }
 //        return redirect('/'. $id);
+    }
+    public function changeColor(Request $request)
+    {
+        $rules = [
+            'color' => 'required|min:1|max:50'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withInput($request->all())
+                ->withErrors($validator->errors()->all());
+        }
+
+        $user = Auth::user();
+        $user->color = $request->get('color');
+        $user->save();
+
+        $result = Auth::attempt([
+            'username' => $request->get('username'),
+            'password' => $request->get('password')
+        ]);
+        return redirect('/');
     }
 }
 

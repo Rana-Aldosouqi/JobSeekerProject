@@ -1,0 +1,64 @@
+.custom-radios div {
+    display: inline-block;
+}
+.custom-radios input[type="radio"] {
+    display: none;
+}
+.custom-radios input[type="radio"] + label {
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+.custom-radios input[type="radio"] + label span {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: -1px 4px 0 0;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33);
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    line-height: 44px;
+}
+.custom-radios input[type="radio"] + label span img {
+    opacity: 0;
+    transition: all .3s ease;
+}
+.custom-radios input[type="radio"]#color-1 + label span {
+    background-color: #3AC587;
+}
+.custom-radios input[type="radio"]#color-2 + label span {
+    background-color: #002B5B;
+}
+.custom-radios input[type="radio"]#color-3 + label span {
+    background-color: #F85C50;
+}
+.custom-radios input[type="radio"]#color-4 + label span {
+    background-color: #2095A9;
+}
+.custom-radios input[type="radio"]#color-5 + label span {
+    background-color: #F69779;
+}
+.custom-radios input[type="radio"]#color-6 + label span {
+    background-color: #645B60;
+}
+.custom-radios input[type="radio"]#color-7 + label span {
+    background-color: #0999DC;
+}
+.custom-radios input[type="radio"]#color-8 + label span {
+    background-color: #6574cd;
+}
+.custom-radios input[type="radio"]#color-9 + label span {
+    background-color: #E68653;
+}
+.custom-radios input[type="radio"]:checked + label span {
+    opacity: 1;
+    background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg) center center no-repeat;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+}

@@ -1,7 +1,7 @@
 @extends('user.shared.template')
 @section('content')
-    <div class="jumbotron jumbotron-fluid pb-5 shadow-sm"
-         style="font-family: 'Permanent Marker', cursive;
+    <div class="jumbotron jumbotron-fluid pb-5 shadow-sm" style="background: {{Auth::user()->color}};
+         font-family: 'Permanent Marker', cursive;
                         font-family: 'Alegreya', serif;">
         <div class="container container-fluid">
             <div class="row">
