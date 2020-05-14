@@ -164,12 +164,22 @@
 
 
 
+
                                         <div class="row justify-content-center " style=" width:100% !important;" >
                                             <div class="col-10 shadow  " >
                                                 <div class="media mt-2 " style="width:100% !important; ">
+
+
+
+
                                                     <img src="{{asset('assets/img1/55.jpg')}}"height="120" width="150" class="mr-3" alt="...">
                                                     <div class="media-body" >
-                                                        <h5 class="mt-2">{{$topPost->job_title}}</h5>
+
+                                                        <h5 class="mt-2">{{$topPost->job_title}}
+                                                            @if (date("Y-m-d",strtotime($topPost['created_at'])) == date("Y-m-d"))
+                                                                <span class="badge badge-success">New</span>
+                                                            @endif
+                                                        </h5>
                                                         <p > Job Type:
                                                             @if(($topPost->type)==1)
                                                                 Full Time-
@@ -179,7 +189,8 @@
                                                                 Freelancer-
                                                             @endif
                                                             Minimum Salary:{{$topPost->min_salary}}- Maximum Salary:{{$topPost->max_salary}}</p>
-                                                        <div class="mb-4 mt-4"><a href="#" >SHOW MORE</a></div>
+
+                                                        <div class="mb-4 mt-4"><a href="/apply/{{$topPost->id}}" >SHOW MORE</a></div>
 
                                                     </div>
                                                 </div>

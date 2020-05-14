@@ -141,7 +141,7 @@
 
 {{--  -----------------------------------------------------------------------------------------------------------------------}}
 
-        <div class="row mt-5 mb-3 ">
+        <div class="row mt-5 mb-3 " style="">
             <div class="jumbotron jumbotron-fluid " style="width: 100%;">
                 <div class="container">
                     <h1 class="display-4 text-center">Join Us Now</h1>
@@ -176,7 +176,11 @@
             <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mt-3 ">
                 <div class="card " style="width: 16rem;">
                     <div class="card-body">
-                        <h5 class="card-title">{{$topPost->job_title}}</h5>
+                        <h6 class="card-title">{{$topPost->job_title}}
+                            @if (date("Y-m-d",strtotime($topPost['created_at'])) == date("Y-m-d"))
+                                <span class="badge badge-success">New</span>
+                            @endif
+                        </h6>
                         <h6 class="card-subtitle mb-2 text-muted">
 
                         <p class="card-text">
@@ -192,7 +196,7 @@
                         </p>
 
                         </h6>
-                        <a href="#" class="card-link">Show More</a>
+                        <a href="/apply/{{$topPost->id}}" class="card-link">Show More</a>
 
                     </div>
                 </div>

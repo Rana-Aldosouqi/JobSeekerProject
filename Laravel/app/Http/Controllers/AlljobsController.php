@@ -25,4 +25,17 @@ class AlljobsController extends Controller
         return view('user.Alljobs',['topPosts'=>$topPosts]);
     }
 
+    public function getPostDetailsView(){
+
+        return view('user.Apply');
+
+    }
+
+    public function getPostDetails($id){
+       $post=\App\Post::where('id', $id)->get();
+       return view('user.Apply',['post' => $post]);
+    }
+
+
+
 }
