@@ -46,15 +46,21 @@ Route::get('/settingsemployee','Settingcontroller@getUpdate');
 Route::post('/settingsemployee','Settingcontroller@update');
 
 
-//shimaa
+//shaimaa---------------------------------------------------------------------------------------------------------------
 
-Route::get('/companyprofile','postscontroller@index')->name('shared.index');
-Route::post('/companyprofile','postscontroller@store')->name('shared.store');
+Route::get('/companyprofile','postscontroller@getProfile')->name('shared.index');
+Route::post('/companyprofile','postscontroller@doGetProfile')->name('shared.store');
+
+Route::get('/setting','postscontroller@getUpdateView');
+Route::post('/setting','postscontroller@doUpdate');
 
 
-Route::get('/{id}/setting','postscontroller@edit')->name('shared.edit');
-Route::put('/{id}','postscontroller@update')->name('shared.update');
+Route::get('/volform','postscontroller@getVolanteerformView');
+Route::post('/volform','postscontroller@doVolanteerform');
+Route::get('/vol','postscontroller@getVolanteerView');
 
+
+Route::get('/vol','postscontroller@doVolanteer');
 
 
 //Eman

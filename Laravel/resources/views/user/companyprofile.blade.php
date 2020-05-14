@@ -8,19 +8,17 @@
             <div class="row">
                 <div class="col-4">
                     <div class="profile-img">
-                        <img  src="{{asset('/assts/images/images.png')}}" width="70%" height="150px"/>
-                        <div class="file btn btn-lg btn-primary">Change Photo<input type="file" name="file"/>
-                        </div>
+                        <img src="{{asset('/assets/images/profil.jpg')}}"/>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h1>
-                            Company Name
+                            <p>{{Auth::user()->first_name}}</p>
                         </h1>
                         </br>
                         <h5 style="color:#004bff">
-                            Description
+                            <p>{{Auth::user()->description}}</p>
                         </h5>
                         </br>
                         <div class="form-row">
@@ -87,9 +85,9 @@
                                 <label>Company Name:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($names as $user)
-                                <p>{{$user->first_name}}</p>
-                                    @endforeach()
+
+                                <p>{{Auth::user()->username}}</p>
+
                             </div>
                         </div>
 
@@ -99,9 +97,8 @@
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
 
-                                @foreach($emails as $user )
-                                    <p>{{$user->email}}</p>
-                                @endforeach
+
+                                <p>{{Auth::user()->email}}</p>
 
                             </div>
                         </div>
@@ -111,9 +108,9 @@
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
 
-                                @foreach($phone as $user )
-                                    <p>{{$user ->phone_number}}</p>
-                                @endforeach
+
+                                <p>{{Auth::user()->phone_number}}</p>
+
 
                             </div>
                         </div>
@@ -122,9 +119,9 @@
                                 <label>Address:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($phone as $user )
-                                    <p>{{$user->phone_number}}</p>
-                                @endforeach
+
+                                <p>{{Auth::user()->address}}</p>
+
                             </div>
                         </div>
 
@@ -133,9 +130,10 @@
                                 <label>Work Field:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($workfield as $experiences)
-                                    <p>{{$experiences->job_name}}</p>
-                                @endforeach
+
+                                <p>{{Auth::user()->work_field}}</p>
+
+
                             </div>
                         </div>
 
@@ -144,9 +142,7 @@
                                 <label>Work Times:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($names as $user)
-                                    <p>{{$user->first_name}}</p>
-                                @endforeach
+                                <p>{{Auth::user()->work_times}}</p>
                             </div>
                         </div>
 
@@ -155,9 +151,8 @@
                                 <label>Foundation Date:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($names as $user )
-                                    <p>{{$user->first_name}}</p>
-                                @endforeach
+                                <p>{{Auth::user()->foundation_date}}</p>
+
                             </div>
                         </div>
 
@@ -166,9 +161,7 @@
                                 <label>Hourly Rate:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($names as $user )
-                                    <p>{{$user->first_name}}</p>
-                                @endforeach
+                                <p>{{Auth::user()->Hourly_Rate}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -176,9 +169,8 @@
                                 <label>Total Projects:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($names as $user )
-                                    <p>{{$user ->first_name}}</p>
-                                @endforeach
+                                <p>{{Auth::user()->Total_Projects}}</p>
+
                             </div>
                         </div>
                         <div class="row">
@@ -186,9 +178,8 @@
                                 <label>Availability:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($names as $user)
-                                    <p>{{$user->first_name}}</p>
-                                @endforeach
+                                <p>{{Auth::user()->Availability}}</p>
+
                             </div>
                         </div>
                         <div class="row">
@@ -196,9 +187,8 @@
                                 <label> Description:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                @foreach($names as $user )
-                                    <p>{{$user ->first_name}}</p>
-                                @endforeach
+
+                                <p>{{Auth::user()->description}}</p>
                             </div>
                         </div>
 
