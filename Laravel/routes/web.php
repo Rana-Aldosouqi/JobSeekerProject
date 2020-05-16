@@ -60,69 +60,77 @@ Route::put('/{id}','postscontroller@update')->name('shared.update');
 //Eman
 Route::get('/Login','AuthController@getLoginView')->name('login');
 Route::post('/Login','AuthController@doLogin');
+
 Route::get('/Register','AuthController@getRegisterView');
 Route::post('/Register','AuthController@doRegistration');
-Route::get('/Logout','AuthController@doLogout');
 
-Route::get('/MyResume','UserController@getMyResumeView');
-Route::get('/MyResume','UserController@getExperienceView');
-Route::get('/MyResume','UserController@getEductionView');
+Route::get('/Logout','AuthController@doLogout');
 
 Route::get('/ContactUs','ContactUsController@getContactUSView');
 Route::post('/ContactUs','ContactUsController@doContact');
+
+Route::get('/MyResume','MyResumeController@getMyResumeView');
+Route::get('/MyResume','UserController@getSkillView');
+Route::get('/MyResume','UserController@getExperienceView');
+Route::get('/MyResume','UserController@getEducationView');
+Route::get('/MyResume','UserController@getCourseView');
+Route::get('/MyResume','UserController@getCertificateView');
 
 Route::get('/ResumeBuilder','UserController@getResumeBuilderView')->name('ResumeBuilder');
 
 Route::get('/personal',function (){
     return view ('user.ResumeBuilder');
 });
-//Route::post('/personal', 'UserController@doUploadImage');
+Route::post('/personal', 'UserController@doUploadImage');
+Route::get('/personal','UserController@getPersonalView');
 Route::post('/personal','UserController@doPersonal');
 
 Route::get('/social',function (){
     return view ('user.ResumeBuilder');
 });
+Route::get('/social','UserController@getSocialView');
 Route::post('/social','UserController@doSocial');
 
 Route::get('/experiences',function (){
     return view ('user.ResumeBuilder');
 });
+Route::get('/experiences', 'UserController@getExperienceViewBuilder');
 Route::post('/experiences','UserController@doExperience');
+Route::delete('/experiences/{id}', 'UserController@deleteExperience');
 
 Route::get('/skills',function (){
     return view ('user.ResumeBuilder');
 });
-Route::get("/skills","UserController@getSkillView");
-Route::post("/skills","UserController@addSkill");
-//Route::get('/skills', 'UserController@index');
-//Route::post('/skills/insert', 'UserController@insert')->name('skills.insert');
 
-//Route::post('/skills','UserController@addSkill');
+Route::get('/skills', 'UserController@getSkillViewBuilder');
+Route::post('/skills', 'UserController@AddSkill');
+Route::delete('/skills/{id}', 'UserController@deleteSkill');
 
 Route::get('/education',function (){
     return view ('user.ResumeBuilder');
 });
-Route::post('/education','UserController@doEducation');
-
-
-//Route::get('/ResumeBuilder/experiences/{id}','UserController@getExperienceView');
-//Route::get('/ResumeBuilder/skills/{id}','UserController@getSkillView');
-//Route::get('/ResumeBuilder/education/{id}','UserController@getEducationView');
-//Route::get('/ResumeBuilder/courses/{id}','UserController@getCourseView');
-//Route::get('/ResumeBuilder/certificates/{id}','UserController@getCertificateView');
-//Route::get('/ResumeBuilder/color/{id}','UserController@getColorView');
-
-
+Route::get('/education', 'UserController@getEducationViewBuilder');
+Route::post('/education', 'UserController@doEducation');
+Route::delete('/education/{id}', 'UserController@deleteEducation');
 
 Route::get('/courses',function (){
     return view ('user.ResumeBuilder');
 });
+Route::get('/courses', 'UserController@getCourseViewBuilder');
+Route::post('/courses', 'UserController@AddCourse');
+Route::delete('/courses/{id}', 'UserController@deleteCourse');
+
 Route::get('/certificates',function (){
     return view ('user.ResumeBuilder');
 });
+Route::get('/certificates', 'UserController@getCertificateViewBuilder');
+Route::post('/certificates', 'UserController@AddCertificate');
+Route::delete('/certificates/{id}', 'UserController@deleteCertificate');
+
 Route::get('/color',function (){
     return view ('user.ResumeBuilder');
 });
+Route::get('/color','UserController@getColorView');
 Route::post('/color','UserController@changeColor');
 
 Route::get('/sendemail', 'SendEmailController@index');

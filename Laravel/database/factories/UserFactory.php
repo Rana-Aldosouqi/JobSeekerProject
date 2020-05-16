@@ -26,7 +26,7 @@ $factory->define(\App\User::class, function (Faker $faker) {
         'address'=>$faker->text(100),
         'is_admin'=>$faker->boolean,
         'user_type'=>$faker->text(7),
-        'color'=>$faker->hexcolor,
+        'color'=>null,
         'phone_number'=>$faker->e164PhoneNumber,
         'military_service'=>$faker->text(8),
         'serve_time'=>$faker->date(),

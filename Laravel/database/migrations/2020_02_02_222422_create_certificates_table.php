@@ -16,7 +16,8 @@ class CreateCertificatesTable extends Migration
         Schema::create('certificates', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable(true);
-            $table->string('name',30)->nullable(false);
+            $table->string('certificate',30)->nullable(true);
+            $table->date('date')->nullable(true);
 //            $table->string('file_path',125)->nullable(true)->unique();
 //            $table->string('file_extension',6)->nullable(true);
 //            $table->float('size')->default(0)->nullable(true);

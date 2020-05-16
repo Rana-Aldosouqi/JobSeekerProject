@@ -2,6 +2,9 @@
     <link rel="stylesheet" href="{{asset('/assets/css/style_login.css')}}">
 @endsection
 @extends('user.shared.template')
+@section('title')
+    Login
+@endsection
 @section('content')
     <div class="container">
         <div class="row mt-5"></div>

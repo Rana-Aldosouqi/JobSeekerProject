@@ -40,7 +40,7 @@ class ContactUsController extends Controller
             $feedback -> message = $request -> get('message');
             $feedback ->save();
         }
-        
+
         $result = Auth::attempt([
             'username' => $request->get('username'),
             'password' => $request->get('password')

@@ -1,8 +1,10 @@
-
 @section('more_css')
     <link rel="stylesheet" href="{{asset('/assets/css/style_regist.css')}}">
     @endsection
 @extends('user.shared.template')
+@section('title')
+    Register
+@endsection
 @section('content')
     <div class="container">
         <div class="row mt-5"></div>
