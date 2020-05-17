@@ -78,7 +78,11 @@
                                 <div class="media mt-2 " style="width:100% !important; " data-groups='["cat-1"{{$post->type=1?',"fulltime"':''}}]'>
                                     <img src="{{asset('assets/img1/55.jpg')}}"height="120" width="150" class="mr-3" alt="...">
                                     <div class="media-body" >
-                                        <h5 class="mt-2">{{$post->job_title}}</h5>
+                                        <h5 class="mt-2">{{$post->job_title}}
+                                            @if (date("Y-m-d",strtotime($post['created_at'])) == date("Y-m-d"))
+                                                <span class="badge badge-success">New</span>
+                                            @endif
+                                        </h5>
                                         <p > Job Type:
                                             @if(($post->type)==1)
                                                 Full Time-
@@ -88,7 +92,7 @@
                                                 Freelancer-
                                             @endif
                                             Minimum Salary:{{$post->min_salary}}- Maximum Salary:{{$post->max_salary}}</p>
-                                        <div class="mb-4 mt-4"><a href="#" >SHOW MORE</a></div>
+                                        <div class="mb-4 mt-4"><a href="/apply/{{$post->id}}" >SHOW MORE</a></div>
 
                                     </div>
                                 </div>

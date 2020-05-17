@@ -20,17 +20,20 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('category_id')->nullable(true);
             $table->string('experience')->nullable(true);
             $table->unsignedInteger('career_level')->nullable(true);
-            $table->unsignedInteger('type')->nullable(false);
+            $table->string('type')->nullable(true);
 
             //$table->unsignedBigInteger('language_id')->nullable(true);
             $table->float('min_salary')->nullable(true);
             $table->float('max_salary')->nullable(true);
             $table->unsignedInteger('vacancies')->nullable(true);
-            $table->unsignedInteger('min_age')->nullable(true);
-            $table->unsignedInteger('max_age')->nullable(true);
+            $table->text('age')->nullable(true);
             $table->text('other')->nullable(true);
             $table->date('expiration_date')->nullable(true);
-
+            $table->text('city')->nullable(true);
+            $table->date('date_start_at')->nullable(true);
+            $table->date('date_end_at')->nullable(true);
+            $table->unsignedInteger('time_start_at')->nullable(true);
+            $table->unsignedInteger('time_end_at')->nullable(true);
             $table->timestamps();
 
             $table->foreign('user_id')

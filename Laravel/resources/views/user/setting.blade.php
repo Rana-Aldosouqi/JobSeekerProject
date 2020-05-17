@@ -12,10 +12,10 @@
                         <div class="row">
                             <div class="form">
                                 <div class="card p-0 shadow-sm" style="position:relative;">
-                                    <img src="{{asset('/assets/images/images.png')}}" style="height:227px;"></i>
-                                    <button class="btn rounded-0 btn-dark" style="position: absolute; margin-top: 175px;height:52px; width:228px;opacity: 40%;">
-                                        Change
-                                    </button>
+                                    <img src="{{asset('/assets/images/images.png')}}" style="height:227px;">
+                                    <div class="file btn btn-lg btn-secondary"  style="position: absolute; margin-top: 175px;height:52px; width:228px;opacity: 40%;">
+                                       <input type="file"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -65,24 +65,35 @@
                         </div>
                     </div>
                     <div class="col-8 ml-3" >
-                        <form action="{{'/shered/',$account->id }}" method="POST" >
+                        <form action="" method="POST" >
                             @csrf
-                            @method('put')
+{{--                            @method('put')--}}
                             <div class="col-7 ml-5" ><h1><u>Account Settings</u></h1></div>
                             <div class="form-row mt-5"></div>
 
 
                         </form>
-                        <form  action="{{'/shered/',$account->id }}" method="post" >
+                        <form  action="" method="post" >
                             @csrf
-                            @method('put')
+{{--                            @method('put')--}}
                             <div class="col-12">
                                 <div class="form-row mt-3">
                                     <div class="col-3">
                                         <h5 class="mt-2">Company Name:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control" name="first_name"  value="{{'$post->first_name'}}">
+                                        <input type="text" class="form-control" name="first_name"  value="{{Auth::user()->first_name}}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-row mt-3">
+                                    <div class="col-3">
+                                        <h5 class="mt-2">User Name:</h5>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="text" class="form-control" name="username"  value="{{Auth::user()->username}}">
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +104,7 @@
                                         <h5 class="mt-2">Email:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="email" class="form-control" name="email" placeholder="" value="{{'$post->email'}}">
+                                        <input type="email" class="form-control" name="email" placeholder="" value="{{Auth::user()->email}}">
                                     </div>
                                 </div>
                                 <div class="form-row mt-3">
@@ -101,7 +112,7 @@
                                         <h5 class="mt-2">Phone Number:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="number"  name="phone_number" class="form-control"  value="{{'$post->phone_number'}}">
+                                        <input type="number"  name="phone_number" class="form-control"  value="{{Auth::user()->phone_number}}">
                                     </div>
                                 </div>
                                 <div class="form-row mt-3">
@@ -109,7 +120,7 @@
                                         <h5 class="mt-2"> Address:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="#coursolindicators"  >
+                                        <input type="text-area "  name="address" class="form-control"  value="{{Auth::user()->address}}" >
                                     </div>
                                 </div>
                                 <div class="form-row mt-3">
@@ -117,7 +128,7 @@
                                         <h5 class="mt-2">Work Field:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="#coursolindicators"  >
+                                        <input type="text-area " name="work_field" class="form-control"   value="{{Auth::user()->work_field}}">
                                     </div>
                                 </div>
                                 <div class="form-row mt-3">
@@ -125,7 +136,7 @@
                                         <h5 class="mt-2">Work Times:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="#coursolindicators" name="Work_Times">
+                                        <input type="text-area " name="work_times" class="form-control"   value="{{Auth::user()->work_times}}">
                                     </div>
                                 </div>
                                 <div class="form-row mt-3">
@@ -133,7 +144,7 @@
                                         <h5 class="mt-2">Foundation Date:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="#coursolindicators" >
+                                        <input type="text-area " name="foundation_date" class="form-control"  value="{{Auth::user()->foundation_date}}" >
                                     </div>
                                 </div>
                                 <div class="form-row mt-3">
@@ -141,7 +152,7 @@
                                         <h5 class="mt-2">Hourly Rate:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="#coursolindicators">
+                                        <input type="text-area " name="Hourly_Rate" class="form-control"   value="{{Auth::user()->Hourly_Rate}}">
                                     </div>
                                 </div>
                                 <div class="form-row mt-3">
@@ -149,7 +160,7 @@
                                         <h5 class="mt-2">Total Projects:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="#coursolindicators">
+                                        <input type="text-area "  name="Total_Projects" class="form-control"   value="{{Auth::user()->Total_Projects}}">
                                     </div>
                                 </div>
                                 <div class="form-row mt-3">
@@ -157,7 +168,7 @@
                                         <h5 class="mt-2">Availability:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="#coursolindicators">
+                                        <input type="text-area " name="Availability" class="form-control"  value="{{Auth::user()->Availability}}">
                                     </div>
                                 </div>
                                 <div class="form-row mt-3">
@@ -165,7 +176,7 @@
                                         <h5 class="mt-2"> Description:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="#coursolindicators">
+                                        <input type="text-area " name="description" class="form-control"   value="{{Auth::user()->description}}">
                                     </div>
                                 </div>
                             </div>

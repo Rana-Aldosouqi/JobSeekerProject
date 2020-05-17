@@ -39,7 +39,14 @@ class CreateUsersTable extends Migration
             $table->float('longitude')->nullable(true)->default(-101.073324);
             $table->text('description')->nullable(true);
             $table->integer('rating')->nullable(true)->default(0);
+            $table->string('work_field',100)->nullable(true);
+            $table->string('work_times',100)->nullable(true);
+            $table->string('Total_Projects',100)->nullable(true);
+            $table->string('Hourly_Rate',100)->nullable(true);
+            $table->string('Availability',100)->nullable(true);
+            $table->date('foundation_date')->nullable(true);
             $table->timestamps();
+
 
             $table->foreign('image_id')
                 ->references('id')

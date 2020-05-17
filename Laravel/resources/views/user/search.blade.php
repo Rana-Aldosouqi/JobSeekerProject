@@ -168,7 +168,7 @@ Jobs
                                                                 Freelancer-
                                                             @endif
                                                             Minimum Salary:{{$post->min_salary}}- Maximum Salary:{{$post->max_salary}}</p>
-                                                        <div class="mb-4 mt-4"><a href="#" >SHOW MORE</a></div>
+                                                        <div class="mb-4 mt-4"><a href="/apply/{{$post->id}}" >SHOW MORE</a></div>
 
                                                     </div>
                                                 </div>

@@ -37,7 +37,15 @@ $factory->define(\App\User::class, function (Faker $faker) {
         'Latitude'=>$faker->longitude,
         'longitude'=>$faker->latitude,
         'description'=>$faker->text(100),
-        'rating'=>$faker->randomDigit
+        'rating'=>$faker->randomDigit,
+        'work_field'=>$faker->text(30),
+        'Work_Times'=>$faker->date(),
+        'foundation_date'=>$faker->date(),
+        'Hourly_Rate'=>$faker->date(),
+        'Total_Projects'=>$faker->date(),
+        'Availability'=>$faker->date()
 
     ];
 });
+
+

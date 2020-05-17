@@ -19,6 +19,7 @@
 //});
 //rana-------------------------------------------------------------------------------------------------------
 use App\Post;
+use App\User;
 
 Route::get('/index','PostController@getPostView');
 Route::Post('/index','PostController@doPost');
@@ -38,6 +39,27 @@ Route::get('/categories/{id}', 'CategoryController@getCatPostsView');
 //for search
 Route::any('/search','PostController@dosearch');
 
+//for apply page
+Route::get('/apply/{id}','AlljobsController@getPostDetailsView');
+Route::get('/apply/{id}', 'AlljobsController@getPostDetails');
+Route::get('/apply/{id}/done', function($id){
+    $user = DB::table('posts')->where('id', '=', $id)->decrement('vacancies');
+    //register the applied post with user id
+    //i should make apply button disabled until test is done and payment is done
+
+    return redirect("/response");
+});
+
+Route::get('/response', function(){
+
+    return view('user.response');
+});
+
+//Route::get('/apply/{id}',function (){
+//    return view ('user.Apply');
+//});
+
+
 //----------------------------------------------------------------------------------------------------------------------
 //amina
 Route::get('/userprofile','Settingcontroller@received');
@@ -46,15 +68,21 @@ Route::get('/settingsemployee','Settingcontroller@getUpdate');
 Route::post('/settingsemployee','Settingcontroller@update');
 
 
-//shimaa
+//shaimaa---------------------------------------------------------------------------------------------------------------
 
-Route::get('/companyprofile','postscontroller@index')->name('shared.index');
-Route::post('/companyprofile','postscontroller@store')->name('shared.store');
+Route::get('/companyprofile','postscontroller@getProfile')->name('shared.index');
+Route::post('/companyprofile','postscontroller@doGetProfile')->name('shared.store');
+
+Route::get('/setting','postscontroller@getUpdateView');
+Route::post('/setting','postscontroller@doUpdate');
 
 
-Route::get('/{id}/setting','postscontroller@edit')->name('shared.edit');
-Route::put('/{id}','postscontroller@update')->name('shared.update');
+Route::get('/volform','postscontroller@getVolanteerformView');
+Route::post('/volform','postscontroller@doVolanteerform');
+Route::get('/vol','postscontroller@getVolanteerView');
 
+
+Route::get('/vol','postscontroller@doVolanteer');
 
 
 //Eman
@@ -137,9 +165,11 @@ Route::get('/', function () {
 //$cat=\App\Category::find(19);
 //dd($cat->posts);
 
+$post=\App\Post::find(1);
+dd($post->User->username);
 
 ////category of post with id=6 woooork
-//
+// this is select method
 //$posts=\App\Post::find(6);
 //dd($posts->Category->category);
 //=======
