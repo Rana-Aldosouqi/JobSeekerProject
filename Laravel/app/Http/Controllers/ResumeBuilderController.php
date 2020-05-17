@@ -16,9 +16,13 @@ use Illuminate\Support\Facades\Validator;
 
 class ResumeBuilderController extends Controller
 {
-    public function getResumeBuilderView()
-    {
-        return view('user.ResumeBuilder');
+     public function getResumeBuilderView()
+     {
+         $allCertificates = Certificate::orderBy('created_at','DESC')
+             ->where('user_id', Auth::user()->id)->get();
+         return view('user.ResumeBuilder',[
+             'data' => $allCertificates
+         ]);
     }
     public function doUploadImage(Request $request)
     {
