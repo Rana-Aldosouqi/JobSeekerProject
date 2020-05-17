@@ -27,7 +27,7 @@
                 <div class="col-2"><p class="h6">{{Auth::user()->phone_number}}</p></div>
                 <div class="col-2"></div>
                 <div class="col-1"><p class="h6">Linkedin</p></div>
-                <div class="col-2"><p class="h6">{{Auth::user()->linkedin_url}}</p></div>
+                <div class="col-5"><p class="h6">{{Auth::user()->linkedin_url}}</p></div>
 
             </div>
             <div class="row">
@@ -69,8 +69,8 @@
                 <div class="row">
                     <p class="h4">Skills</p>
                 </div>
-                @if(count($data) > 0)
-                    @foreach($data as $skill)
+                @if(count($skills) > 0)
+                    @foreach($skills as $skill)
                         <div class="row">
                             <div class="col-4">
                                 <ul class="ml-0">
@@ -102,12 +102,12 @@
                 <div class="row">
                     <p class="h4">Work Experience</p>
                 </div>
-                @if(count($data) > 0)
-                    @foreach($data as $experience)
+                @if(count($experiences) > 0)
+                    @foreach($experiences as $experience)
                         <div class="row mb-3">
                             <div class="col-3 mr-0">
                                 <div class="row">
-                                    <p class="h5">
+                                    <p class="h5" style="color:#b3b7bb;">
                                         <span class="h6" style="color: white">To &nbsp; &nbsp;</span>
                                         {{$experience->start_date}}</p>
                                 </div>
@@ -137,25 +137,25 @@
                 <div class="row">
                     <p class="h4">Education History</p>
                 </div>
-                @if(count($data)>0)
-                    @foreach($data as $education)
+                @if(count($educations)>0)
+                    @foreach($educations as $eduction)
                         <div class="row mt-3">
                             <div class="col-3 mr-0">
                                 <div class="row">
                                     <p class="h5">
                                         <span class="h6" style="color: white">To &nbsp; &nbsp;</span>
-                                        {{$education->start_date}}</p>
+                                        {{$eduction->start_date}}</p>
                                     </p>
                                 </div>
                                 <div class="row">
                                     <p class="h5">
                                         <span class="h6">To &nbsp; &nbsp;</span>
-                                        {{$education->end_date}}</p>
+                                        {{$eduction->end_date}}</p>
                                 </div>
                             </div>
                             <div class="col-9 ml-0">
-                                <p class="h5"><b>{{$education->school}}</b></p>
-                                <p class="h6">{{$education->degree}}</p>
+                                <p class="h5" style="color:#b3b7bb;"><b>{{$eduction->school}}</b></p>
+                                <p class="h6" style="color:#b3b7bb;">{{$eduction->degree}}</p>
                             </div>
                         </div>
                     @endforeach
@@ -173,8 +173,8 @@
                 <div class="row">
                     <p class="h4">Courses</p>
                 </div>
-                @if(count($data) > 0)
-                    @foreach($data as $course)
+                @if(count($courses) > 0)
+                    @foreach($courses as $course)
                         <div class="row mt-3">
                             <div class="col-3 mr-0">
                                 <div class="row">
@@ -201,10 +201,10 @@
             </div>
             <div class="col-11">
                 <div class="row">
-                    <p class="h4">Certificates</p>
+                    <p class="h4">Certificate</p>
                 </div>
-                @if(count($data) > 0)
-                    @foreach($data as $certificate)
+                @if(count($certificates) > 0)
+                    @foreach($certificates as $certificate)
                         <div class="row mt-3">
                             <div class="col-3 mr-0">
                                 <div class="row">
