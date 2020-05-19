@@ -41,6 +41,8 @@
 <script  src="{{'/assets/js/jquery-3.4.1.min.js'}}"></script>
 <script  src="{{'/assets/js/popper.js'}}"></script>
 <script  src="{{'/assets/js/bootstrap.js'}}"></script>
+<script src="{{asset('/assets/js/ajaxscript.js')}}"></script>
+
 {{--<<<<<<< HEAD--}}
 <script  src="{{'/assets/js/shuffle.min.js'}}"></script>
 {{--=======--}}

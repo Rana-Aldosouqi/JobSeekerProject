@@ -10,8 +10,5 @@ class Skill extends Model
     {
         return $this->belongsTo(User::class,'user_id','id');
     }
-//    protected $fillable = ['name'];
-
-//    public $table = "skills";
-//    public $fillable = ['name'];
+    public $fillable = ['skill'];
 }

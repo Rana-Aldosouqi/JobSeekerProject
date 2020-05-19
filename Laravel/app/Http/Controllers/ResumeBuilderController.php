@@ -188,14 +188,44 @@ class ResumeBuilderController extends Controller
         }
         return redirect('/experiences');
     }
+
+
     public function getSkillViewBuilder()
     {
         $allSkills = Skill::orderBy('created_at', 'ASC')
             ->where('user_id', Auth::user()->id)->get();
-        return view('user.ResumeBuilder'  ,[
+        return view('user.ResumeBuilder',[
             'data' => $allSkills
         ]);
     }
+//    function AddSkill(Request $request)
+//    {
+//        if($request->ajax())
+//        {
+//            $rules = array('skill.*'  => 'required');
+//            $error = Validator::make($request->all(), $rules);
+//            if($error->fails())
+//            {
+//                return response()->json([
+//                    'error'  => $error->errors()->all()
+//                ]);
+//            }
+//
+//            $skill = $request->skill;
+//            for($count = 0; $count < count($skill); $count++)
+//            {
+//                $data = array(
+//                    'skill' => $skill[$count]
+//                );
+//                $insert_data[] = $data;
+//            }
+//
+//            Skill::insert($insert_data);
+//            return response()->json([
+//                'success'  => 'Data Added successfully.'
+//            ]);
+//        }
+//    }
     public function AddSkill(Request $request)
     {
         $rules = ['skill' => 'required'];

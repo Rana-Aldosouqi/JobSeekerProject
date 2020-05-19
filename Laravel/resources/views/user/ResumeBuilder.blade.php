@@ -1,7 +1,9 @@
 @extends('user.shared.template')
 @section('more_css')
     <link rel="stylesheet" href="{{asset('/assets/css/ColorForm.css')}}">
-{{--    <meta name="csrf-token" content="{{ csrf_token() }}">--}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    {{--    <meta name="csrf-token" content="{{ csrf_token() }}">--}}
 @endsection
 @section('title')
     ResumeBuilder
@@ -333,7 +335,138 @@
                                     </div>
                                 </div>
                             </form>
-
+                        </div>
+{{--                            <div class="container">--}}
+{{--                                <div class="panel panel-primary">--}}
+{{--                                    <div class="panel-heading">--}}
+{{--                                        <button id="btn_add" name="btn_add" class="btn btn-default pull-right">--}}
+{{--                                            Add New Skills</button>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="panel-body">--}}
+{{--                                        <table class="table">--}}
+{{--                                            <thead>--}}
+{{--                                            <tr>--}}
+{{--                                                <th>ID</th>--}}
+{{--                                                <th>Skills</th>--}}
+{{--                                                <th>Details</th>--}}
+{{--                                                <th>Actions</th>--}}
+{{--                                            </tr>--}}
+{{--                                            </thead>--}}
+{{--                                            <tbody id="skills-list" name="skills-list">--}}
+{{--                                            @foreach ($data as $skill)--}}
+{{--                                                <tr id="skill{{$skill->id}}">--}}
+{{--                                                    <td>{{$skill->id}}</td>--}}
+{{--                                                    <td>{{$skill->skill}}</td>--}}
+{{--                                                    <td>{{$skill->details}}</td>--}}
+{{--                                                    <td>--}}
+{{--                                                        <button class="btn btn-warning btn-detail--}}
+{{--                                                         open_modal" value="{{$skill->id}}">Edit</button>--}}
+{{--                                                        <button class="btn btn-danger btn-delete delete-skill"--}}
+{{--                                                                value="{{$skill->id}}">Delete</button>--}}
+{{--                                                    </td>--}}
+{{--                                                </tr>--}}
+{{--                                            @endforeach--}}
+{{--                                            </tbody>--}}
+{{--                                        </table>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="modal fade" id="myModal" tabindex="-1"--}}
+{{--                                     role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--}}
+{{--                                    <div class="modal-dialog">--}}
+{{--                                        <div class="modal-content">--}}
+{{--                                            <div class="modal-header">--}}
+{{--                                                <button type="button"--}}
+{{--                                                        class="close" data-dismiss="modal" aria-label="Close">--}}
+{{--                                                    <span aria-hidden="true">×</span></button>--}}
+{{--                                                <h4 class="modal-title" id="myModalLabel">Skill</h4>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="modal-body">--}}
+{{--                                                <form id="frmSkills" name="frmSkills"--}}
+{{--                                                      class="form-horizontal" novalidate="">--}}
+{{--                                                    <div class="form-group error">--}}
+{{--                                                        <label for="inputSkill" class="col-sm-3 control-label">--}}
+{{--                                                            Skill</label>--}}
+{{--                                                        <div class="col-sm-9">--}}
+{{--                                                            <input type="text" class="form-control has-error"--}}
+{{--                                                                   id="skill" name="skill"--}}
+{{--                                                                   placeholder="Skill" value="">--}}
+{{--                                                        </div>--}}
+{{--                                                        <div class="form-group">--}}
+{{--                                                            <label for="inputDetail"--}}
+{{--                                                                   class="col-sm-3 control-label">Details</label>--}}
+{{--                                                            <div class="col-sm-9">--}}
+{{--                                                                <input type="text"--}}
+{{--                                                                       class="form-control" id="details"--}}
+{{--                                                                       name="details" placeholder="details"--}}
+{{--                                                                       value="">--}}
+{{--                                                            </div>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </form>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="modal-footer">--}}
+{{--                                                <button type="button" class="btn btn-primary" id="btn-save"--}}
+{{--                                                        value="add">Save changes</button>--}}
+{{--                                                <input type="hidden" id="skill_id" name="skill_id" value="0">--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <table class="table border-0" id="laravel_crud">--}}
+{{--                                <thead>--}}
+{{--                                <tr>--}}
+{{--                                    <th>Id</th>--}}
+{{--                                    <th>Skill</th>--}}
+{{--                                    <td colspan="2">Action</td>--}}
+{{--                                </tr>--}}
+{{--                                </thead>--}}
+{{--                                <tbody id="skills-crud">--}}
+{{--                                @foreach($skills as $s_info)--}}
+{{--                                    <tr id="skill_id_{{ $s_info->id }}">--}}
+{{--                                        <td>{{ $s_info->id  }}</td>--}}
+{{--                                        <td>{{ $s_info->name }}</td>--}}
+{{--                                        <td colspan="2">--}}
+{{--                                            <a href="javascript:void(0)"--}}
+{{--                                               id="edit-skill" data-id="{{ $s_info->id }}"--}}
+{{--                                               class="btn btn-info mr-2">Edit</a>--}}
+{{--                                            <a href="javascript:void(0)"--}}
+{{--                                               id="delete-skill" data-id="{{ $s_info->id }}"--}}
+{{--                                               class="btn btn-danger delete-skill">Delete</a>--}}
+{{--                                        </td>--}}
+{{--                                    </tr>--}}
+{{--                                @endforeach--}}
+{{--                                </tbody>--}}
+{{--                            </table>--}}
+{{--                            {{ $skills->links() }}--}}
+{{--                            <div class="modal fade" id="ajax-crud-modal" aria-hidden="true">--}}
+{{--                                <div class="modal-dialog">--}}
+{{--                                    <div class="modal-content">--}}
+{{--                                        <div class="modal-header">--}}
+{{--                                            <h4 class="modal-title" id="skillCrudModal"></h4>--}}
+{{--                                        </div>--}}
+{{--                                        <form id="skillForm" name="skillForm" class="form-horizontal">--}}
+{{--                                            <div class="modal-body">--}}
+{{--                                                <input type="hidden" name="skill_id" id="skill_id">--}}
+{{--                                                <div class="form-group">--}}
+{{--                                                    <label for="skill" class="col-sm-2 control-label">Skill</label>--}}
+{{--                                                    <div class="col-sm-12">--}}
+{{--                                                        <input type="text" class="form-control" id="skill"--}}
+{{--                                                               name="name" placeholder="Enter skill"--}}
+{{--                                                               value="" maxlength="50" required="">--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="modal-footer">--}}
+{{--                                                <button type="submit" class="btn btn-primary"--}}
+{{--                                                        id="btn-save" value="create">--}}
+{{--                                                    Save changes--}}
+{{--                                                </button>--}}
+{{--                                            </div>--}}
+{{--                                        </form>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             {{--                                <div class="form-row mt-4">--}}
                             {{--                                    <div class="col-7">--}}
                             {{--                                        <fieldset disabled>--}}
@@ -359,7 +492,32 @@
                             {{--                                               class="form-control">--}}
                             {{--                                    </div>--}}
                             {{--                                </div>--}}
-                        </div>
+{{--                            <div class="table-responsive border-0">--}}
+{{--                                <form method="post" id="dynamic_form">--}}
+{{--                                    <span id="result"></span>--}}
+{{--                                    <table class="table table-bordered table-striped" id="skill_table">--}}
+{{--                                        <thead>--}}
+{{--                                        <tr>--}}
+{{--                                            <th width="35%">Skill</th>--}}
+{{--                                            <th width="30%">Action</th>--}}
+{{--                                        </tr>--}}
+{{--                                        </thead>--}}
+{{--                                        <tbody>--}}
+
+{{--                                        </tbody>--}}
+{{--                                        <tfoot>--}}
+{{--                                        <tr>--}}
+{{--                                            <td colspan="2" align="right">&nbsp;</td>--}}
+{{--                                            <td>--}}
+{{--                                                @csrf--}}
+{{--                                                <input type="submit" name="save" id="save"--}}
+{{--                                                       class="btn btn-primary" value="Save" />--}}
+{{--                                            </td>--}}
+{{--                                        </tr>--}}
+{{--                                        </tfoot>--}}
+{{--                                    </table>--}}
+{{--                                </form>--}}
+{{--                            </div>--}}
                         <div class="tab-pane {{request()->is('education') ? 'active' : null}}"
                              id="{{url('education')}}" role="tabpanel">
                             @if(count($data)>0)
@@ -873,4 +1031,249 @@
 {{--        }--}}
 {{--    }--}}
 {{--</script>--}}
+{{--<script>--}}
+{{--    $(document).ready(function () {--}}
+{{--        $.ajaxSetup({--}}
+{{--            headers: {--}}
+{{--                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+{{--            }--}}
+{{--        });--}}
+{{--        /*  When user click add user button */--}}
+{{--        $('#create-new-skill').click(function () {--}}
+{{--            $('#btn-save').val("create-skill");--}}
+{{--            $('#skillForm').trigger("reset");--}}
+{{--            $('#skillCrudModal').html("Add New Skill");--}}
+{{--            $('#ajax-crud-modal').modal('show');--}}
+{{--        });--}}
+
+{{--        /* When click edit user */--}}
+{{--        $('body').on('click', '#edit-skill', function () {--}}
+{{--            var skill_id = $(this).data('id');--}}
+{{--            $.get('ajax-crud/' + skill_id +'/edit', function (data) {--}}
+{{--                $('#skillCrudModal').html("Edit Skill");--}}
+{{--                $('#btn-save').val("edit-skill");--}}
+{{--                $('#ajax-crud-modal').modal('show');--}}
+{{--                $('#skill_id').val(data.id);--}}
+{{--                $('#skill').val(data.skill);--}}
+{{--            })--}}
+{{--        });--}}
+{{--        //delete user login--}}
+{{--        $('body').on('click', '.delete-skill', function () {--}}
+{{--            var skill_id = $(this).data("id");--}}
+{{--            if(confirm("Are You sure want to delete !")) {--}}
+
+{{--                $.ajax({--}}
+{{--                    type: "DELETE",--}}
+{{--                    url: "{{ url('skills')}}"+'/'+ skill_id,--}}
+{{--                    success: function (data) {--}}
+{{--                        $("#skill_id_" + skill_id).remove();--}}
+{{--                    },--}}
+{{--                    error: function (data) {--}}
+{{--                        console.log('Error:', data);--}}
+{{--                    }--}}
+{{--                });--}}
+{{--            }--}}
+{{--        });--}}
+{{--    });--}}
+
+{{--    if ($("#skillForm").length > 0) {--}}
+{{--        $("#skillForm").validate({--}}
+
+{{--            submitHandler: function(form) {--}}
+
+{{--                var actionType = $('#btn-save').val();--}}
+{{--                $('#btn-save').html('Sending..');--}}
+
+{{--                $.ajax({--}}
+{{--                    data: $('#skillForm').serialize(),--}}
+{{--                    url: "skills",--}}
+{{--                    type: "POST",--}}
+{{--                    dataType: 'json',--}}
+{{--                    success: function (data) {--}}
+{{--                        var skill = '<tr id="skill_id_' + data.id + '"><td>' + data.id + '</td><td>' +--}}
+{{--                            data.skill + '</td>';--}}
+{{--                        skill += '<a href="javascript:void(0)" id="delete-skill" data-id="' + data.id + '"' +--}}
+{{--                            ' class="btn btn-danger delete-skill ml-1">Delete</a></td></tr>';--}}
+
+
+{{--                        if (actionType == "create-skill") {--}}
+{{--                            $('#skills-crud').prepend(skill);--}}
+{{--                        } else {--}}
+{{--                            $("#skill_id_" + data.id).replaceWith(skill);--}}
+{{--                        }--}}
+
+{{--                        $('#skillForm').trigger("reset");--}}
+{{--                        $('#ajax-crud-modal').modal('hide');--}}
+{{--                        $('#btn-save').html('Save Changes');--}}
+
+{{--                    },--}}
+{{--                    error: function (data) {--}}
+{{--                        console.log('Error:', data);--}}
+{{--                        $('#btn-save').html('Save Changes');--}}
+{{--                    }--}}
+{{--                });--}}
+{{--            }--}}
+{{--        })--}}
+{{--    }--}}
+
+
+{{--</script>--}}
+{{--    <script type='text/javascript'>--}}
+{{--        var url = "skills";--}}
+{{--        //display modal form for product editing--}}
+{{--        $(document).on('click','.open_modal',function(){--}}
+{{--            var skill_id = $(this).val();--}}
+
+{{--            $.get(url + '/' + skill_id, function (data) {--}}
+{{--                //success data--}}
+{{--                console.log(data);--}}
+{{--                $('#skill_id').val(data.id);--}}
+{{--                $('#skill').val(data.skill);--}}
+{{--                $('#details').val(data.details);--}}
+{{--                $('#btn-save').val("update");--}}
+{{--                $('#myModal').modal('show');--}}
+{{--            })--}}
+{{--        });--}}
+{{--        //display modal form for creating new product--}}
+{{--        $('#btn_add').click(function(){--}}
+{{--            $('#btn-save').val("add");--}}
+{{--            $('#frmSkills').trigger("reset");--}}
+{{--            $('#myModal').modal('show');--}}
+{{--        });--}}
+{{--        //delete product and remove it from list--}}
+{{--        $(document).on('click','.delete-skill',function(){--}}
+{{--            var skill_id = $(this).val();--}}
+{{--            $.ajaxSetup({--}}
+{{--                headers: {--}}
+{{--                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')--}}
+{{--                }--}}
+{{--            })--}}
+{{--            $.ajax({--}}
+{{--                type: "DELETE",--}}
+{{--                url: url + '/' + skill_id,--}}
+{{--                success: function (data) {--}}
+{{--                    console.log(data);--}}
+{{--                    $("#skill" + skill_id).remove();--}}
+{{--                },--}}
+{{--                error: function (data) {--}}
+{{--                    console.log('Error:', data);--}}
+{{--                }--}}
+{{--            });--}}
+{{--        });--}}
+{{--        //create new product / update existing product--}}
+{{--        $("#btn-save").click(function (e) {--}}
+{{--            $.ajaxSetup({--}}
+{{--                headers: {--}}
+{{--                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')--}}
+{{--                }--}}
+{{--            })--}}
+{{--            e.preventDefault();--}}
+{{--            var formData = {--}}
+{{--                skill: $('#skill').val(),--}}
+{{--            }--}}
+{{--            //used to determine the http verb to use [add=POST], [update=PUT]--}}
+{{--            var state = $('#btn-save').val();--}}
+{{--            var type = "POST"; //for creating new resource--}}
+{{--            var skill_id = $('#skill_id').val();;--}}
+{{--            var my_url = url;--}}
+{{--            if (state == "update"){--}}
+{{--                type = "PUT"; //for updating existing resource--}}
+{{--                my_url += '/' + skill_id;--}}
+{{--            }--}}
+{{--            console.log(formData);--}}
+{{--            $.ajax({--}}
+{{--                type: type,--}}
+{{--                url: my_url,--}}
+{{--                data: formData,--}}
+{{--                dataType: 'json',--}}
+{{--                success: function (data) {--}}
+{{--                    console.log(data);--}}
+{{--                    var skill = '<tr id="skill' + data.id + '"><td>' + data.id + '</td><td>' + data.skill--}}
+{{--                        + '</td><td>' + data.details + '</td>';--}}
+{{--                    skill += '<td><button class="btn btn-warning btn-detail open_modal" value="' + data.id +--}}
+{{--                        '">Edit</button>';--}}
+{{--                    skill += ' <button class="btn btn-danger btn-delete delete-skill" value="' + data.id +--}}
+{{--                        '">Delete</button></td></tr>';--}}
+{{--                    if (state == "add"){ //if user added a new record--}}
+{{--                        $('#skills-list').append(skill);--}}
+{{--                    }else{ //if user updated an existing record--}}
+{{--                        $("#skill" + skill_id).replaceWith( skill );--}}
+{{--                    }--}}
+{{--                    $('#frmSkills').trigger("reset");--}}
+{{--                    $('#myModal').modal('hide')--}}
+{{--                },--}}
+{{--                error: function (data) {--}}
+{{--                    console.log('Error:', data);--}}
+{{--                }--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
+{{--            <script>--}}
+{{--                $(document).ready(function(){--}}
+
+{{--                    var count = 1;--}}
+
+{{--                    sskill(count);--}}
+
+{{--                    function sskill(number)--}}
+{{--                    {--}}
+{{--                        html = '<tr>';--}}
+{{--                        html += '<td><input type="text" name="skill[]" class="form-control" /></td>';--}}
+{{--                        if(number > 1)--}}
+{{--                        {--}}
+{{--                            html += '<td><button type="button" name="remove" id=""' +--}}
+{{--                                ' class="btn btn-danger remove">Remove</button></td></tr>';--}}
+{{--                            $('tbody').append(html);--}}
+{{--                        }--}}
+{{--                        else--}}
+{{--                        {--}}
+{{--                            html += '<td><button type="button" name="add" id="add"' +--}}
+{{--                                ' class="btn btn-success">Add</button></td></tr>';--}}
+{{--                            $('tbody').html(html);--}}
+{{--                        }--}}
+{{--                    }--}}
+
+{{--                    $(document).on('click', '#add', function(){--}}
+{{--                        count++;--}}
+{{--                        sskill(count);--}}
+{{--                    });--}}
+
+{{--                    $(document).on('click', '.remove', function(){--}}
+{{--                        count--;--}}
+{{--                        $(this).closest("tr").remove();--}}
+{{--                    });--}}
+
+{{--                    $('#dynamic_form').on('submit', function(event){--}}
+{{--                        event.preventDefault();--}}
+{{--                        $.ajax({--}}
+{{--                            url:'{{ route("skills.getSkillViewBuilder") }}',--}}
+{{--                            method:'post',--}}
+{{--                            data:$(this).serialize(),--}}
+{{--                            dataType:'json',--}}
+{{--                            beforeSend:function(){--}}
+{{--                                $('#save').attr('disabled','disabled');--}}
+{{--                            },--}}
+{{--                            success:function(data)--}}
+{{--                            {--}}
+{{--                                if(data.error)--}}
+{{--                                {--}}
+{{--                                    var error_html = '';--}}
+{{--                                    for(var count = 0; count < data.error.length; count++)--}}
+{{--                                    {--}}
+{{--                                        error_html += '<p>'+data.error[count]+'</p>';--}}
+{{--                                    }--}}
+{{--                                    $('#result').html('<div class="alert alert-danger">'+error_html+'</div>');--}}
+{{--                                }--}}
+{{--                                else--}}
+{{--                                {--}}
+{{--                                    sskill(1);--}}
+{{--                                    $('#result').html('<div class="alert alert-success">'+data.success+'</div>');--}}
+{{--                                }--}}
+{{--                                $('#save').attr('disabled', false);--}}
+{{--                            }--}}
+{{--                        })--}}
+{{--                    });--}}
+
+{{--                });--}}
+{{--            </script>--}}
 @endsection

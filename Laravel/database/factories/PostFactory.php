@@ -12,11 +12,11 @@ $factory->define(\App\Post::class, function (Faker $faker) {
     $langids=DB::table('languages')->pluck('id')->toArray();
     return [
         'user_id'=>$userids[array_rand($userids)],
-        'job_title'=>$faker->text(),
+        'job_title'=>$faker->text(50),
         'category_id'=>$catids[array_rand($catids)],
-        'experience'=>$faker->text(),
+        'experience'=>$faker->text(50),
         'career_level'=>$faker->numberBetween($min = 1, $max = 3),
-        'type'=>$faker->text(),
+        'type'=>$faker->text(50),
        // 'language_id'=>$langids[array_rand($langids)],
         'min_salary'=>$faker->randomFloat(6,0,99999),
         'max_salary'=>$faker->randomFloat(6,0,99999),
