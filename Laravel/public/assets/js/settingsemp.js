@@ -1,4 +1,0 @@
-function clickFun() {
-    alert('DONE');
-}
-
