@@ -17,6 +17,11 @@
 //Route::get('/Home',function (){
 //    return view('user.Home');
 //});
+//Mohammed-----------------------------------------------------------------------------------------------
+
+Route::get('/create_test','TestController@index');
+Route::post('/creatE_test','TestController@submit');
+
 //rana-------------------------------------------------------------------------------------------------------
 use App\Post;
 

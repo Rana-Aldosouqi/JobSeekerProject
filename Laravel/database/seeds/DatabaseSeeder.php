@@ -28,9 +28,11 @@ class DatabaseSeeder extends Seeder
         $this->call(PaymentsTableSeeder::class);
 
        $this->call(TestsTableSeeder::class);
-        $this->call(TestQuestionsTableSeeder::class);
+        $this->call(SubmitsTableSeeder::class);
+        $this->call(QuestionsTableSeeder::class);
         $this->call(TestResultsTableSeeder::class);
-       $this->call(UserAnsTableSeeder::class);
+       $this->call(AnswersTableSeeder::class);
+
         $this->call(SkillsTableSeeder::class);
         $this->call(ReportsTableSeeder::class);
         $this->call(FeedbacksTableSeeder::class);

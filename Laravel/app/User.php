@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-
+    public $table="users";
 
 
     use Notifiable;
@@ -83,7 +83,7 @@ class User extends Authenticatable
     }
     public function user_ans()
     {
-        return $this->hasMany(UserAns::class,'user_id','id');
+        return $this->hasMany(Answer::class,'user_id','id');
     }
     public function skills()
     {
