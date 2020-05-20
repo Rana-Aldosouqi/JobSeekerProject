@@ -1,6 +1,6 @@
 @extends('user.shared.template')
 @section('title')
-   settings
+    settings
 @endsection
 @section('content')
 
@@ -11,33 +11,35 @@
                 <div class="row">
 
                     <div class="col-md-3 ml-5 mt-4 mb-3">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            @csrf
                         <div class="row">
                             <div class="form">
-                                <div class="profile-img">
-
-                                    <img src="{{asset('/assets/images/profile ')}}"/>
+                                <div class="profile-img ">
+                                    <img src="{{ asset('assets/images/'}}" />
                                     <div class="file btn btn-lg btn-primary">
-                                        Change Photo<input type="file" name="profileImage"/>
+                                        Change Photo<input type="file" name="image"/>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                </form>
                         <div class="row">
                             <form action="" method="post">
                                 @csrf
-{{--                                @method('put')--}}
+
                                 <h5 class="mt-3">Skills</h5>
                                 <div class="form-row">
                                     <div class="col-9">
-                                        <fieldset disabled>
-                                            <div class="form-group">
+                                        <fieldset >
+                                            <div class="form-group" id="skillbtn">
                                                 <input type="text" id="disabledTextInput" class="form-control"
                                                        style="height: 32px;" placeholder="Skill One">
                                             </div>
                                         </fieldset>
                                     </div>
                                     <div class="col-1">
-                                        <button class="btn btn-sm bg-danger btn-dark border-danger rounded">
+                                        <button class="btn btn-sm bg-danger btn-dark border-danger rounded" id="remove">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </div>
@@ -45,7 +47,7 @@
 
                                 <div class="form-row mt-3">
                                     <div class="col-9">
-                                        <fieldset disabled>
+                                        <fieldset  disabled>
                                             <div class="form-group">
                                                 <input type="text" id="disabledTextInput2" class="form-control"
                                                        style="height: 32px;" placeholder="Skill Two">
@@ -63,7 +65,7 @@
                                         <input type="text" class="form-control" id="Skill-data" style="height: 32px;" placeholder="Add SKill">
                                     </div>
                                     <div class="col-1">
-                                        <button class="btn btn-sm btn-success rounded">
+                                        <button class="btn btn-sm btn-success rounded" onclick="myFunction()">
                                             <i class="fa fa-plus"></i></button>
                                     </div>
                                 </div>
@@ -75,7 +77,7 @@
                                     <span class="fa fa-star" style="color: orange;"></span>
                                     <span class="fa fa-star" style="color: orange;"></span>
                                     <span class="fa fa-star"></span>
-{{--                                    <div class="rateYo" data-rateyo-rating="4.5"></div>--}}
+                                    {{--                                    <div class="rateYo" data-rateyo-rating="4.5"></div>--}}
                                 </div>
                             </form>
                         </div>
@@ -87,7 +89,7 @@
 
                         <form  class=" mt-7" action="" method="post">
                             @csrf
-{{--                            @method('post')--}}
+
                             <div class="col-12 mt-5">
                                 <div class="form-row mt-7">
                                     <div class="col-3">
@@ -95,7 +97,7 @@
                                     </div>
 
                                     <div class="col-8">
-                                        <input type="text" class="form-control" id="inputEmail"name="first_name" value="{{Auth::user()->first_name}}">
+                                        <input type="text" class="form-control" id="inputEmail"name="first_name" value="{{Auth::user()->first_name}} ">
                                     </div>
                                 </div>
 
@@ -119,20 +121,10 @@
 
                                 <div class="form-row mt-3">
                                     <div class="col-3">
-                                        <h5 class="mt-2">Age:</h5>
-                                    </div>
-                                    <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="age" value="{{Auth::user()->age}}">
-                                    </div>
-                                </div>
-
-
-                                <div class="form-row mt-3">
-                                    <div class="col-3">
                                         <h5 class="mt-2">Gender:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="gender" value="">
+                                        <input type="text-area " class="form-control" id="inputNumber" name="gender" value="{{Auth::user()->gender->name}}">
 
                                     </div>
                                 </div>
@@ -142,7 +134,7 @@
                                         <h5 class="mt-2">Address:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" value="{{Auth::user()->address}}">
+                                        <input type="text-area " class="form-control" id="inputNumber" name="address" value="{{Auth::user()->address}}">
                                     </div>
                                 </div>
 
@@ -150,46 +142,64 @@
                                     <div class="col-3">
                                         <h5 class="mt-2">Profession:</h5>
                                     </div>
-                                    <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="profession" value="">
-                                    </div>
+{{--                                    @if(count($experiences) >0)--}}
+{{--                                        @foreach($experiences as $experience)--}}
+                                            <div class="col-8">
+                                                <input type="text-area " class="form-control" id="inputNumber" name="job_name" value="{{Auth::user()->job_name}}">
+                                            </div>
+{{--                                        @endforeach--}}
+{{--                                    @endif--}}
                                 </div>
-
                                 <div class="form-row mt-3">
                                     <div class="col-3">
                                         <h5 class="mt-2">Education:</h5>
                                     </div>
+{{--                                    @if(count($educations) >0)--}}
+{{--                                        @foreach($educations as $education)--}}
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="education" value="">
-
+                                        <input type="text-area " class="form-control" id="inputNumber" name="degree" value="{{Auth::user()->degree}}">
                                     </div>
+{{--                                        @endforeach--}}
+{{--                                    @endif--}}
                                 </div>
 
                                 <div class="form-row mt-3">
                                     <div class="col-3">
                                         <h5 class="mt-2">Experience:</h5>
                                     </div>
+{{--                                    @if(count($experiences) >0)--}}
+{{--                                        @foreach($experiences as $experience)--}}
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="experience"  value="">
+                                        <input type="text-area " class="form-control" id="inputNumber" name="all_jobs" value="{{Auth::user()->all_jobs}}">
                                     </div>
+{{--                                        @endforeach--}}
+{{--                                    @endif--}}
                                 </div>
 
                                 <div class="form-row mt-3">
                                     <div class="col-3">
                                         <h5 class="mt-2">Courses:</h5>
                                     </div>
+{{--                                    @if(count($courses) >0)--}}
+{{--                                        @foreach($courses as $course)--}}
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="courses"  value="">
+                                        <input type="text-area " class="form-control" id="inputNumber" name="course"  value="{{Auth::user()->course}}">
                                     </div>
+{{--                                        @endforeach--}}
+{{--                                    @endif--}}
                                 </div>
 
                                 <div class="form-row mt-3">
                                     <div class="col-3">
                                         <h5 class="mt-2">Certificate:</h5>
                                     </div>
+{{--                                    @if(count($certificates) >0)--}}
+{{--                                        @foreach($certificates as $certificate)--}}
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="certificate"  value="">
+                                        <input type="text-area " class="form-control" id="inputNumber" name="certificate"  value="{{Auth::user()->certificate}}">
                                     </div>
+{{--                                        @endforeach--}}
+{{--                                    @endif--}}
                                 </div>
 
                                 <div class="form-row mt-3">
@@ -197,7 +207,7 @@
                                         <h5 class="mt-2">Hourly Rate:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="rate"  value="">
+                                        <input type="text-area " class="form-control" id="inputNumber" name="Hourly_Rate"  value="{{Auth::user()->Hourly_Rate}}">
                                     </div>
                                 </div>
 
@@ -206,7 +216,7 @@
                                         <h5 class="mt-2">Total Projects:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="total_projects"  value="">
+                                        <input type="text-area " class="form-control" id="inputNumber" name="Total_Projects"  value="{{Auth::user()->Total_Projects}}">
                                     </div>
                                 </div>
 
@@ -214,9 +224,13 @@
                                     <div class="col-3">
                                         <h5 class="mt-2">Language:</h5>
                                     </div>
+{{--                                    @if(count($educations) >0)--}}
+{{--                                        @foreach($educations as $education)--}}
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="englishlevel"  value="">
+                                        <input type="text-area " class="form-control" id="inputNumber" name="language" value="{{Auth::user()->language}}">
                                     </div>
+{{--                                        @endforeach--}}
+{{--                                    @endif--}}
                                 </div>
 
                                 <div class="form-row mt-3">
@@ -224,7 +238,7 @@
                                         <h5 class="mt-2">Availability:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="total_projects"  value="">
+                                        <input type="text-area " class="form-control" id="inputNumber" name="Availability"  value="{{Auth::user()->Availability}}">
                                     </div>
                                 </div>
 
@@ -245,13 +259,11 @@
 
 @endsection
 
-{{--@section('more_Js')--}}
-{{--    <script>--}}
-{{--        $(function () {--}}
-{{--            $(".rateYo").rateYo({--}}
-{{--                rating:3.6--}}
-{{--            });--}}
-{{--        });--}}
+@section('more_js')
+    <script>
+        function clickFun() {
+            alert('DONE');
+        }
+    </script>
+@endsection
 
-{{--    </script>--}}
-{{--@endsection--}}
