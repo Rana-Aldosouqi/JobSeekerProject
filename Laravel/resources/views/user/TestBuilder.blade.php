@@ -19,8 +19,8 @@
                             <div class="container">
                                 <form action="/create_test" method="POST">
                                     @csrf
-                                    <ol>
-                                        <li>
+                                    <ol id="ol">
+                                        <li id="li">
                                             <div class="row" style="margin-inline-start: auto;">
                                                 <div class="col-sm">
                                                     <div class="row">
@@ -73,27 +73,29 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-                                        </li>
-                                        </br>
-
                                         <br>
-                                        <div class="col-sm-9">
-                                            <div class="container">
-                                                <div class="row ml-5">
-                                                    <div class="col-sm-2"></div>
-                                                    <button type="button"
-                                                            class="btn btn-primary btn-md btn-block col-sm-3">Add
-                                                        Question</button>
-                                                    <div class="col-sm-2"></div>
-                                                    <a type="submit"
-                                                            class="btn btn-success btn-md btn-block col-sm-3 ">Submit</a>
-                                                    <div class="col-sm-2"></div>
-                                                </div>
+                                            <hr>
+                                        </li>
+                                    </ol>
+                                    </br>
+
+                                    <br>
+                                    <div class="col-sm-9">
+                                        <div class="container">
+                                            <div class="row ml-5">
+                                                <div class="col-sm-2"></div>
+                                                <button type="button" onclick="$('#li').clone().appendTo('#ol');"
+                                                        class="btn btn-primary btn-md btn-block col-sm-3">Add
+                                                    Question</button>
+                                                <div class="col-sm-2"></div>
+                                                <a type="submit"
+                                                   class="btn btn-success btn-md btn-block col-sm-3 ">Submit</a>
+                                                <div class="col-sm-2"></div>
                                             </div>
                                         </div>
-                                        </br>
-                                    </ol>
+                                    </div>
+                                    </br>
+
                                 </form>
                                 <br>
 
