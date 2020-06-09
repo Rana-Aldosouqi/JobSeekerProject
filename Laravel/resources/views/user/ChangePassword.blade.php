@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="password" class="form-control" id="current-password"
-                                       name="current-password" placeholder="Password">
+                                       name="current-password" placeholder="Current Password">
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                         <div class="col-md-8 offset-md-2">
                             <div class="form-group">
                                 <input type="password" class="form-control" id="password"
-                                       name="password" placeholder="Password">
+                                       name="password" placeholder="New Password">
                             </div>
                         </div>
                     </div>
@@ -54,6 +54,19 @@
                             <button type="submit" class="btn btn-primary btn-block"
                                     style="height: 40px;"><b>Submet</b>
                             </button>
+                        </div>
+                    </div>
+                    <div class="form-row mt-3">
+                        <div class="offset-md-2"></div>
+                        <div class="col-8">
+                            @if (Session::has('error'))
+                                <div class="alert alert-danger">
+                                    <p class="m-0">
+                                        {{Session::get('error')}}
+                                    </p>
+                                </div>
+                            @endif
+                            @include('user.shared.errors')
                         </div>
                     </div>
                 </form>

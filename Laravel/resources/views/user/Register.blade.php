@@ -63,6 +63,16 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div class="form-row form-control siz marg">
+                                        <div class="col-6">
+                                            <input type="radio" id="Company" name="user_type" value="Company">
+                                            <label for="Company">Company</label>
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="radio" id="Seeker" name="user_type" value="Seeker">
+                                            <label for="Seeker">Seeker</label>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-sm-12 mb-1">
                                             <button type="submet" class="btn btn-primary btn-md mb-2 mt-2 marg">

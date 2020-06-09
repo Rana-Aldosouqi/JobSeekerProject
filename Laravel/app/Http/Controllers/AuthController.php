@@ -64,6 +64,7 @@ class AuthController extends Controller
             'email' => 'required|email|min:4|max:125|unique:users,email',
             'password' => 'required|min:4|max:100',
             'gender' => '',
+            'user_type'=>'required',
         ];
         $validator = Validator::make($request->all(),$rules);
         if ($validator->fails()){
@@ -80,17 +81,24 @@ class AuthController extends Controller
 //        $newUser-> Gender::create(['Female'=> 'others']);
         $newUser->password = bcrypt($request->get('password'));
         $newUser->gender_id = $request->get('gender');
+        $newUser->user_type = $request->get('user_type');
+
         $newUser->save();
 
         $result = Auth::attempt([
             'username'=>$request->get('username'),
             'password'=>$request->get('password')
         ]);
-        return redirect('/Home');
+
+        if(Auth::user()->user_type == 'Company'){
+            return redirect('/companyprofile');
+        } elseif(Auth::user()->user_type == 'Seeker')
+        {
+            return redirect('/userprofile');
+        }
     }
 
     //ResetPassword
-
     public function passwordResetTokenView()
    {
         if (Auth::check()) {

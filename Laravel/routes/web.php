@@ -160,12 +160,18 @@ Route::get('/color','ResumeBuilderController@getColorView');
 Route::post('/color','ResumeBuilderController@changeColor');
 
 Route::get('/ChangePassword','UserController@getChangePasswordView');
-Route::get('/ChangePassword/{$data}','UserController@changePasswordRules');
 Route::post('/ChangePassword','UserController@ChangePassword');
 
-Route::get('/sendemail', 'SendEmailController@index');
-Route::post('/sendemail/send', 'SendEmailController@send');
+Route::get('/start','OrderController@start');
+Route::post('/start','OrderController@start');
+Route::get('/ship','OrderController@ship');
+Route::post('/ship','OrderController@ship');
+Route::get('/complete','OrderController@complete');
+Route::post('/complete','OrderController@complete');
 
+
+//Route::get('/sendemail', 'SendEmailController@index');
+//Route::post('/sendemail/send', 'SendEmailController@send');
 
 //Route::get('/ResetPassword', 'AuthController@passwordResetTokenView');
 //Route::post('/ResetPassword', 'AuthController@sendPasswordResetToken');
@@ -231,3 +237,7 @@ dd($post->User->username);
 //dd($lang->);
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

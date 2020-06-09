@@ -6,7 +6,9 @@
     <div class="container">
         <div class="card bg-light shadow">
             <div class="card-body">
-                <form method="POST" action="{{url('user.sendemail/send')}}">
+                <form method="POST" action="">
+{{--                      action="{{url('user.sendemail/send')}}"--}}
+
                     @csrf
 
                     <label for="usr" ><h5><u>Forget Password?</u></h5></label>

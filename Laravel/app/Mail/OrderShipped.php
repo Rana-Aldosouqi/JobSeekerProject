@@ -2,24 +2,26 @@
 
 namespace App\Mail;
 
+use http\Env\Request;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendMail extends Mailable
+class OrderShipped extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
+    public $password;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($password)
     {
-        $this->data = $data;
+        $this -> password = $password;
+
     }
 
     /**
@@ -29,9 +31,6 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->from('john@webslesson.info')
-            ->subject('New Customer Equiry')
-            ->view('dynamic_email_template')
-            ->with('data', $this->data);
+        return $this->view('user.emails.ship');
     }
 }
