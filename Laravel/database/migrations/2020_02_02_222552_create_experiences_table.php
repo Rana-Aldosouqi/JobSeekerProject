@@ -17,7 +17,7 @@ class CreateExperiencesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable(true);
             $table->string('job_name')->nullable(false);
-            $table->string('all_jobs')->nullable(true);
+            $table->string('all_jobs',30)->nullable(true);
             $table->string('company')->nullable(false);
             $table->date('start_date')->nullable(true);
             $table->date('end_date')->nullable(true);

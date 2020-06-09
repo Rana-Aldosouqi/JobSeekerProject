@@ -128,32 +128,6 @@ Route::get('/skills', 'ResumeBuilderController@getSkillViewBuilder');
 Route::post('/skills', 'ResumeBuilderController@AddSkill');
 Route::delete('/skills/{id}', 'ResumeBuilderController@deleteSkill');
 
-//Route::resource('skills','SkillController');
-//Route::get('skills', function () {
-//    $data = App\Skill::orderBy('created_at','DESC')
-//        ->where('user_id', Auth::user()->id)->get();
-//    return view('user.ResumeBuilder')->with('data',$data);
-//});
-//Route::get('skills/{skill_id?}',function($skill_id){
-//
-//    $skill = App\Skill::find($skill_id);
-//    return response()->json($skill);
-//});
-//Route::post('skills',function(Request $request){
-//    $skill = App\Skill::create($request->input());
-//    return response()->json($skill);
-//});
-//Route::put('skills/{skill_id?}',function(Request $request,$skill_id){
-//    $skill = App\Skill::find($skill_id);
-//    $skill->skill = $request->skill;
-////    $skill->details = $request->details;
-//    $skill->save();
-//    return response()->json($skill);
-//});
-//Route::delete('skills/{skill_id?}',function($skill_id){
-//    $skill = App\Skill::destroy($skill_id);
-//    return response()->json($skill);
-//});
 Route::get('/education', 'ResumeBuilderController@getEducationViewBuilder');
 Route::post('/education', 'ResumeBuilderController@doEducation');
 Route::delete('/education/{id}', 'ResumeBuilderController@deleteEducation');
@@ -247,10 +221,10 @@ dd($post->User->username);
 //dd($lang->);
 
 });
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
-Auth::routes();
+//Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-=======
->>>>>>> 22420e4884048985c0a5b0685363af6e6005178e
+//Route::get('/home', 'HomeController@index')->name('home');
+//=======
+//>>>>>>> 22420e4884048985c0a5b0685363af6e6005178e
