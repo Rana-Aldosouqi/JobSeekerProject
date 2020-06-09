@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    public $table="posts";
     public function languages(){
         return $this->hasMany(Language::class,'post_id','id');
     }

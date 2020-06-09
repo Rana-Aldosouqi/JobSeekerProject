@@ -17,6 +17,16 @@
 //Route::get('/Home',function (){
 //    return view('user.Home');
 //});
+
+
+//Mohammed-----------------------------------------------------------------------------------------------
+//TestBuilder
+Route::get('/create_test','TestController@index');
+Route::post('/creatE_test','TestController@submit');
+
+//TestQuestions
+Route::get('/test','QuestionController@index');
+//===============================================================================================
 //rana-------------------------------------------------------------------------------------------------------
 use App\Post;
 use App\User;
@@ -237,7 +247,10 @@ dd($post->User->username);
 //dd($lang->);
 
 });
+<<<<<<< HEAD
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+=======
+>>>>>>> 22420e4884048985c0a5b0685363af6e6005178e

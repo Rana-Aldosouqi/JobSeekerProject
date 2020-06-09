@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TestQuestionsTableSeeder extends Seeder
+class SubmitsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,6 @@ class TestQuestionsTableSeeder extends Seeder
      */
     public function run()
     {
-
-        Factory(\App\TestQuestion::class,20)->create();
+        Factory(\App\Submit::class,20)->create();
     }
 }

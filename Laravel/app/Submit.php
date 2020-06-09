@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserAns extends Model
+class Submit extends Model
 {
-    //
+    public $table="submits";
 }
