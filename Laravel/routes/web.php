@@ -21,11 +21,16 @@
 
 //Mohammed-----------------------------------------------------------------------------------------------
 //TestBuilder
-Route::get('/create_test','TestController@index');
-Route::post('/creatE_test','TestController@submit');
+Route::prefix('/test')->middleware(['isCompany'])->group(function (){
+    Route::get('/create/{post_id}','TestController@index')->name('createTest');
+    Route::post('/create','TestController@store')->name('storeTest');
+});
+Route::prefix('/answer')->middleware(['auth'])->group(function (){
+    Route::get('/submit/{test_id}','AnswerController@index')->name('answerExam');
+    Route::post('/submit','AnswerController@store')->name('storeResult');
+});
 
 //TestQuestions
-Route::get('/test','QuestionController@index');
 //===============================================================================================
 //rana-------------------------------------------------------------------------------------------------------
 use App\Post;

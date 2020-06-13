@@ -2,76 +2,55 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Test;
-use App\Question;
-use App\Answer;
+use App\TestQuestion;
+use Illuminate\Http\Request;
+
 class TestController extends Controller
 {
-    public function index()
-    {
-        return view('user.TestBuilder');
+    public function index($id){
+        return view('test.index')->with('post_id',$id);
     }
-
-    public  function submit(Request $request){
-//        $this->validate($request,[
-//            'question'=>'required:questions',
-//            'answer'=>'required:answers'
-//        ]);
-
-        $validator = Validator::make($request->all(), [
-            'question' => 'required|max:255',
-            'ans1' => 'required|max:255',
-            'ans2' => 'required|max:255',
-            'ans3' => 'required|max:255',
-            'ans4' => 'required|max:255',
-            'correct1'=>'required|boolean',
-            'correct2'=>'required|boolean',
-            'correct3'=>'required|boolean',
-            'correct4'=>'required|boolean',
+    public function store(){
+        $validate = request()->validate([
+            '_postID'=>'required',
+            'testName'=>'required',
+            'question'=>'required',
+            'Ans1'=>'required',
+            'Ans2'=>'required',
+            'Ans3'=>'required',
+            'Ans4'=>'required',
+            'correct1'=>'',
+            'correct2'=>'',
+            'correct3'=>'',
+            'correct4'=>''
         ]);
-        if ($validator->fails()){
-            if($validator -> errors() -> first('question') != [])
-            {
 
-            }
-            if($validator -> errors() -> first('ans1') != [])
-            {
+        $test = Test::create(['post_id'=>$validate['_postID'],'name'=>$validate['testName']]);
+        foreach($validate['question'] as $index=>$value){
+            $correct1 = array_key_exists('correct1',$validate)?(array_key_exists($index,$validate['correct1'])?$validate['correct1'][$index]:0):0;
+            $correct2 = array_key_exists('correct2',$validate)?(array_key_exists($index,$validate['correct2'])?$validate['correct2'][$index]:0):0;
+            $correct3 = array_key_exists('correct3',$validate)?(array_key_exists($index,$validate['correct3'])?$validate['correct3'][$index]:0):0;
+            $correct4 = array_key_exists('correct4',$validate)?(array_key_exists($index,$validate['correct4'])?$validate['correct4'][$index]:0):0;
+            $correct1 = strcmp($correct1,'on')==0?1:0;
 
-            }
-            if($validator -> errors() -> first('ans2') != [])
-            {
+            $correct2 = strcmp($correct2,'on')==0?1:0;
 
-            }
-            if($validator -> errors() -> first('ans3') != [])
-            {
-
-            }
-            if($validator -> errors() -> first('ans4') != [])
-            {
-
-            }
-            if($validator -> errors() -> first('correct1') != [])
-            {
-
-            }
-            if($validator -> errors() -> first('correct2') != [])
-            {
-
-            }
-            if($validator -> errors() -> first('correct3') != [])
-            {
-
-            }
-            if($validator -> errors() -> first('correct4') != [])
-            {
-
-            }
+            $correct3 = strcmp($correct3,'on')==0?1:0;
+            $correct4 = strcmp($correct4,'on')==0?1:0;
+            $questionAnswers = [
+                $validate['Ans1'][$index]  => $correct1,
+                $validate['Ans2'][$index]  => $correct2,
+                $validate['Ans3'][$index]  => $correct3,
+                $validate['Ans4'][$index]  => $correct4
+            ];
+            TestQuestion::create([
+                'test_id' => $test->id,
+                'questionHeader' => $value,
+                'answers'=> serialize($questionAnswers)
+            ]);
         }
-        else
-        {
-            $new_test = new Test;
-            $new_test -> post_id = $post_id;
-        }
+        return redirect('/Alljobs');
+
     }
 }

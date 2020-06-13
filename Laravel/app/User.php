@@ -79,11 +79,11 @@ class User extends Authenticatable
     }
     public function test_results()
     {
-        return $this->hasMany(TestResult::class,'user_id','id');
+        return $this->hasMany(UserResult::class,'user_id','id');
     }
     public function user_ans()
     {
-        return $this->hasMany(Answer::class,'user_id','id');
+        return $this->hasMany(UserAnswer::class,'user_id','id');
     }
     public function skills()
     {
@@ -96,6 +96,11 @@ class User extends Authenticatable
     public function passwordresets()
     {
         return $this->hasMany(PasswordReset::class,'user_id','id');
+    }
+
+    //Mohamed
+    public function answers(){
+        return $this->hasMany('App\UserAnswer','user_id');
     }
 }
 
