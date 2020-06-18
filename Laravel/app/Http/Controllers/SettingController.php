@@ -9,6 +9,8 @@ use App\Experience;
 use App\Gender;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 //use Intervention\Image\Facades\Image;
@@ -162,25 +164,30 @@ class SettingController extends Controller
             'certificates'
         ));
     }
-//    public function uploadImage(Request $request)
-//    {
-//        //        Upload image
-//        if ($request->hasFile('image')) {
-//            $image = $request->input(image);
-//            $filename = time() . '-' . $image->getClientOriginalName();
-//            $location = public_path('assets/images/' . $filename);
-//
-//            Image::make($image)->resize(800, 400)->save($location);
-//
-//            $image = new Image();
-//            $image->user_id = Auth::user()->id;
-//            $image->name = $filename;
-//            $image->name = $request->get('image');
-//        } else {
-//            $name = 'noimage.jpg';
-//        }
-//
-//    }
+    public function uploadImage(Request $request)
+    {
+        //        Upload image
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = sha1(time()) . '.' . $image->getClientOriginalExtension();
+
+            //$location = 'images/' . $filename;
+            $isStored = $image->storeAs("assets/uploads", $filename, ["disk" => "public"]);
+            //Image::make($image)->resize(800, 400)->save($location);
+
+            $imageRec = new Image();
+            $imageRec->name = $filename;
+            $imageRec->extension = $image->getClientOriginalExtension();
+            $imageRec->path = "assets/uploads/" . $filename;
+            $imageRec->save();
+
+            $authUser = Auth::user();
+            $authUser->image_id = $imageRec->id;
+            $authUser->save();
+        }
+
+        return redirect("/settingsemployee");
+    }
 //
 //    public function doImage(Request $request)
 //    {

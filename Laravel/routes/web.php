@@ -78,6 +78,7 @@ Route::get('/userprofile','Settingcontroller@received');
 Route::post('/userprofile,SettingController@store');
 Route::get('/settingsemployee','Settingcontroller@getUpdate');
 Route::post('/settingsemployee','Settingcontroller@update');
+Route::post('/settingsemployee/uploadImage','Settingcontroller@uploadImage');
 
 
 //shaimaa---------------------------------------------------------------------------------------------------------------

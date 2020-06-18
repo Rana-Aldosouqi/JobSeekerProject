@@ -79,7 +79,8 @@
                                     <div class="custom-file">
                                         <input type="file" name="image" id="image"
                                                class="custom-file-input">
-                                        <label class="custom-file-label" for="inputGroupFile04">Choose Image</label>
+                                        <label class="custom-file-label"
+                                               for="inputGroupFile04">Choose Image</label>
                                     </div>
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary"
