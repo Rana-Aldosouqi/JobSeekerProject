@@ -23,4 +23,8 @@ class Post extends Model
     {
         return $this->belongsTo(User::class,'user_id','id');
     }
+
+    public function test(){
+        return $this->hasOne('App\Test','post_id');
+    }
 }
