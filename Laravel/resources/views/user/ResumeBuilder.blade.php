@@ -61,18 +61,6 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane{{request()->is('personal') ? 'active' : null}}"
                              id="{{url('personal')}}" role="tabpanel">
-{{--                            <form action="/personal/doUploadImage" method="post" id="imageForm"--}}
-{{--                                  enctype="multipart/form-data">--}}
-{{--                                @csrf--}}
-{{--                                <div class="form-row mt-3 ">--}}
-{{--                                    <div class="col-4 profile-img offset-4">--}}
-{{--                                        <img src=" {{Auth::user()->image ? asset(Auth::user()->image->path): ""}}"/>--}}
-{{--                                        <div class="file btn btn-lg btn-primary">--}}
-{{--                                            Change Photo<input type="file" id="image" name="image"/>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </form>--}}
                             <form action="" method="POST">
                                 @csrf
                                 <div class="row">

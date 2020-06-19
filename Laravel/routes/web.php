@@ -160,8 +160,8 @@ Route::get('/complete','OrderController@complete');
 Route::post('/complete','OrderController@complete');
 
 
-//Route::get('/sendemail', 'SendEmailController@index');
-//Route::post('/sendemail/send', 'SendEmailController@send');
+Route::get('/ForgotPassword', 'ForgotPasswordController@index');
+Route::post('/ForgotPassword/send', 'ForgotPasswordController@send');
 
 //
 //Route::get('/ResetPassword', 'AuthController@passwordResetTokenView');
