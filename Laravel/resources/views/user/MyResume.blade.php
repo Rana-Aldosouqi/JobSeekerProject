@@ -11,7 +11,9 @@
             <div class="row">
                 <div class="col-2">
                     <div class="card">
-                        <img  src="{{asset('/assets/images/images.png')}}" class="card-img rounded">
+{{--                        <img  src="{{asset('/assets/images/images.png')}}" class="card-img rounded">--}}
+                        <img src=" {{Auth::user()->image ? asset(Auth::user()->image->path): ""}}"
+                             class="card-img rounded profile-img" height="140" width="140"/>
                     </div>
                 </div>
                 <div class="col-6">

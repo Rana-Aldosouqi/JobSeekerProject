@@ -13,10 +13,9 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call(ImagesTableSeeder::class);
-
         $this->call(GendersTableSeeder::class);
         $this->call(UsersTableSeeder::class);
-       // $this->call(PasswordResetsTableSeeder::class);
+        $this->call(PasswordResetsTableSeeder::class);
        $this->call(CoursesTableSeeder::class);
         $this->call(CertificatesTableSeeder::class);
         $this->call(EducationsTableSeeder::class);
@@ -26,9 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(LanguagesTableSeeder::class);
         $this->call(PostAppliedsTableSeeder::class);
         $this->call(PaymentsTableSeeder::class);
-
-
-
 
         $this->call(SkillsTableSeeder::class);
         $this->call(ReportsTableSeeder::class);

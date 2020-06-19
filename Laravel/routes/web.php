@@ -119,7 +119,7 @@ Route::get('/MyResume','UserController@getMyResumeView');
 
 Route::get('/ResumeBuilder','ResumeBuilderController@getResumeBuilderView')->name('ResumeBuilder');
 
-Route::post('/personal', 'ResumeBuilderController@doUploadImage');
+//Route::post('/personal/doUploadImage', 'ResumeBuilderController@doUploadImage');
 Route::get('/personal','ResumeBuilderController@getPersonalView');
 Route::post('/personal','ResumeBuilderController@doPersonal');
 
@@ -163,6 +163,7 @@ Route::post('/complete','OrderController@complete');
 //Route::get('/sendemail', 'SendEmailController@index');
 //Route::post('/sendemail/send', 'SendEmailController@send');
 
+//
 //Route::get('/ResetPassword', 'AuthController@passwordResetTokenView');
 //Route::post('/ResetPassword', 'AuthController@sendPasswordResetToken');
 //Route::get('/ResetPasswordSendToken/{token}', 'AuthController@PasswordResetView');
