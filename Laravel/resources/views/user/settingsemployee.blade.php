@@ -99,8 +99,8 @@
                                     </div>
 
                                     <div class="col-8">
-                                        <input type="text" class="form-control" id="inputEmail" name="first_name"
-                                               value="{{Auth::user()->first_name}} ">
+                                        <input type="text" class="form-control" id="inputEmail" name="username"
+                                               value="{{Auth::user()->username}} ">
                                     </div>
                                 </div>
 
@@ -147,72 +147,25 @@
 
                                 <div class="form-row mt-3">
                                     <div class="col-3">
-                                        <h5 class="mt-2">Profession:</h5>
-                                    </div>
-                                    {{--                                    @if(count($experiences) >0)--}}
-                                    {{--                                        @foreach($experiences as $experience)--}}
-                                    <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="job_name"
-                                               value="{{Auth::user()->job_name}}">
-                                    </div>
-                                    {{--                                        @endforeach--}}
-                                    {{--                                    @endif--}}
-                                </div>
-                                <div class="form-row mt-3">
-                                    <div class="col-3">
                                         <h5 class="mt-2">Education:</h5>
                                     </div>
-                                    {{--                                    @if(count($educations) >0)--}}
-                                    {{--                                        @foreach($educations as $education)--}}
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="degree"
-                                               value="{{Auth::user()->degree}}">
+                                        <input type="text-area " class="form-control" id="inputNumber" name="education"
+                                               value="{{Auth::user()->education}}">
                                     </div>
-                                    {{--                                        @endforeach--}}
-                                    {{--                                    @endif--}}
                                 </div>
 
                                 <div class="form-row mt-3">
                                     <div class="col-3">
-                                        <h5 class="mt-2">Experience:</h5>
+                                        <h5 class="mt-2">Profession:</h5>
                                     </div>
-                                    {{--                                    @if(count($experiences) >0)--}}
-                                    {{--                                        @foreach($experiences as $experience)--}}
-                                    <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="all_jobs"
-                                               value="{{Auth::user()->all_jobs}}">
+                                   <div class="col-8">
+                                        <input type="text-area " class="form-control" id="inputNumber" name="profession"
+                                               value="{{Auth::user()->profession}}">
                                     </div>
-                                    {{--                                        @endforeach--}}
-                                    {{--                                    @endif--}}
+
                                 </div>
 
-                                <div class="form-row mt-3">
-                                    <div class="col-3">
-                                        <h5 class="mt-2">Courses:</h5>
-                                    </div>
-                                    {{--                                    @if(count($courses) >0)--}}
-                                    {{--                                        @foreach($courses as $course)--}}
-                                    <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="course"
-                                               value="{{Auth::user()->course}}">
-                                    </div>
-                                    {{--                                        @endforeach--}}
-                                    {{--                                    @endif--}}
-                                </div>
-
-                                <div class="form-row mt-3">
-                                    <div class="col-3">
-                                        <h5 class="mt-2">Certificate:</h5>
-                                    </div>
-                                    {{--                                    @if(count($certificates) >0)--}}
-                                    {{--                                        @foreach($certificates as $certificate)--}}
-                                    <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber"
-                                               name="certificate" value="{{Auth::user()->certificate}}">
-                                    </div>
-                                    {{--                                        @endforeach--}}
-                                    {{--                                    @endif--}}
-                                </div>
 
                                 <div class="form-row mt-3">
                                     <div class="col-3">
@@ -232,20 +185,6 @@
                                         <input type="text-area " class="form-control" id="inputNumber"
                                                name="Total_Projects" value="{{Auth::user()->Total_Projects}}">
                                     </div>
-                                </div>
-
-                                <div class="form-row mt-3">
-                                    <div class="col-3">
-                                        <h5 class="mt-2">Language:</h5>
-                                    </div>
-                                    {{--                                    @if(count($educations) >0)--}}
-                                    {{--                                        @foreach($educations as $education)--}}
-                                    <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="language"
-                                               value="{{Auth::user()->language}}">
-                                    </div>
-                                    {{--                                        @endforeach--}}
-                                    {{--                                    @endif--}}
                                 </div>
 
                                 <div class="form-row mt-3">
