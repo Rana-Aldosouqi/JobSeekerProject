@@ -12,6 +12,7 @@ $factory->define(\App\Course::class, function (Faker $faker) {
 
     return [
         'user_id'=>$userIDs[$randIndex],
-        'name'=>$faker->text(30),
+        'course'=>$faker->text(30),
+        'date'=>$faker->date(),
     ];
 });

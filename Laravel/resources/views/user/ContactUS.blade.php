@@ -1,4 +1,7 @@
 @extends('user.shared.template')
+@section('title')
+    Contact Us
+@endsection
 @section('content')
     <div class="container" style="font-family: 'Permanent Marker', cursive;font-family: 'Alegreya', serif;">
         <div class="row"></div>

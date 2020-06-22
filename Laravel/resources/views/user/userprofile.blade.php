@@ -8,15 +8,18 @@
             <div class="row" style="height:50%;">
                 <div class="col-4">
                     <div class="profile-img">
-                        <img src="{{asset('/assets/images/'. $user->name)}}" class="img-responsive"/>
+                        <img src=" {{Auth::user()->image ? asset(Auth::user()->image->path): ""}}"/>
                     </div>
                 </div>
                 <div class="col-md-6 ">
                     <div class="profile-head">
-
+                        <div>
+                            <h3>{{Auth::user()->username}}</h3>
+                        </div>
                         <br>
-                        <h5 style="color:#004bff">
-                            Web Developer and Designer
+                                <div class="col-md-8" style="color:#004bff;">
+                                    <h5  class="" id="inputEmail" name="profession" >{{Auth::user()->profession}}</h5>
+                                </div>
                         </h5>
                         <br>
                         <div class="form-row">
@@ -29,19 +32,17 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-
-                    <input type="submit" href="#" class="profile-edit-btn" name="btnAddMore" value="Setting"/>
-
+                    <a href="/settingsemployee"><button type="button" class="profile-edit-btn">Setting</button></a>
                 </div>
             </div>
             <div class="row ml-4 pl-2">
                 <div class="col-md-3">
-                    <div class="card bg-light shadow">
+                    <div class="card bg-light shadow mt-3">
                         <div class="card-body text-center">
                             <h5>profile work</h5>
                             <div id="accordion" >
 
-                                <div class="card h6" >
+                                <div class="card h6 " >
                                     <div class="card-header" style="background-color: white !important;">
                                         <a style="color:#004bff ;" data-toggle="collapse" href="#collapseTwo">
                                             Skills
@@ -67,9 +68,8 @@
                                     <div id="collapseThree" class="collapse" data-parent="#accordion">
                                         <div class="card-body">
 
-                                            <input type="file" name="foo" style="width: 84%"/>
-                                            <a href="#"><button type="button" class=" mt-1 btn btn-primary btn-md " >Create CV</button></a>
-                                            <a href="#"><button type="button" class=" mt-1 btn btn-primary btn-md">View CV</button></a>
+                                            <a href="/ResumeBuilder"><button type="button" class=" mt-1 btn btn-primary btn-md " >Create CV</button></a>
+                                            <a href="/MyResume"><button type="button" class=" mt-1 btn btn-primary btn-md">View CV</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@
                                 <label>Name:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                <h5  class="" id="inputEmail"name="first_name" >{{Auth::user()->first_name}}</h5>
+                                <h5  class="" id="inputEmail"name="username">{{Auth::user()->username}} </h5>
                             </div>
                         </div>
 
@@ -106,23 +106,14 @@
                                 <h5  class="" id="inputEmail"name="phone_number" >{{Auth::user()->phone_number}}</h5>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4" >
-                                <label>Age:</label>
-                            </div>
-                            <div class="col-md-8" style="color:#004bff;">
-                                <h5  class="" id="inputEmail"name="age" > </h5>
-                            </div>
-                        </div>
+
 
                         <div class="row">
                             <div class="col-md-4" >
                                 <label>Gender:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-{{--                                @foreach($genders as $gender)--}}
-{{--                                    <p>{{$gender->name}}</p>--}}
-{{--                                @endforeach--}}
+                                <h5  class="" id="inputEmail"name="gender" >{{Auth::user()->gender->name}}</h5>
                             </div>
                         </div>
 
@@ -131,18 +122,7 @@
                                 <label>Address:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                <h5  class="" id="inputEmail"name="address" >{{Auth::user()->address}}</h5>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4" >
-                                <label>Profession:</label>
-                            </div>
-                            <div class="col-md-8" style="color:#004bff;">
-{{--                                @foreach($profession as $experience)--}}
-{{--                                    <p>{{$experience->job_name}}</p>--}}
-{{--                                @endforeach--}}
+                                <h5  class="" id="inputEmail" name="address" >{{Auth::user()->address}}</h5>
                             </div>
                         </div>
 
@@ -151,42 +131,16 @@
                                 <label>Education:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-{{--                                @foreach($educations as $education)--}}
-{{--                                    <p>{{$education->school}}</p>--}}
-{{--                                @endforeach--}}
+                                <h5  class="" id="inputEmail" name="education" >{{Auth::user()->education}}</h5>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4" >
-                                <label>Experience:</label>
+                                <label>Profession:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-{{--                                @foreach($workfield as $experiences)--}}
-{{--                                    <p>{{$experiences->job_name}}</p>--}}
-{{--                                @endforeach--}}
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4" >
-                                <label>Courses:</label>
-                            </div>
-                            <div class="col-md-8" style="color:#004bff;">
-{{--                                @foreach($courses as $course)--}}
-{{--                                    <p>{{$course->name}}</p>--}}
-{{--                                @endforeach--}}
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4" >
-                                <label>Certificate:</label>
-                            </div>
-                            <div class="col-md-8" style="color:#004bff;">
-{{--                                @foreach($certificates as $certificate)--}}
-{{--                                    <p>{{$certificate->name}}</p>--}}
-{{--                                @endforeach--}}
+                                <h5  class="" id="inputEmail" name="profession" >{{Auth::user()->profession}}</h5>
                             </div>
                         </div>
 
@@ -195,9 +149,7 @@
                                 <label>Hourly Rate:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-{{--                                @foreach($rate as $user)--}}
-{{--                                    <p>{{$user->rating}}</p>--}}
-{{--                                @endforeach--}}
+                                <h5  class="" id="inputEmail"name="Hourly_Rate" >{{Auth::user()->Hourly_Rate}}</h5>
                             </div>
                         </div>
                         <div class="row">
@@ -205,27 +157,16 @@
                                 <label>Total Projects:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-{{--                                @foreach($totalproject as $experience)--}}
-{{--                                    <p>{{$experience->$total_projects}}</p>--}}
-{{--                                @endforeach--}}
+                                <h5  class="" id="inputEmail"name="Total_Projects" >{{Auth::user()->Total_Projects}}</h5>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4" >
-                                <label>Language:</label>
-                            </div>
-                            <div class="col-md-8" style="color:#004bff;">
-{{--                                @foreach($englishlevel as $language)--}}
-{{--                                    <p>{{$language->$english_level}}</p>--}}
-{{--                                @endforeach--}}
-                            </div>
-                        </div>
+
                         <div class="row">
                             <div class="col-md-4" >
                                 <label>Availability:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                <p>6 months</p>
+                                <h5  class="" id="inputEmail" name="Availability" >{{Auth::user()->Availability}}</h5>
                             </div>
                         </div>
 

@@ -1,4 +1,8 @@
+
 @extends('user.shared.template')
+@section('title')
+    MyResume
+@endsection
 @section('content')
     <div class="jumbotron jumbotron-fluid pb-5 shadow-sm" style="background: {{Auth::user()->color}};
          font-family: 'Permanent Marker', cursive;
@@ -7,7 +11,9 @@
             <div class="row">
                 <div class="col-2">
                     <div class="card">
-                        <img  src="{{asset('/assets/images/images.png')}}" class="card-img rounded">
+{{--                        <img  src="{{asset('/assets/images/images.png')}}" class="card-img rounded">--}}
+                        <img src=" {{Auth::user()->image ? asset(Auth::user()->image->path): ""}}"
+                             class="card-img rounded profile-img" height="140" width="140"/>
                     </div>
                 </div>
                 <div class="col-6">
@@ -23,7 +29,7 @@
                 <div class="col-2"><p class="h6">{{Auth::user()->phone_number}}</p></div>
                 <div class="col-2"></div>
                 <div class="col-1"><p class="h6">Linkedin</p></div>
-                <div class="col-2"><p class="h6">{{Auth::user()->linkedin_url}}</p></div>
+                <div class="col-5"><p class="h6">{{Auth::user()->linkedin_url}}</p></div>
 
             </div>
             <div class="row">
@@ -44,6 +50,8 @@
                 <div class="col-2"><p class="h6">Address</p></div>
                 <div class="col-2"><p class="h6">Address One</p></div>
                 <div class="col-2"></div>
+                <div class="col-1"><P class="h6">Ask</P></div>
+                <div class="col-5"><p class="h6">{{Auth::user()->ask_url}}</p></div>
             </div>
             <div class="row">
                 <div class="col-2"><P class="h6">Birth Date</P></div>
@@ -63,41 +71,30 @@
                 <div class="row">
                     <p class="h4">Skills</p>
                 </div>
-                <div class="row">
-                    <div class="col-4">
-                        <ul class="ml-0">
-                            <li><p class="h5"></p></li>
-                            <li><p class="h5">Time Management</p></li>
-                            <li><p class="h5">TeamWork</p></li>
-                        </ul>
-                    </div>
-                    <div class="col-3">
+                @if(count($skills) > 0)
+                    @foreach($skills as $skill)
                         <div class="row">
-                            <span class="fa fa-star" style="color: orange;"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                            <div class="col-4">
+                                <ul class="ml-0">
+                                    <li><p class="h5">{{$skill->skill}}</p></li>
+                                </ul>
+                            </div>
+{{--                            <div class="col-3">--}}
+{{--                                <div class="row">--}}
+{{--                                    <span class="fa fa-star" style="color: orange;"></span>--}}
+{{--                                    <span class="fa fa-star"></span>--}}
+{{--                                    <span class="fa fa-star"></span>--}}
+{{--                                    <span class="fa fa-star"></span>--}}
+{{--                                    <span class="fa fa-star"></span>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
-                        <div class="row mt-3">
-                            <span class="fa fa-star" style="color: orange;"></span>
-                            <span class="fa fa-star" style="color: orange;"></span>
-                            <span class="fa fa-star" style="color: orange;"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        </div>
-                        <div class="row mt-3">
-                            <span class="fa fa-star" style="color: orange;"></span>
-                            <span class="fa fa-star" style="color: orange;"></span>
-                            <span class="fa fa-star" style="color: orange;"></span>
-                            <span class="fa fa-star" style="color: orange;"></span>
-                            <span class="fa fa-star"></span>
-                        </div>
-                    </div>
-
+                    @endforeach
+                @else
+                    <div class="row"></div>
+                @endif
                 </div>
             </div>
-        </div>
         <div class="row ml-3 mb-5">
             <div class="col-1">
                 <p class="bg-dark" style="transform: rotate(45deg); height: 20px; width:20px;"></p>
@@ -107,26 +104,30 @@
                 <div class="row">
                     <p class="h4">Work Experience</p>
                 </div>
-                @foreach($data as $experience)
-                    <div class="row mb-3">
-                        <div class="col-3 mr-0">
-                            <div class="row">
-                                <p class="h5" style="color:#b3b7bb;">
-                                    <span class="h6" style="color: white">To &nbsp; &nbsp;</span>
-                                    {{$experience->start_date}}</p>
+                @if(count($experiences) > 0)
+                    @foreach($experiences as $experience)
+                        <div class="row mb-3">
+                            <div class="col-3 mr-0">
+                                <div class="row">
+                                    <p class="h5" style="color:#b3b7bb;">
+                                        <span class="h6" style="color: white">To &nbsp; &nbsp;</span>
+                                        {{$experience->start_date}}</p>
+                                </div>
+                                <div class="row">
+                                    <p class="h5">
+                                        <span class="h6">To &nbsp; &nbsp;</span>
+                                        {{$experience->end_date}}</p>
+                                </div>
                             </div>
-                            <div class="row">
-                                <p class="h5" style="color:#b3b7bb;">
-                                    <span class="h6">To &nbsp; &nbsp;</span>
-                                    {{$experience->end_date}}</p>
+                            <div class="col-9 ml-0">
+                                <p class="h5"><b>{{$experience->job_name}}</b></p>
+                                <p class="h6">{{$experience->company}}</p>
                             </div>
                         </div>
-                        <div class="col-9 ml-0">
-                            <p class="h5" style="color:#b3b7bb;"><b>{{$experience->job_name}}</b></p>
-                            <p class="h6" style="color:#b3b7bb;">{{$experience->company}}</p>
-                        </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @else
+                        <div class="row"></div>
+                @endif
             </div>
         </div>
         <div class="row ml-3 mb-5">
@@ -138,62 +139,31 @@
                 <div class="row">
                     <p class="h4">Education History</p>
                 </div>
-                @foreach($data as $eduction)
-                    <div class="row mt-3">
-                        <div class="col-3 mr-0">
-                            <div class="row">
-                                <p class="h5" style="color:#b3b7bb;">
-                                    <span class="h6" style="color: white">To &nbsp; &nbsp;</span>
-                                    {{$eduction->start_date}}</p>
-                                </p>
+                @if(count($educations)>0)
+                    @foreach($educations as $eduction)
+                        <div class="row mt-3">
+                            <div class="col-3 mr-0">
+                                <div class="row">
+                                    <p class="h5">
+                                        <span class="h6" style="color: white">To &nbsp; &nbsp;</span>
+                                        {{$eduction->start_date}}</p>
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <p class="h5">
+                                        <span class="h6">To &nbsp; &nbsp;</span>
+                                        {{$eduction->end_date}}</p>
+                                </div>
                             </div>
-                            <div class="row">
-                                <p class="h5" style="color:#b3b7bb;">
-                                <span class="h6">To &nbsp; &nbsp;</span>
-                                {{$eduction->end_date}}</p>
+                            <div class="col-9 ml-0">
+                                <p class="h5" style="color:#b3b7bb;"><b>{{$eduction->school}}</b></p>
+                                <p class="h6" style="color:#b3b7bb;">{{$eduction->degree}}</p>
                             </div>
                         </div>
-                        <div class="col-9 ml-0">
-                            <p class="h5" style="color:#b3b7bb;"><b>{{$eduction->school}}</b></p>
-                            <p class="h6" style="color:#b3b7bb;">{{$eduction->degree}}</p>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-        <div class="row ml-3 mb-5">
-            <div class="col-1">
-                <p class="bg-dark" style="transform: rotate(45deg); height: 20px; width:20px;"></p>
-{{--                <p style="border-right: 3px solid #3b3a36; height: 150px;"></p>--}}
-            </div>
-            <div class="col-11">
-                <div class="row">
-                    <p class="h4">Certificate</p>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-2 mr-0">
-                        <div class="row">
-                            <p class="h5" style="color:#b3b7bb;">dd/mm/yy-</p>
-                        </div>
-                        <div class="row">
-                            <p class="h5" style="color:#b3b7bb;">current</p>
-                        </div>
-                    </div>
-                    <div class="col-10 ml-0">
-                        <p class="h5" style="color:#b3b7bb;"><b>Certificate One</b></p>
-                        <p class="h6" style="color:#b3b7bb;">Degree &nbsp; - Address One</p>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-2 mr-0">
-                        <div class="row">
-                            <p class="h5" style="color:#b3b7bb;">dd/mm/yy-</p>
-                        </div>
-                        <div class="row">
-                            <p class="h5" style="color:#b3b7bb;">dd/mm/yy</p>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @else
+                    <div class="row mt-3"></div>
+                @endif
             </div>
         </div>
         <div class="row ml-3 mb-5">
@@ -205,30 +175,55 @@
                 <div class="row">
                     <p class="h4">Courses</p>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-2 mr-0">
-                        <div class="row">
-                            <p class="h5" style="color:#b3b7bb;">dd/mm/yy-</p>
+                @if(count($courses) > 0)
+                    @foreach($courses as $course)
+                        <div class="row mt-3">
+                            <div class="col-3 mr-0">
+                                <div class="row">
+                                    <p class="h5">
+                                        <span class="h6" > &nbsp; &nbsp;</span>
+                                        {{$course->date}}</p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-9 ml-0">
+                                <p class="h5"> {{$course->course}}</p>
+                            </div>
                         </div>
-                        <div class="row">
-                            <p class="h5" style="color:#b3b7bb;">current</p>
-                        </div>
-                    </div>
-                    <div class="col-10 ml-0">
-                        <p class="h5" style="color:#b3b7bb;"><b>Course One</b></p>
-                        <p class="h6" style="color:#b3b7bb;">Degree &nbsp; - Address One</p>
-                    </div>
+                    @endforeach
+                @else
+                    <div class="row mt-3"></div>
+                @endif
+            </div>
+        </div>
+        <div class="row ml-3 mb-5">
+            <div class="col-1">
+                <p class="bg-dark" style="transform: rotate(45deg); height: 20px; width:20px;"></p>
+                {{--                <p style="border-right: 3px solid #3b3a36; height: 150px;"></p>--}}
+            </div>
+            <div class="col-11">
+                <div class="row">
+                    <p class="h4">Certificate</p>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-2 mr-0">
-                        <div class="row">
-                            <p class="h5" style="color:#b3b7bb;">dd/mm/yy-</p>
+                @if(count($certificates) > 0)
+                    @foreach($certificates as $certificate)
+                        <div class="row mt-3">
+                            <div class="col-3 mr-0">
+                                <div class="row">
+                                    <p class="h5">
+                                        <span class="h6" style="color: white"> &nbsp; &nbsp;</span>
+                                        {{$certificate->date}}</p>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-9 ml-0">
+                                <p class="h5"> {{$certificate->certificate}}</p>
+                            </div>
                         </div>
-                        <div class="row">
-                            <p class="h5" style="color:#b3b7bb;">dd/mm/yy</p>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @else
+                    <div class="row mt-3"></div>
+                @endif
             </div>
         </div>
     </div>

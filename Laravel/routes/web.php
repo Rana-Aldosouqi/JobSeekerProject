@@ -17,9 +17,26 @@
 //Route::get('/Home',function (){
 //    return view('user.Home');
 //});
+
+
+//Mohammed-----------------------------------------------------------------------------------------------
+//TestBuilder
+Route::prefix('/test')->middleware(['isCompany'])->group(function (){
+    Route::get('/create/{post_id}','TestController@index')->name('createTest');
+    Route::post('/create','TestController@store')->name('storeTest');
+});
+Route::prefix('/answer')->middleware(['auth'])->group(function (){
+    Route::get('/submit/{test_id}','AnswerController@index')->name('answerExam');
+    Route::post('/submit','AnswerController@store')->name('storeResult');
+});
+
+//TestQuestions
+//===============================================================================================
 //rana-------------------------------------------------------------------------------------------------------
 use App\Post;
 use App\User;
+//use Illuminate\Support\Facades\Auth;
+
 
 Route::get('/index','PostController@getPostView');
 Route::Post('/index','PostController@doPost');
@@ -66,6 +83,7 @@ Route::get('/userprofile','Settingcontroller@received');
 Route::post('/userprofile,SettingController@store');
 Route::get('/settingsemployee','Settingcontroller@getUpdate');
 Route::post('/settingsemployee','Settingcontroller@update');
+Route::post('/settingsemployee/uploadImage','Settingcontroller@uploadImage');
 
 
 //shaimaa---------------------------------------------------------------------------------------------------------------
@@ -93,75 +111,64 @@ Route::get('/vol','postscontroller@doVolanteer');
 //Eman
 Route::get('/Login','AuthController@getLoginView')->name('login');
 Route::post('/Login','AuthController@doLogin');
+
 Route::get('/Register','AuthController@getRegisterView');
 Route::post('/Register','AuthController@doRegistration');
-Route::get('/Logout','AuthController@doLogout');
 
-Route::get('/MyResume','UserController@getMyResumeView');
-Route::get('/MyResume','UserController@getExperienceView');
-Route::get('/MyResume','UserController@getEductionView');
+Route::get('/Logout','AuthController@doLogout');
 
 Route::get('/ContactUs','ContactUsController@getContactUSView');
 Route::post('/ContactUs','ContactUsController@doContact');
 
-Route::get('/ResumeBuilder','UserController@getResumeBuilderView')->name('ResumeBuilder');
+Route::get('/MyResume','UserController@getMyResumeView');
 
-Route::get('/personal',function (){
-    return view ('user.ResumeBuilder');
-});
-//Route::post('/personal', 'UserController@doUploadImage');
-Route::post('/personal','UserController@doPersonal');
+Route::get('/ResumeBuilder','ResumeBuilderController@getResumeBuilderView')->name('ResumeBuilder');
 
-Route::get('/social',function (){
-    return view ('user.ResumeBuilder');
-});
-Route::post('/social','UserController@doSocial');
+//Route::post('/personal/doUploadImage', 'ResumeBuilderController@doUploadImage');
+Route::get('/personal','ResumeBuilderController@getPersonalView');
+Route::post('/personal','ResumeBuilderController@doPersonal');
 
-Route::get('/experiences',function (){
-    return view ('user.ResumeBuilder');
-});
-Route::post('/experiences','UserController@doExperience');
+Route::get('/social','ResumeBuilderController@getSocialView');
+Route::post('/social','ResumeBuilderController@doSocial');
 
-Route::get('/skills',function (){
-    return view ('user.ResumeBuilder');
-});
-Route::get("/skills","UserController@getSkillView");
-Route::post("/skills","UserController@addSkill");
-//Route::get('/skills', 'UserController@index');
-//Route::post('/skills/insert', 'UserController@insert')->name('skills.insert');
+Route::get('/experiences', 'ResumeBuilderController@getExperienceViewBuilder');
+Route::post('/experiences','ResumeBuilderController@doExperience');
+Route::delete('/experiences/{id}', 'ResumeBuilderController@deleteExperience');
 
-//Route::post('/skills','UserController@addSkill');
+Route::get('/skills', 'ResumeBuilderController@getSkillViewBuilder');
+Route::post('/skills', 'ResumeBuilderController@AddSkill');
+Route::delete('/skills/{id}', 'ResumeBuilderController@deleteSkill');
 
-Route::get('/education',function (){
-    return view ('user.ResumeBuilder');
-});
-Route::post('/education','UserController@doEducation');
+Route::get('/education', 'ResumeBuilderController@getEducationViewBuilder');
+Route::post('/education', 'ResumeBuilderController@doEducation');
+Route::delete('/education/{id}', 'ResumeBuilderController@deleteEducation');
 
+Route::get('/courses', 'ResumeBuilderController@getCourseViewBuilder');
+Route::post('/courses', 'ResumeBuilderController@AddCourse');
+Route::delete('/courses/{id}', 'ResumeBuilderController@deleteCourse');
 
-//Route::get('/ResumeBuilder/experiences/{id}','UserController@getExperienceView');
-//Route::get('/ResumeBuilder/skills/{id}','UserController@getSkillView');
-//Route::get('/ResumeBuilder/education/{id}','UserController@getEducationView');
-//Route::get('/ResumeBuilder/courses/{id}','UserController@getCourseView');
-//Route::get('/ResumeBuilder/certificates/{id}','UserController@getCertificateView');
-//Route::get('/ResumeBuilder/color/{id}','UserController@getColorView');
+Route::get('/certificates', 'ResumeBuilderController@getCertificateViewBuilder');
+Route::post('/certificates', 'ResumeBuilderController@AddCertificate');
+Route::delete('/certificates/{id}', 'ResumeBuilderController@deleteCertificate');
 
+Route::get('/color','ResumeBuilderController@getColorView');
+Route::post('/color','ResumeBuilderController@changeColor');
 
+Route::get('/ChangePassword','UserController@getChangePasswordView');
+Route::post('/ChangePassword','UserController@ChangePassword');
 
-Route::get('/courses',function (){
-    return view ('user.ResumeBuilder');
-});
-Route::get('/certificates',function (){
-    return view ('user.ResumeBuilder');
-});
-Route::get('/color',function (){
-    return view ('user.ResumeBuilder');
-});
-Route::post('/color','UserController@changeColor');
-
-Route::get('/sendemail', 'SendEmailController@index');
-Route::post('/sendemail/send', 'SendEmailController@send');
+Route::get('/start','OrderController@start');
+Route::post('/start','OrderController@start');
+Route::get('/ship','OrderController@ship');
+Route::post('/ship','OrderController@ship');
+Route::get('/complete','OrderController@complete');
+Route::post('/complete','OrderController@complete');
 
 
+Route::get('/ForgotPassword', 'ForgotPasswordController@index');
+Route::post('/ForgotPassword/send', 'ForgotPasswordController@send');
+
+//
 //Route::get('/ResetPassword', 'AuthController@passwordResetTokenView');
 //Route::post('/ResetPassword', 'AuthController@sendPasswordResetToken');
 //Route::get('/ResetPasswordSendToken/{token}', 'AuthController@PasswordResetView');
@@ -226,3 +233,10 @@ dd($post->User->username);
 //dd($lang->);
 
 });
+//<<<<<<< HEAD
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+//=======
+//>>>>>>> 22420e4884048985c0a5b0685363af6e6005178e

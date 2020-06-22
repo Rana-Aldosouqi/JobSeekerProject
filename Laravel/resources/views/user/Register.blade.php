@@ -1,8 +1,10 @@
-
 @section('more_css')
     <link rel="stylesheet" href="{{asset('/assets/css/style_regist.css')}}">
     @endsection
 @extends('user.shared.template')
+@section('title')
+    Register
+@endsection
 @section('content')
     <div class="container">
         <div class="row mt-5"></div>
@@ -60,6 +62,16 @@
                                                 @endif
                                             @endforeach
                                         </select>
+                                    </div>
+                                    <div class="form-row form-control siz marg">
+                                        <div class="col-6">
+                                            <input type="radio" id="Company" name="user_type" value="Company">
+                                            <label for="Company">Company</label>
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="radio" id="Seeker" name="user_type" value="Seeker">
+                                            <label for="Seeker">Seeker</label>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 mb-1">

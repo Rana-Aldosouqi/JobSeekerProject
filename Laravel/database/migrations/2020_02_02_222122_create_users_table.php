@@ -45,6 +45,8 @@ class CreateUsersTable extends Migration
             $table->string('Hourly_Rate',100)->nullable(true);
             $table->string('Availability',100)->nullable(true);
             $table->date('foundation_date')->nullable(true);
+            $table->string('profession',100)->nullable(true);
+            $table->string('education',100)->nullable(true);
             $table->timestamps();
 
 

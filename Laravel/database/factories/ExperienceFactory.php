@@ -13,6 +13,7 @@ $factory->define(\App\Experience::class, function (Faker $faker) {
         'user_id'=>$userIDs[$randIndex],
         'company'=>$faker->company,
         'job_name'=>$faker->jobTitle,
+         'all_jobs'=>$faker->text(30),
         'start_date'=>$faker->date(),
         'end_date'=>$faker->date()
 
