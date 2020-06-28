@@ -25,10 +25,12 @@ class CreateUsersTable extends Migration
             $table->date('birth_date')->nullable(true);
             $table->integer('age')->nullable(true);
             $table->string('address')->nullable(true);
-            $table->boolean('is_admin')->nullable(true)->default(false);
+            $table->boolean('is_admin')->default(false);
             $table->string('user_type',7)->nullable(true);
             $table->string('color')->nullable(true)->default('lightblue');
             $table->string('phone_number',20)->nullable(true);
+            $table->timestamp('last_activity')->nullable(true);
+            $table->boolean('active')->default(false);
             $table->string('military_service',8)->nullable(true);
             $table->date('serve_time')->nullable(true);
             $table->string('facebook_url')->nullable(true);
@@ -70,5 +72,6 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+
     }
 }

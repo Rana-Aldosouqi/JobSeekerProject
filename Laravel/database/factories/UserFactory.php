@@ -28,6 +28,8 @@ $factory->define(\App\User::class, function (Faker $faker) {
         'user_type'=>$faker->randomElement(['']),
         'color'=>null,
         'phone_number'=>$faker->e164PhoneNumber,
+        'last_activity'=>$faker->date(),
+        'active'=>$faker->boolean,
         'military_service'=>$faker->text(8),
         'serve_time'=>$faker->date(),
         'facebook_url'=>$faker->url,

@@ -34,6 +34,7 @@ class CreatePostsTable extends Migration
             $table->date('date_end_at')->nullable(true);
             $table->unsignedInteger('time_start_at')->nullable(true);
             $table->unsignedInteger('time_end_at')->nullable(true);
+            $table->boolean('published')->default(false);
             $table->timestamps();
 
             $table->foreign('user_id')

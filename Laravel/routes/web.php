@@ -163,6 +163,34 @@ Route::post('/complete','OrderController@complete');
 Route::get('/ForgotPassword', 'ForgotPasswordController@index');
 Route::post('/ForgotPassword/send', 'ForgotPasswordController@send');
 
+Route::group( [ 'middleware' => 'auth' , 'admin'] , function () {
+    Route::get('/DashBoard','DashBoardController@getDashBoardView')->name('DashBoard');
+    Route::get('/adminHome', 'DashBoardController@getHomeForAdminView');
+
+    Route::get('/adminProfile', 'DashBoardController@getProfileForAdminView');
+
+//    Route::get('/DashBoard/uploadAdminImage', 'DashBoardController@uploadAdminImage');
+    Route::get('/adminSettings', 'DashBoardController@getSettingsForAdminView');
+    Route::post('/adminSettings', 'DashBoardController@updateAdminProfile');
+
+    Route::delete('/adminUsers/{id}', 'DashBoardController@deleteJustUser');
+
+
+    Route::get('/adminPosts', 'DashBoardController@getPostsForAdminView');
+    Route::delete('/adminPosts/{id}', 'DashBoardController@deletePost');
+    Route::get('/adminUsers', 'DashBoardController@getUsersForAdminView');
+
+    Route::get('/feedbacks', 'DashBoardController@getFeedbackForAdminView');
+    Route::delete('/feedbacks/{id}', 'DashBoardController@deleteFeedback');
+    Route::post('/feedbacks/{id}', 'DashBoardController@publishFeedback');
+
+    Route::get('/adminReports', 'DashBoardController@getReportForAdminView');
+    Route::delete('/adminReports/{id}/{user_id}', 'DashBoardController@deleteUser');
+    Route::delete('/adminReports/{id}', 'DashBoardController@deleteReport');
+//    Route::post('/DashBoard', 'DashBoardController@checkActiveUser');
+});
+
+
 //
 //Route::get('/ResetPassword', 'AuthController@passwordResetTokenView');
 //Route::post('/ResetPassword', 'AuthController@sendPasswordResetToken');
