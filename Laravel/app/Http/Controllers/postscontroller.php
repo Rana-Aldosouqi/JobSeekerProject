@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validate;
 use App\User;
+use App\PostApplied;
 use App\Post;
 use App\Experience;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
 use Carbon;
 class postscontroller extends Controller
@@ -20,6 +22,7 @@ class postscontroller extends Controller
     {
         $user = Auth::User();
             return view('user.companyprofile');
+
         }
 
     public function doGetProfile(Request $request)
@@ -38,9 +41,19 @@ class postscontroller extends Controller
         $user->foundation_date = $request->get('foundation_date');
         $user->description = $request->get('description');
 
+
+
+
         return redirect('/setting');
     }
+    //notifications
 
+    public function create()
+    {
+         $tables=PostApplied::all();
+
+        return view('user.companyprofile',compact('tables'));
+    }
 
 
 
@@ -68,13 +81,25 @@ class postscontroller extends Controller
         $user->Availability = $request->get('Availability');
         $user->description = $request->get('description');
 
-        $user->save();
+        if ($request->hasFile('name')) {
+            $name = $request->input(name);
+            $filename = time() .'-'. $name->getClientOriginalName();
+            $location = public_path('assets/images/'.$filename);
 
+            Image::make($name)->resize(800, 400)->save($location);
+
+            $user->name = $filename;
+
+        } else {
+            $name = 'images.png';
+        }
+
+        $user->save();
         $result = Auth::attempt([
             'username' => $request->get('username'),
             'password' => $request->get('password')
         ]);
-        return redirect('/setting');
+        return redirect('/companyprofile');
     }
 
 
@@ -127,10 +152,6 @@ class postscontroller extends Controller
         return redirect("/vol")->with(['status' => 'Posting Success']);
 
     }
-
-
-
-
 
 }
 

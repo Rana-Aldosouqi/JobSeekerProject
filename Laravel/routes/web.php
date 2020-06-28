@@ -88,18 +88,23 @@ Route::post('/settingsemployee/uploadImage','Settingcontroller@uploadImage');
 
 //shaimaa---------------------------------------------------------------------------------------------------------------
 
+//for comp prof
 Route::get('/companyprofile','postscontroller@getProfile')->name('shared.index');
 Route::post('/companyprofile','postscontroller@doGetProfile')->name('shared.store');
 
+//for notif
+Route::get('/companyprofile','postscontroller@create');
+Route::post('/companyprofile','postscontroller@show');
+
+
+//sett
 Route::get('/setting','postscontroller@getUpdateView');
 Route::post('/setting','postscontroller@doUpdate');
 
-
+//vol
 Route::get('/volform','postscontroller@getVolanteerformView');
 Route::post('/volform','postscontroller@doVolanteerform');
 Route::get('/vol','postscontroller@getVolanteerView');
-
-
 Route::get('/vol','postscontroller@doVolanteer');
 
 
