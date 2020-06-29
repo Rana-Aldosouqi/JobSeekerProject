@@ -25,9 +25,11 @@ $factory->define(\App\User::class, function (Faker $faker) {
         'age'=>$faker->randomDigit,
         'address'=>$faker->text(100),
         'is_admin'=>$faker->boolean,
-        'user_type'=>$faker->text(7),
-        'color'=>$faker->hexcolor,
+        'user_type'=>$faker->randomElement(['']),
+        'color'=>null,
         'phone_number'=>$faker->e164PhoneNumber,
+        'last_activity'=>$faker->date(),
+        'active'=>$faker->boolean,
         'military_service'=>$faker->text(8),
         'serve_time'=>$faker->date(),
         'facebook_url'=>$faker->url,
@@ -37,7 +39,17 @@ $factory->define(\App\User::class, function (Faker $faker) {
         'Latitude'=>$faker->longitude,
         'longitude'=>$faker->latitude,
         'description'=>$faker->text(100),
-        'rating'=>$faker->randomDigit
+        'rating'=>$faker->randomDigit,
+        'work_field'=>$faker->text(30),
+        'Work_Times'=>$faker->date(),
+        'foundation_date'=>$faker->date(),
+        'Hourly_Rate'=>$faker->date(),
+        'Total_Projects'=>$faker->date(),
+        'Availability'=>$faker->date(),
+        'profession'=>$faker->text(100),
+        'education'=>$faker->text(100)
 
     ];
 });
+
+

@@ -1,4 +1,7 @@
 @extends('user.shared.template')
+@section('title')
+    Contact Us
+@endsection
 @section('content')
     <div class="container" style="font-family: 'Permanent Marker', cursive;font-family: 'Alegreya', serif;">
         <div class="row"></div>
@@ -23,6 +26,7 @@
                                                <div class="form-group">
                                                    <input type="text" id="disabledTextInput" class="form-control"
                                                       value="{{Auth::user()->username}}"  placeholder="name" name="name">
+{{--                                                   <input value="false" name="published" hidden/>--}}
                                                </div>
                                            </div>
                                        </div>
@@ -46,6 +50,7 @@
                                                <div class="form-group">
                                                    <input type="text" id="disabledTextInput" class="form-control"
                                                           placeholder="name" name="name">
+{{--                                                   <input value="false" name="published" hidden/>--}}
                                                </div>
                                            </div>
                                        </div>

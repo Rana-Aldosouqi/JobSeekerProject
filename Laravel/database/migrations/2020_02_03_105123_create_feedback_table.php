@@ -19,6 +19,7 @@ class CreateFeedbackTable extends Migration
             $table->string('name')->nullable(true);
             $table->string('email')->nullable(true);
             $table->text('message')->nullable(true);
+            $table->boolean('published')->default(false);
             $table->timestamps();
 
             $table->foreign('user_id')

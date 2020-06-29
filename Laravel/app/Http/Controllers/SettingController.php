@@ -4,89 +4,93 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Intervention\Image\Facades\Image;
 use App\User;
+use App\Image;
 
 
 
 
 class SettingController extends Controller
 {
-    public function store(Request $request , $user) {
-
-        $request->validate(['title' => 'bail|required|min:3', 'body' => 'required', 'photo' => 'image|mimes:jpeg,png,jpg|max:2048', 'first_name' => 'required', 'email'
-        =>'required', 'phone_number' => 'required' , 'address' =>'required']);
+    public function store(Request $request , $user  ) {
 
         $user = Auth::User();
         $user->first_name=$request->get('first_name');
+        $user->username=$request->get('username');
         $user->email=$request->get('email');
         $user->phone_number=$request->get('phone_number');
-        //$user->age=$request->get('age');
         $user->address=$request->get('address');
-      
+        $user->Hourly_Rate = $request->get('Hourly_Rate');
+        $user->Availability = $request->get('Availability');
+        $user->Total_Projects = $request->get('Total_Projects');
+        $user->education= $request->get('education');
+        $user->profession = $request->get('profession');
 
+        return redirect('/settingsemployee');
 
-        //Upload image
-        if ($request->hasFile('name')) {
-            $name = $request->input(name);
-            $filename = time() .'-'. $name->getClientOriginalName();
-            $location = public_path('assets/images/'.$filename);
-
-            Image::make($name)->resize(800, 400)->save($location);
-
-            $user->name = $filename;
-
-        } else {
-            $name = 'noimage.jpg';
-        }
-
-
-
-        $user->save($request->all());
-
- 
-        return redirect('/userprofile');
     }
-
-
-
     public function received()
     {
-        $user = Auth::User();
-    
         return view('user.userprofile');
-        
     }
 
 
-    public function getUpdate()
-    {
-        return view('user.settingsemployee');
-    }
+    //setting
 
 
-    public function update(Request$request,$id){
-
-        $user_id= Auth::user()->id;
+    public function update(Request $request){
+        $request->validate(['email'=> 'required','phone_number'=> 'required']);
         $user = Auth::User();
         $user->first_name=$request->get('first_name');
+        $user->username=$request->get('username');
         $user->email=$request->get('email');
         $user->phone_number=$request->get('phone_number');
-       // $user->age= $request->get('age');
         $user->address= $request->get('address');
+        $user->Hourly_Rate = $request->get('Hourly_Rate');
+        $user->Availability = $request->get('Availability');
+        $user->Total_Projects = $request->get('Total_Projects');
+        $user->education = $request->get('education');
+        $user->profession = $request->get('profession');
         $user->save();
 
         $result = Auth::attempt([
             'username' => $request->get('username'),
-            'password' => $request->get('password'),
-            'email' => $request->get('email'),
-            'phone_number' => $request->get('phone_number'),
-            'address' => $request->get('address')
+            'password' => $request->get('password')
         ]);
         return redirect('/settingsemployee');
 
+    }
+    public function getUpdate()
+    {
+        return view('/user.settingsemployee');
+    }
+    public function uploadImage(Request $request)
+    {
+        //        Upload image
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = sha1(time()) . '.' . $image->getClientOriginalExtension();
+
+            //$location = 'images/' . $filename;
+            $isStored = $image->storeAs("assets/uploads", $filename, ["disk" => "public"]);
+            //Image::make($image)->resize(800, 400)->save($location);
+
+            $imageRec = new Image();
+            $imageRec->name = $filename;
+            $imageRec->extension = $image->getClientOriginalExtension();
+            $imageRec->path = "assets/uploads/" . $filename;
+            $imageRec->save();
+
+            $authUser = Auth::user();
+            $authUser->image_id = $imageRec->id;
+            $authUser->save();
+        }
+
+        return redirect("/settingsemployee");
     }
 
 }

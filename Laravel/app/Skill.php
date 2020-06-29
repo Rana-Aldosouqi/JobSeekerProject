@@ -6,12 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Skill extends Model
 {
+    public $table="skills";
     public function user()
     {
         return $this->belongsTo(User::class,'user_id','id');
     }
-    protected $fillable = ['name'];
-
-//    public $table = "skill";
-//    public $fillable = ['name'];
+    public $fillable = ['skill'];
 }

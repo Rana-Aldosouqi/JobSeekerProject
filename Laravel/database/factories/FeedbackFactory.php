@@ -12,8 +12,9 @@ $factory->define(\App\Feedback::class, function (Faker $faker) {
 
     return [
         'user_id'=>$userIDs[$randIndex],
-        'name' => $faker ->text,
+        'name' => $faker ->text(50),
         'email' => $faker ->email,
         'message' => $faker ->text,
+        'published'=>$faker ->boolean,
     ];
 });

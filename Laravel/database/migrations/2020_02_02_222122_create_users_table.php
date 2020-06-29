@@ -25,10 +25,12 @@ class CreateUsersTable extends Migration
             $table->date('birth_date')->nullable(true);
             $table->integer('age')->nullable(true);
             $table->string('address')->nullable(true);
-            $table->boolean('is_admin')->nullable(true)->default(false);
+            $table->boolean('is_admin')->default(false);
             $table->string('user_type',7)->nullable(true);
             $table->string('color')->nullable(true)->default('lightblue');
             $table->string('phone_number',20)->nullable(true);
+            $table->timestamp('last_activity')->nullable(true);
+            $table->boolean('active')->default(false);
             $table->string('military_service',8)->nullable(true);
             $table->date('serve_time')->nullable(true);
             $table->string('facebook_url')->nullable(true);
@@ -39,7 +41,16 @@ class CreateUsersTable extends Migration
             $table->float('longitude')->nullable(true)->default(-101.073324);
             $table->text('description')->nullable(true);
             $table->integer('rating')->nullable(true)->default(0);
+            $table->string('work_field',100)->nullable(true);
+            $table->string('work_times',100)->nullable(true);
+            $table->string('Total_Projects',100)->nullable(true);
+            $table->string('Hourly_Rate',100)->nullable(true);
+            $table->string('Availability',100)->nullable(true);
+            $table->date('foundation_date')->nullable(true);
+            $table->string('profession',100)->nullable(true);
+            $table->string('education',100)->nullable(true);
             $table->timestamps();
+
 
             $table->foreign('image_id')
                 ->references('id')
@@ -63,5 +74,6 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+
     }
 }
