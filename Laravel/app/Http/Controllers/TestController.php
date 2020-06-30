@@ -27,6 +27,7 @@ class TestController extends Controller
         ]);
 
         $test = Test::create(['post_id'=>$validate['_postID'],'name'=>$validate['testName']]);
+
         foreach($validate['question'] as $index=>$value){
             $correct1 = array_key_exists('correct1',$validate)?(array_key_exists($index,$validate['correct1'])?$validate['correct1'][$index]:0):0;
             $correct2 = array_key_exists('correct2',$validate)?(array_key_exists($index,$validate['correct2'])?$validate['correct2'][$index]:0):0;
