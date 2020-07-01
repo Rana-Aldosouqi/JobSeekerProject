@@ -8,6 +8,11 @@ class Test extends Model
 {
     public $table="tests";
     protected $guarded=[];
+
+    public static function where(string $string, $_testID)
+    {
+    }
+
     public function answers(){
         return $this->hasMany('App\UserAnswer','test_id');
     }
