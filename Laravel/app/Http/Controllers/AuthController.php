@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\PostApplied;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use DB;
 use Hash;
-use Carbon;
+use Carbon\Carbon;
 class AuthController extends Controller
 {
     public function getLoginView(){
@@ -104,7 +105,7 @@ class AuthController extends Controller
         if (Auth::check()) {
             return redirect('/');
         }
-        return view('ResetPassword');
+        return view('user.ResetPassword');
     }
 
     public function sendPasswordResetToken(Request $request)
@@ -126,7 +127,7 @@ class AuthController extends Controller
         $tokenData = DB::table('password_resets')
             ->where('token', $token)->first();
 
-        if ( !$tokenData ) return redirect()->to('/ResetPasswordSendToken');
+        if ( !$tokenData ) return redirect()->to('/user.ResetPasswordSendToken');
         return view('/');
     }
     public function resetPassword(Request $request, $token)

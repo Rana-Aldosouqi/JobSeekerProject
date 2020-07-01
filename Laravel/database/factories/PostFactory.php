@@ -29,6 +29,7 @@ $factory->define(\App\Post::class, function (Faker $faker) {
         'date_start_at'=>$faker->date(),
         'date_end_at'=>$faker->date(),
         'city'=>$faker->text(),
+        'published'=>$faker->boolean,
 
     ];
 });

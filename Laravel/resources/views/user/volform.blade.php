@@ -33,20 +33,20 @@
         <label for="type" class=" col-sm-3 ml-5"><h5>Job Type :</h5></label>
 
         <select name="type" class="form-control col-md-7">
-            <option selected value="Full Time">Full Time</option>
-            <option value="Part Time">Part Time</option>
+            <option selected value="1">Full Time</option>
+            <option value="2">Part Time</option>
 
         </select>
     </div>
     <div class="form-group row">
-        <label for="city" class=" col-sm-3 ml-5"><h5>City :</h5></label>
+        <label for="city" class=" col-sm-3 ml-5 col-form-label"><h5>City :</h5></label>
 
         <select name="city" class="form-control col-md-7">
-            <option selected value="Mansoura">Mansoura</option>
-            <option value="Cairo">Cairo</option>
-            <option value="Dommitta">Dommitta</option>
-            <option value="Alxandria">Alxandria</option>
-            <option value="Others">others</option>
+            <option id="showMans" selected value=" 1">Mansoura</option>
+            <option id="showCairo" value="2">Cairo</option>
+            <option value="3">Alxandria</option>
+            <option value="4">Dommitta</option>
+            <option value="5">others</option>
         </select>
     </div>
 
@@ -54,9 +54,9 @@
 
     <div class="form-group row">
         <label for="date_start_at" class="col-sm-3 ml-5"><h5>Work date:</h5></label>
-        <input name="date_start_at"for="date_start_at" class=" form-control col-sm-3 " placeholder="start" >
+        <input type="date" id="start" name="date_start_at"for="date_start_at" class=" form-control col-sm-3 " placeholder="start" >
         <div class="col-1"></div>
-        <input name="date_end_at" for="date_end_at" class=" form-control col-sm-3 " placeholder="End">
+        <input type="date" id="start" name="date_end_at" for="date_end_at" class=" form-control col-sm-3 " placeholder="End">
     </div>
 
 
@@ -97,7 +97,7 @@
     <div class="form-group row">
         <label for="inputEmail3" class="col-sm-3 ml-5"><h5>Age:</h5></label>
 
-        <select name="age" for="age" class="form-control col-md-7 " placeholder="age" >
+        <select name="age" class="form-control col-md-7 " placeholder="age" >
             <option selected value="16-25">16-25</option>
             <option value="25-45">25-45</option>
             <option value="45-65">45-65</option>
@@ -120,7 +120,6 @@
            <option value="4 ">4 </option>
            <option value="5 ">5 </option>
            <option value="6">6</option>
-           <option value="6 ">6 </option>
            <option value="7 ">7 </option>
            <option value="8 ">8 </option>
            <option value="9">9 </option>

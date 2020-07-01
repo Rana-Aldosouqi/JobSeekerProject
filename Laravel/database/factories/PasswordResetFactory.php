@@ -15,6 +15,6 @@ $factory->define(\App\PasswordReset::class, function (Faker $faker) {
 //        'username'=>$faker->name,
         'email'=>$faker->email,
         'new_password'=>$faker->password,
-//        'token'=>$faker->text(100),
+        'token'=>$faker->text(100),
     ];
 });

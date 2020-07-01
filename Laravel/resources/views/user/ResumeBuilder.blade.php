@@ -61,9 +61,9 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane{{request()->is('personal') ? 'active' : null}}"
                              id="{{url('personal')}}" role="tabpanel">
-                            <form action="" method="POST" enctype="multipart/form-data">
+                            <form action="" method="POST">
                                 @csrf
-                                <div class="row mt-4">
+                                <div class="row">
                                     <div class="col-12">
                                         @if (Session::has('error'))
                                             <div class="alert alert-danger">
@@ -75,30 +75,6 @@
                                     </div>
                                 </div>
                                 @include('user.shared.errors')
-                                <div class="form-row input-group mt-4">
-                                    <div class="custom-file">
-                                        <input type="file" name="image" id="image"
-                                               class="custom-file-input">
-                                        <label class="custom-file-label" for="inputGroupFile04">Choose Image</label>
-                                    </div>
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary"
-                                                type="button" id="inputGroupFileAddon04">Upload Image
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="form-row mt-3 ">
-                                    <div class="col-4 "></div>
-                                    <div class="col-3 ml-2">
-                                        <img src="{{asset('/assets/images/images.png')}}"
-                                             class="shadow rounded mt-2" height="220"
-                                             width="230"/>
-                                    </div>
-                                </div>
-                            </form>
-                            <form action="" method="POST">
-                                @csrf
-
                                 <div class="form-row mt-3">
                                     <div class="form-group col-md-6">
                                         <label for="FirstName">First Name</label>
@@ -168,7 +144,7 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div class="form-row mt-3"></div>
+{{--                                <div class="form-row mt-3"></div>--}}
                             </form>
                         </div>
                         <div class="tab-pane  {{request()->is('social') ? 'active' : null}}"

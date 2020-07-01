@@ -8,20 +8,18 @@
             <div class="row" style="height:50%;">
                 <div class="col-4">
                     <div class="profile-img">
-                        <img src="{{asset('/assets/images/noimage.jpg')}}" class="img-responsive"/>
+                        <img src=" {{Auth::user()->image ? asset(Auth::user()->image->path): ""}}"/>
                     </div>
                 </div>
                 <div class="col-md-6 ">
                     <div class="profile-head">
-
+                        <div>
+                            <h3>{{Auth::user()->username}}</h3>
+                        </div>
                         <br>
-                        @if(count($experiences) >0)
-                            @foreach($experiences as $experience)
                                 <div class="col-md-8" style="color:#004bff;">
-                                    <h5  class="" id="inputEmail" name="job_name" >{{$experience->job_name}}</h5>
+                                    <h5  class="" id="inputEmail" name="profession" >{{Auth::user()->profession}}</h5>
                                 </div>
-                                @endforeach
-                                @endif
                         </h5>
                         <br>
                         <div class="form-row">
@@ -34,9 +32,7 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-
-                    <input type="submit" href="/settingsemployee" class="profile-edit-btn" name="btnAddMore" value="Setting"/>
-
+                    <a href="/settingsemployee"><button type="button" class="profile-edit-btn">Setting</button></a>
                 </div>
             </div>
             <div class="row ml-4 pl-2">
@@ -72,7 +68,6 @@
                                     <div id="collapseThree" class="collapse" data-parent="#accordion">
                                         <div class="card-body">
 
-                                            <input type="file" name="foo" style="width: 84%"/>
                                             <a href="/ResumeBuilder"><button type="button" class=" mt-1 btn btn-primary btn-md " >Create CV</button></a>
                                             <a href="/MyResume"><button type="button" class=" mt-1 btn btn-primary btn-md">View CV</button></a>
                                         </div>
@@ -90,7 +85,7 @@
                                 <label>Name:</label>
                             </div>
                             <div class="col-md-8" style="color:#004bff;">
-                                <h5  class="" id="inputEmail"name="first_name">{{Auth::user()->first_name}} </h5>
+                                <h5  class="" id="inputEmail"name="username">{{Auth::user()->username}} </h5>
                             </div>
                         </div>
 
@@ -133,69 +128,20 @@
 
                         <div class="row">
                             <div class="col-md-4" >
-                                <label>Profession:</label>
-                            </div>
-                            @if(count($experiences) >0)
-                                @foreach($experiences as $experience)
-                            <div class="col-md-8" style="color:#004bff;">
-                                <h5  class="" id="inputEmail" name="job_name" >{{$experience->job_name}}</h5>
-                            </div>
-                                @endforeach
-                                @else
-                                <div class="row"> </div>
-                            @endif
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4" >
                                 <label>Education:</label>
                             </div>
-                            @if(count($educations) >0)
-                                @foreach($educations as $education)
                             <div class="col-md-8" style="color:#004bff;">
-                                <h5  class="" id="inputEmail" name="degree" >{{$education->degree}}</h5>
+                                <h5  class="" id="inputEmail" name="education" >{{Auth::user()->education}}</h5>
                             </div>
-                                @endforeach
-                            @endif
                         </div>
 
                         <div class="row">
                             <div class="col-md-4" >
-                                <label>Experience:</label>
+                                <label>Profession:</label>
                             </div>
-                            @if(count($experiences) >0)
-                                @foreach($experiences as $experience)
                             <div class="col-md-8" style="color:#004bff;">
-                                <h5  class="" id="inputEmail" name="all_jobs" >{{$experience->all_jobs}}</h5>
+                                <h5  class="" id="inputEmail" name="profession" >{{Auth::user()->profession}}</h5>
                             </div>
-                                @endforeach
-                            @endif
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4" >
-                                <label>Courses:</label>
-                            </div>
-                            @if(count($courses) >0)
-                                @foreach($courses as $course)
-                            <div class="col-md-8" style="color:#004bff;">
-                                <h5  class="" id="inputEmail"name="course" >{{$course->name}}</h5>
-                            </div>
-                                @endforeach
-                                @endif
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4" >
-                                <label>Certificate:</label>
-                            </div>
-                            @if(count($certificates) >0)
-                                @foreach($certificates as $certificate)
-                            <div class="col-md-8" style="color:#004bff;">
-                                <h5  class="" id="inputEmail"name="certificate" >{{$certificate->name}}</h5>
-                            </div>
-                                @endforeach
-                            @endif
                         </div>
 
                         <div class="row">
@@ -214,18 +160,7 @@
                                 <h5  class="" id="inputEmail"name="Total_Projects" >{{Auth::user()->Total_Projects}}</h5>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4" >
-                                <label>Language:</label>
-                            </div>
-                            @if(count($educations) >0)
-                                @foreach($educations as $education)
-                            <div class="col-md-8" style="color:#004bff;">
-                                <h5  class="" id="inputEmail" name="language" >{{ $education->language}}</h5>
-                            </div>
-                                @endforeach
-                            @endif
-                        </div>
+
                         <div class="row">
                             <div class="col-md-4" >
                                 <label>Availability:</label>

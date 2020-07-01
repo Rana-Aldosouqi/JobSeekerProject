@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendMail extends Mailable
+class ForgotPassword extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,9 +29,11 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->from('john@webslesson.info')
-            ->subject('New Customer Equiry')
-            ->view('dynamic_email_template')
+        return
+//            $this->from('john@webslesson.info')
+            $this->from('JobSeeker@example.com')
+            ->subject('Reset Password')
+            ->view('user.emails.ship')
             ->with('data', $this->data);
     }
 }

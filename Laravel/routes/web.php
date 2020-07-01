@@ -81,9 +81,11 @@ Route::get('/userprofile', 'Settingcontroller@received');
 Route::post('/userprofile,SettingController@store');
 Route::get('/settingsemployee','Settingcontroller@getUpdate');
 Route::post('/settingsemployee','Settingcontroller@update');
+Route::post('/settingsemployee/uploadImage','Settingcontroller@uploadImage');
 
 
 //shaimaa---------------------------------------------------------------------------------------------------------------
+
 
 Route::get('/companyprofile', 'postscontroller@getProfile')->name('shared.index');
 Route::post('/companyprofile', 'postscontroller@doGetProfile')->name('shared.store');
@@ -98,6 +100,26 @@ Route::get('/vol', 'postscontroller@getVolanteerView');
 
 
 Route::get('/vol', 'postscontroller@doVolanteer');
+
+//for comp prof
+Route::get('/companyprofile','postscontroller@getProfile')->name('shared.index');
+Route::post('/companyprofile','postscontroller@doGetProfile')->name('shared.store');
+
+//for notif
+Route::get('/companyprofile','postscontroller@create');
+Route::post('/companyprofile','postscontroller@show');
+
+
+//sett
+Route::get('/setting','postscontroller@getUpdateView');
+Route::post('/setting','postscontroller@doUpdate');
+
+//vol
+Route::get('/volform','postscontroller@getVolanteerformView');
+Route::post('/volform','postscontroller@doVolanteerform');
+Route::get('/vol','postscontroller@getVolanteerView');
+Route::get('/vol','postscontroller@doVolanteer');
+
 
 
 //Eman
@@ -116,9 +138,15 @@ Route::get('/MyResume', 'UserController@getMyResumeView');
 
 Route::get('/ResumeBuilder', 'ResumeBuilderController@getResumeBuilderView')->name('ResumeBuilder');
 
+
 Route::post('/personal', 'ResumeBuilderController@doUploadImage');
 Route::get('/personal', 'ResumeBuilderController@getPersonalView');
 Route::post('/personal', 'ResumeBuilderController@doPersonal');
+
+//Route::post('/personal/doUploadImage', 'ResumeBuilderController@doUploadImage');
+Route::get('/personal','ResumeBuilderController@getPersonalView');
+Route::post('/personal','ResumeBuilderController@doPersonal');
+
 
 Route::get('/social', 'ResumeBuilderController@getSocialView');
 Route::post('/social', 'ResumeBuilderController@doSocial');
@@ -157,9 +185,38 @@ Route::get('/complete', 'OrderController@complete');
 Route::post('/complete', 'OrderController@complete');
 
 
-//Route::get('/sendemail', 'SendEmailController@index');
-//Route::post('/sendemail/send', 'SendEmailController@send');
+Route::get('/ForgotPassword', 'ForgotPasswordController@index');
+Route::post('/ForgotPassword/send', 'ForgotPasswordController@send');
 
+Route::group( [ 'middleware' => 'auth' , 'admin'] , function () {
+    Route::get('/DashBoard','DashBoardController@getDashBoardView')->name('DashBoard');
+    Route::get('/adminHome', 'DashBoardController@getHomeForAdminView');
+
+    Route::get('/adminProfile', 'DashBoardController@getProfileForAdminView');
+
+//    Route::get('/DashBoard/uploadAdminImage', 'DashBoardController@uploadAdminImage');
+    Route::get('/adminSettings', 'DashBoardController@getSettingsForAdminView');
+    Route::post('/adminSettings', 'DashBoardController@updateAdminProfile');
+
+    Route::delete('/adminUsers/{id}', 'DashBoardController@deleteJustUser');
+
+
+    Route::get('/adminPosts', 'DashBoardController@getPostsForAdminView');
+    Route::delete('/adminPosts/{id}', 'DashBoardController@deletePost');
+    Route::get('/adminUsers', 'DashBoardController@getUsersForAdminView');
+
+    Route::get('/feedbacks', 'DashBoardController@getFeedbackForAdminView');
+    Route::delete('/feedbacks/{id}', 'DashBoardController@deleteFeedback');
+    Route::post('/feedbacks/{id}', 'DashBoardController@publishFeedback');
+
+    Route::get('/adminReports', 'DashBoardController@getReportForAdminView');
+    Route::delete('/adminReports/{id}/{user_id}', 'DashBoardController@deleteUser');
+    Route::delete('/adminReports/{id}', 'DashBoardController@deleteReport');
+//    Route::post('/DashBoard', 'DashBoardController@checkActiveUser');
+});
+
+
+//
 //Route::get('/ResetPassword', 'AuthController@passwordResetTokenView');
 //Route::post('/ResetPassword', 'AuthController@sendPasswordResetToken');
 //Route::get('/ResetPasswordSendToken/{token}', 'AuthController@PasswordResetView');

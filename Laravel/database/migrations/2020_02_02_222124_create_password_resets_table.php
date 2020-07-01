@@ -18,7 +18,7 @@ class CreatePasswordResetsTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable(true);
             $table->string('email');
             $table->string('new_password');
-//            $table->string('token');
+            $table->string('token');
             $table->timestamps();
 
             $table->foreign('user_id')

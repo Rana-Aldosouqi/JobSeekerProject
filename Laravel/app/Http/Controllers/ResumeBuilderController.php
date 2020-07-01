@@ -24,30 +24,30 @@ class ResumeBuilderController extends Controller
              'data' => $allCertificates
          ]);
     }
-    public function doUploadImage(Request $request)
-    {
-//        $user = User::find($id);
-//        if($user == null|| $user->id != Auth::user()->id)
-//        {
-//            return redirect('/');
+//    public function doUploadImage(Request $request)
+//    {
+//        //        Upload image
+//        if ($request->hasFile('image')) {
+//            $image = $request->file('image');
+//            $filename = sha1(time()) . '.' . $image->getClientOriginalExtension();
+//
+//            //$location = 'images/' . $filename;
+//            $isStored = $image->storeAs("assets/uploads", $filename, ["disk" => "public"]);
+//            //Image::make($image)->resize(800, 400)->save($location);
+//
+//            $imageRec = new Image();
+//            $imageRec->name = $filename;
+//            $imageRec->extension = $image->getClientOriginalExtension();
+//            $imageRec->path = "assets/uploads/" . $filename;
+//            $imageRec->save();
+//
+//            $authUser = Auth::user();
+//            $authUser->image_id = $imageRec->id;
+//            $authUser->save();
 //        }
-        $rules = [
-            'image' => 'max:2048|mimes:jpg,jpeg,png'
-        ];
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect('/')->back()
-                ->withInput($request->all())
-                ->withErrors($validator->errors());
-        }
-        $image = new Image();
-        $image-> user_id = Auth::user()->id;
-        $image = $request->file('image');
-        $ext = $image->getClientOriginalExtension();
-        $name = $image->getClientOriginalName();
-        $newname = sha1(time()) . $ext;
-        storage::disk('public')->put($newname, File::get($image));
-    }
+//
+//        return redirect("/personal");
+//    }
 //    public function doUploadFile(Request $request,$id)
 //    {
 ////        $user = User::find($id);

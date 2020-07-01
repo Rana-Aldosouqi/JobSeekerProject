@@ -19,50 +19,20 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <form>
-                                <h5 class="mt-2">HR</h5>
-                                <div class="form-row">
-                                    <div class="col-10">
-                                        <fieldset disabled>
-                                            <div class="form-group">
-                                                <input type="text" id="#coursolindicators" class="form-control"
-                                                       style="height: 32px;" placeholder="Name One">
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-1">
-                                        <button class="btn btn-sm bg-danger btn-dark border-danger rounded">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-10">
-                                        <fieldset disabled>
-                                            <div class="form-group">
-                                                <input type="text" id="#coursolindicators" class="form-control" style="height: 32px;" placeholder="Name Two">
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-1">
-                                        <button class="btn btn-sm bg-danger btn-dark border-danger rounded">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </div>
-                                </div>
 
-                                <div class="form-row mt-1">
-                                    <div class="col-10">
-                                        <input type="text" class="form-control" id="#coursolindicators" style="height: 32px;" placeholder="Add Name">
-                                    </div>
-                                    <div class="col-1">
-                                        <button class="btn btn-sm btn-success rounded">
-                                            <i class="fa fa-plus"></i></button>
+                        <div class="row ">
+                                <div class="form-row mt-4">
+                                    <div class="card" >
+                                        <img src="{{asset('assets/img/undraw_updated_resume_u4fy.png')}}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h4 class="card-title text-center">Build Your Resume</h4>
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </form>
                         </div>
+
                     </div>
                     <div class="col-8 ml-3" >
                         <form action="" method="POST" >
@@ -112,7 +82,7 @@
                                         <h5 class="mt-2">Phone Number:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="number"  name="phone_number" class="form-control"  value="{{Auth::user()->phone_number}}">
+                                        <input type="text-area"  name="phone_number" class="form-control"  value="{{Auth::user()->phone_number}}">
                                     </div>
                                 </div>
                                 <div class="form-row mt-3">
@@ -144,7 +114,7 @@
                                         <h5 class="mt-2">Foundation Date:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " name="foundation_date" class="form-control"  value="{{Auth::user()->foundation_date}}" >
+                                        <input type="date" id="start" class="form-control" name="foundation_date" value="{{Auth::user()->foundation_date}}" >
                                     </div>
                                 </div>
                                 <div class="form-row mt-3">

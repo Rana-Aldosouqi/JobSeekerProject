@@ -1,11 +1,25 @@
 @extends('user.shared.template')
 @section('content')
 
-    <div class="card container emp-profile bg-light shadow mt-5 col-8 h6"
+
+
+
+    <div class="card container emp-profile bg-light shadow mt-5 col-8 h6 "
          style="font-family: 'Permanent Marker', cursive; font-family: 'Alegreya', serif;"
          xmlns="http://www.w3.org/1999/html">
         <form>
-            <div class="row">
+            <ul class="nav nav-tabs" style="margin-bottom: 2%" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="notif-tab" data-toggle="tab" href="#Notifications" role="tab" aria-controls="info" aria-selected="false">Notifications</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                    <div class="row">
                 <div class="col-4">
                     <div class="profile-img">
                         <img src="{{asset('/assets/images/profil.jpg')}}"/>
@@ -31,7 +45,7 @@
                 </div>
                 <div class="col-md-2">
 
-                    <button  href={{'/shared/edit'}} >setting</button>
+                    <a type="button" href="/setting/" class="btn btn-primary btn-md btn-block ">Setting</a>
 
                 </div>
             </div>
@@ -44,31 +58,31 @@
                             <div id="accordion" >
                                 <div class="card" >
                                     <div class="card-header" style="background-color: white !important;" >
-                                        <a style="color: #004bff;" class="card-link" data-toggle="collapse" href="#collapseOne">
+                                        <a style="color: #004bff;" class="card-link" data-toggle="collapse" href="#collapseOne" >
                                             Work link
                                         </a>
                                     </div>
-                                    <div id="#coursolindicators" class="collapse  "  data-parent="#accordion">
+                                    <div id="collapseOne" class="collapse " data-parent="#accordion">
                                         <div class="card-body">
-                                            <a href="#">Volunteer works</a><br/>
-                                            <a href="#">Acceptable job</a><br>
-                                            <a href="#">Training</a>
+                                            <a  class="btn btn-light btn-block" href="/vol/">Volunteer works</a><br/>
+                                            <a class="btn btn-light btn-block" href="/Category/"> jobs</a><br>
+                                            <a  class="btn btn-light btn-block" href="">Training</a>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="card mt-2">
                                     <div class="card-header" style="background-color: white !important;">
-                                        <a style="color:#004bff;" class="collapsed card-link" data-toggle="collapse" href="#">
+                                        <a style="color:#004bff;"  class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
                                             Post
                                         </a>
                                     </div>
-                                    <div id="#coursolindicators" class="collapse" data-parent="#accordion">
+                                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                         <div class="card-body">
-                                            <a href="#">Job</a><br>
-                                            <a href="#">Training</a><br>
-                                            <a href="#">Course</a><br>
-                                            <a href="#">Volunteer Job</a><br>
+                                            <a class="btn btn-light btn-block" href="/index/">Job</a><br>
+                                            <a  class="btn btn-light btn-block"href="#">Training</a><br>
+                                            <a class="btn btn-light btn-block" href="#">Course</a><br>
+                                            <a  class="btn btn-light btn-block" href="/volform/">Volunteer Job</a><br>
 
                                         </div>
                                     </div>
@@ -199,24 +213,46 @@
             <br>
             <hr>
             <br>
-            <div class="container col-9">
-                <div class="row ">
-                    <input class="form-control col-10" type="text" placeholder="write job"/>
-                    <a class="col-2" href="#"><i class="fa fa-pencil-square fa-3x ml-5" aria-hidden="true"></i></a>
-                </div>
-                <br>
-                <div class="row ">
-                    <input class="form-control col-10" type="text" placeholder="write job"/>
-                    <a class="col-2" href="#"><i class="fa fa-pencil-square fa-3x ml-5" aria-hidden="true"></i></a>
-                </div>
-                <br>
-                <div class="row">
-                    <input class="form-control col-10" type="text" placeholder="write job"/>
-                    <a class="col-2" href="#"><i class="fa fa-pencil-square fa-3x ml-5" aria-hidden="true"></i></a>
-                </div>
-            </div>
         </form>
     </div>
+
+    <div class="tab-pane fade" id="Notifications" role="tabpanel" aria-labelledby="notif-tab">
+
+<div>
+    <table  class="table table-hover" style=" background-color: white; width:900px ; ">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">User ID</th>
+            <th scope="col"> Post ID</th>
+
+
+        </tr>
+        </thead>
+        @foreach($tables as $table)
+        <tbody>
+        <tr>
+            <th scope="row">{{$table-> id}}</th>
+            <td>{{$table-> user_id}}</td>
+            <td>{{$table-> post_id}}</td>
+
+
+
+
+        </tr>
+
+        </tbody>
+         @endforeach
+    </table>
+
+
+
+    </div>
+</div>
+
+    </div>
+    </div>
+
 
 
 

@@ -11,19 +11,20 @@
                 <div class="row">
 
                     <div class="col-md-3 ml-5 mt-4 mb-3">
-                        <form action="" method="post" enctype="multipart/form-data">
+                        <form action="/settingsemployee/uploadImage"
+                              method="post" id="imageForm" enctype="multipart/form-data">
                             @csrf
-                        <div class="row">
-                            <div class="form">
-                                <div class="profile-img ">
-                                    <img src="{{ asset('assets/images/'}}" />
-                                    <div class="file btn btn-lg btn-primary">
-                                        Change Photo<input type="file" name="image"/>
+                            <div class="row">
+                                <div class="form">
+                                    <div class="profile-img ">
+                                        <img src=" {{Auth::user()->image ? asset(Auth::user()->image->path): ""}}"/>
+                                        <div class="file btn btn-lg btn-primary">
+                                            Change Photo<input type="file" id="image" name="image"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                </form>
+                        </form>
                         <div class="row">
                             <form action="" method="post">
                                 @csrf
@@ -31,7 +32,7 @@
                                 <h5 class="mt-3">Skills</h5>
                                 <div class="form-row">
                                     <div class="col-9">
-                                        <fieldset >
+                                        <fieldset>
                                             <div class="form-group" id="skillbtn">
                                                 <input type="text" id="disabledTextInput" class="form-control"
                                                        style="height: 32px;" placeholder="Skill One">
@@ -47,7 +48,7 @@
 
                                 <div class="form-row mt-3">
                                     <div class="col-9">
-                                        <fieldset  disabled>
+                                        <fieldset disabled>
                                             <div class="form-group">
                                                 <input type="text" id="disabledTextInput2" class="form-control"
                                                        style="height: 32px;" placeholder="Skill Two">
@@ -62,7 +63,8 @@
                                 </div>
                                 <div class="form-row mt-3">
                                     <div class="col-9">
-                                        <input type="text" class="form-control" id="Skill-data" style="height: 32px;" placeholder="Add SKill">
+                                        <input type="text" class="form-control" id="Skill-data" style="height: 32px;"
+                                               placeholder="Add SKill">
                                     </div>
                                     <div class="col-1">
                                         <button class="btn btn-sm btn-success rounded" onclick="myFunction()">
@@ -84,10 +86,10 @@
                     </div>
                     <div class="col-8 ml-3">
 
-                        <div class="col-7 ml-5" ><h1><u>Account Settings</u></h1></div>
+                        <div class="col-7 ml-5"><h1><u>Account Settings</u></h1></div>
                         <div class="form-row mt-3"></div>
 
-                        <form  class=" mt-7" action="" method="post">
+                        <form class=" mt-7" action="" method="post">
                             @csrf
 
                             <div class="col-12 mt-5">
@@ -97,7 +99,8 @@
                                     </div>
 
                                     <div class="col-8">
-                                        <input type="text" class="form-control" id="inputEmail"name="first_name" value="{{Auth::user()->first_name}} ">
+                                        <input type="text" class="form-control" id="inputEmail" name="username"
+                                               value="{{Auth::user()->username}} ">
                                     </div>
                                 </div>
 
@@ -106,7 +109,8 @@
                                         <h5 class="mt-2">Email:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="Email " class="form-control" id="inputNumber" name="email" value="{{Auth::user()->email}}">
+                                        <input type="Email " class="form-control" id="inputNumber" name="email"
+                                               value="{{Auth::user()->email}}">
                                     </div>
                                 </div>
 
@@ -115,7 +119,8 @@
                                         <h5 class="mt-2">Phone:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="phone_number"  value="{{Auth::user()->phone_number}}">
+                                        <input type="text-area " class="form-control" id="inputNumber"
+                                               name="phone_number" value="{{Auth::user()->phone_number}}">
                                     </div>
                                 </div>
 
@@ -124,7 +129,8 @@
                                         <h5 class="mt-2">Gender:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="gender" value="{{Auth::user()->gender->name}}">
+                                        <input type="text-area " class="form-control" id="inputNumber" name="gender"
+                                               value="{{Auth::user()->gender->name}}">
 
                                     </div>
                                 </div>
@@ -134,7 +140,18 @@
                                         <h5 class="mt-2">Address:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="address" value="{{Auth::user()->address}}">
+                                        <input type="text-area " class="form-control" id="inputNumber" name="address"
+                                               value="{{Auth::user()->address}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-row mt-3">
+                                    <div class="col-3">
+                                        <h5 class="mt-2">Education:</h5>
+                                    </div>
+                                    <div class="col-8">
+                                        <input type="text-area " class="form-control" id="inputNumber" name="education"
+                                               value="{{Auth::user()->education}}">
                                     </div>
                                 </div>
 
@@ -142,72 +159,21 @@
                                     <div class="col-3">
                                         <h5 class="mt-2">Profession:</h5>
                                     </div>
-{{--                                    @if(count($experiences) >0)--}}
-{{--                                        @foreach($experiences as $experience)--}}
-                                            <div class="col-8">
-                                                <input type="text-area " class="form-control" id="inputNumber" name="job_name" value="{{Auth::user()->job_name}}">
-                                            </div>
-{{--                                        @endforeach--}}
-{{--                                    @endif--}}
-                                </div>
-                                <div class="form-row mt-3">
-                                    <div class="col-3">
-                                        <h5 class="mt-2">Education:</h5>
+                                   <div class="col-8">
+                                        <input type="text-area " class="form-control" id="inputNumber" name="profession"
+                                               value="{{Auth::user()->profession}}">
                                     </div>
-{{--                                    @if(count($educations) >0)--}}
-{{--                                        @foreach($educations as $education)--}}
-                                    <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="degree" value="{{Auth::user()->degree}}">
-                                    </div>
-{{--                                        @endforeach--}}
-{{--                                    @endif--}}
+
                                 </div>
 
-                                <div class="form-row mt-3">
-                                    <div class="col-3">
-                                        <h5 class="mt-2">Experience:</h5>
-                                    </div>
-{{--                                    @if(count($experiences) >0)--}}
-{{--                                        @foreach($experiences as $experience)--}}
-                                    <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="all_jobs" value="{{Auth::user()->all_jobs}}">
-                                    </div>
-{{--                                        @endforeach--}}
-{{--                                    @endif--}}
-                                </div>
-
-                                <div class="form-row mt-3">
-                                    <div class="col-3">
-                                        <h5 class="mt-2">Courses:</h5>
-                                    </div>
-{{--                                    @if(count($courses) >0)--}}
-{{--                                        @foreach($courses as $course)--}}
-                                    <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="course"  value="{{Auth::user()->course}}">
-                                    </div>
-{{--                                        @endforeach--}}
-{{--                                    @endif--}}
-                                </div>
-
-                                <div class="form-row mt-3">
-                                    <div class="col-3">
-                                        <h5 class="mt-2">Certificate:</h5>
-                                    </div>
-{{--                                    @if(count($certificates) >0)--}}
-{{--                                        @foreach($certificates as $certificate)--}}
-                                    <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="certificate"  value="{{Auth::user()->certificate}}">
-                                    </div>
-{{--                                        @endforeach--}}
-{{--                                    @endif--}}
-                                </div>
 
                                 <div class="form-row mt-3">
                                     <div class="col-3">
                                         <h5 class="mt-2">Hourly Rate:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="Hourly_Rate"  value="{{Auth::user()->Hourly_Rate}}">
+                                        <input type="text-area " class="form-control" id="inputNumber"
+                                               name="Hourly_Rate" value="{{Auth::user()->Hourly_Rate}}">
                                     </div>
                                 </div>
 
@@ -216,21 +182,9 @@
                                         <h5 class="mt-2">Total Projects:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="Total_Projects"  value="{{Auth::user()->Total_Projects}}">
+                                        <input type="text-area " class="form-control" id="inputNumber"
+                                               name="Total_Projects" value="{{Auth::user()->Total_Projects}}">
                                     </div>
-                                </div>
-
-                                <div class="form-row mt-3">
-                                    <div class="col-3">
-                                        <h5 class="mt-2">Language:</h5>
-                                    </div>
-{{--                                    @if(count($educations) >0)--}}
-{{--                                        @foreach($educations as $education)--}}
-                                    <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="language" value="{{Auth::user()->language}}">
-                                    </div>
-{{--                                        @endforeach--}}
-{{--                                    @endif--}}
                                 </div>
 
                                 <div class="form-row mt-3">
@@ -238,7 +192,8 @@
                                         <h5 class="mt-2">Availability:</h5>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text-area " class="form-control" id="inputNumber" name="Availability"  value="{{Auth::user()->Availability}}">
+                                        <input type="text-area " class="form-control" id="inputNumber"
+                                               name="Availability" value="{{Auth::user()->Availability}}">
                                     </div>
                                 </div>
 
@@ -246,8 +201,11 @@
                             <div class="form-row mt-5 ">
                                 <div class="col-2 ml-5"></div>
 
-                                <button type="submit" onclick="clickFun()" class="btn btn-primary btn-md btn-block col-2">SAVE</button>
-                                <div class="col-5 ml-3 mt-2" ><a href="changepassword.html" class="stretched-link" id="btn"><h5> Change Your Password?</h5></a></div>
+                                <button type="submit" onclick="clickFun()"
+                                        class="btn btn-primary btn-md btn-block col-2">SAVE
+                                </button>
+                                <div class="col-5 ml-3 mt-2"><a href="changepassword.html" class="stretched-link"
+                                                                id="btn"><h5> Change Your Password?</h5></a></div>
 
                             </div>
                         </form>
@@ -261,6 +219,12 @@
 
 @section('more_js')
     <script>
+        $(document).ready(function () {
+            $("#image").change(function () {
+                $("#imageForm").submit();
+            });
+        });
+
         function clickFun() {
             alert('DONE');
         }
