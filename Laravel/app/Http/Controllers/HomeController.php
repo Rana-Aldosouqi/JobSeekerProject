@@ -11,10 +11,33 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function getHomeView()
+    {
+
+        return view('user.Home');
+    }
+
+    public function getHomePostsView()
+    {
+        $topPosts = \App\Post::orderBy('created_at', 'DESC')
+//            ->take(4)
+//            ->skip(0)
+//            ->get()
+//            ->pluck('id')
+//            ->toArray()
+            ->simplePaginate(6);
+
+//        $topPosts=\App\Post::find($topids);
+        //dd($topPosts);
+        return view('user.Home', ['topPosts' => $topPosts]);
+    }
+
+
+
+    /*public function __construct()
     {
         $this->middleware('auth');
-    }
+    }*/
 
     /**
      * Show the application dashboard.

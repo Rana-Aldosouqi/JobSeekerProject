@@ -49,8 +49,8 @@ class CreatePostsTable extends Migration
                 ->onUpdate('CASCADE')
                 ->onDelete('SET NULL');
 
-           // $table->foreign('language_id')->references('id')
-            //   ->on('languages')->onUpdate('CASCADE')->onDelete('SET NULL');
+        //   $table->foreign('language_id')->references('id')
+          //     ->on('languages')->onUpdate('CASCADE')->onDelete('SET NULL');
 
         });
     }
@@ -62,6 +62,12 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('posts');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+
+
+
     }
 }
