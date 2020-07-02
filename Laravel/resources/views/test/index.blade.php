@@ -51,7 +51,8 @@
                                                                     <li style="list-style: lower-alpha;">
                                                                         <input type="text" name="Ans1[]" placeholder="Choice 1"
                                                                                class="col-sm-9">
-                                                                        <input type="checkbox" name="correct1[]"  id=""
+                                                                        <input type="hidden" name="correct1[0]" value="0">
+                                                                        <input type="checkbox"  name="correct1[0]"  id=""
                                                                                class="col-sm-2">
                                                                     </li>
                                                                     <br>
@@ -59,7 +60,8 @@
                                                                     <li style="list-style: lower-alpha;">
                                                                         <input type="text" name="Ans2[]" placeholder="Choice 2"
                                                                                class="col-sm-9">
-                                                                        <input type="checkbox" name="correct2[]" id=""
+                                                                        <input type="hidden" name="correct2[0]" value="0">
+                                                                        <input type="checkbox"      name="correct2[0]" id=""
                                                                                class="col-sm-2">
                                                                     </li>
                                                                     <br>
@@ -67,7 +69,8 @@
                                                                     <li style="list-style: lower-alpha;">
                                                                         <input type="text" name="Ans3[]" placeholder="Choice 3"
                                                                                class="col-sm-9">
-                                                                        <input type="checkbox" name="correct3[]" id=""
+                                                                        <input type="hidden" name="correct3[0]" value="0">
+                                                                        <input type="checkbox"    name="correct3[0]" id=""
                                                                                class="col-sm-2">
                                                                     </li>
                                                                     <br>
@@ -75,7 +78,8 @@
                                                                     <li style="list-style: lower-alpha;">
                                                                         <input type="text" name="Ans4[]" placeholder="Choice 4"
                                                                                class="col-sm-9">
-                                                                        <input type="checkbox" name="correct4[]" id=""
+                                                                        <input type="hidden" name="correct4[0]" value="0">
+                                                                        <input type="checkbox"     name="correct4[0]" id=""
                                                                                class="col-sm-2">
                                                                     </li>
                                                                     <div class="col-sm"></div>
@@ -126,6 +130,7 @@
 @endsection
 @section('more_js')
     <script>
+        let indexNext = 1;
         $('#appendButton').click(e=>{
             e.preventDefault();
 
@@ -146,7 +151,8 @@
                '                                                                    <li style="list-style: lower-alpha;">\n' +
                '                                                                        <input type="text" name="Ans1[]" placeholder="Choice 1"\n' +
                '                                                                               class="col-sm-9">\n' +
-               '                                                                        <input type="checkbox" name="correct1[]"  id=""\n' +
+               '                                                                        <input type="hidden" name="correct1['+indexNext+']" value="0">\n' +
+               '                                                                        <input type="checkbox"  name="correct1['+indexNext+']"  id=""\n' +
                '                                                                               class="col-sm-2">\n' +
                '                                                                    </li>\n' +
                '                                                                    <br>\n' +
@@ -154,7 +160,8 @@
                '                                                                    <li style="list-style: lower-alpha;">\n' +
                '                                                                        <input type="text" name="Ans2[]" placeholder="Choice 2"\n' +
                '                                                                               class="col-sm-9">\n' +
-               '                                                                        <input type="checkbox" name="correct2[]" id=""\n' +
+               '                                                                        <input type="hidden" name="correct2['+indexNext+']" value="0">\n' +
+               '                                                                        <input type="checkbox"      name="correct2['+indexNext+']" id=""\n' +
                '                                                                               class="col-sm-2">\n' +
                '                                                                    </li>\n' +
                '                                                                    <br>\n' +
@@ -162,7 +169,8 @@
                '                                                                    <li style="list-style: lower-alpha;">\n' +
                '                                                                        <input type="text" name="Ans3[]" placeholder="Choice 3"\n' +
                '                                                                               class="col-sm-9">\n' +
-               '                                                                        <input type="checkbox" name="correct3[]" id=""\n' +
+               '                                                                        <input type="hidden" name="correct3['+indexNext+']" value="0">\n' +
+               '                                                                        <input type="checkbox"     name="correct3['+indexNext+']" id=""\n' +
                '                                                                               class="col-sm-2">\n' +
                '                                                                    </li>\n' +
                '                                                                    <br>\n' +
@@ -170,7 +178,8 @@
                '                                                                    <li style="list-style: lower-alpha;">\n' +
                '                                                                        <input type="text" name="Ans4[]" placeholder="Choice 4"\n' +
                '                                                                               class="col-sm-9">\n' +
-               '                                                                        <input type="checkbox" name="correct4[]" id=""\n' +
+               '                                                                        <input type="hidden" name="correct4['+indexNext+']" value="0">\n' +
+               '                                                                        <input type="checkbox"    name="correct4['+indexNext+']" id=""\n' +
                '                                                                               class="col-sm-2">\n' +
                '                                                                    </li>\n' +
                '                                                                    <div class="col-sm"></div>\n' +
@@ -185,6 +194,7 @@
                '                                            <br>\n' +
                '                                            <hr>\n' +
                '                                        </li>\n')
+            indexNext += 1;
         })
     </script>
 @endsection

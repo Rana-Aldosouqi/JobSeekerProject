@@ -31,7 +31,7 @@ class AnswerController extends Controller
         return false;
     }
     public function index($test_id){
-        $test = Test::where('id',$test_id)->firstOrFail();
+        $test = Test::all()->where('id',$test_id)->first();
         $user = Auth::user();
         $percentage =-1;
         if(count($user->answers) != 0){
@@ -49,7 +49,7 @@ class AnswerController extends Controller
         $validate = request()->validate([
             '_testID'=>'required',
         ]);
-        $test = Test::where('id',$validate['_testID'])->firstOrFail();
+        $test = Test::all()->where('id',$validate['_testID'])->first();
         $user = Auth::user();
         if(!$this->hasTaken($user,$test->id)){
             $result = 0;

@@ -18,12 +18,10 @@
 //    return view('user.Home');
 //});
 
-
-//Mohammed-----------------------------------------------------------------------------------------------
-//TestBuilder
-Route::prefix('/test')->middleware(['isCompany'])->group(function (){
-    Route::get('/create/{post_id}','TestController@index')->name('createTest');
-    Route::post('/create','TestController@store')->name('storeTest');
+//Mohammed------------------------------------------------------------------------------------------------------
+Route::prefix('/test')->middleware(['isCompany'])->group(function () {
+    Route::get('/create/{post_id}', 'TestController@index')->name('createTest');
+    Route::post('/create', 'TestController@store')->name('storeTest');
 });
 Route::prefix('/answer')->middleware(['auth'])->group(function (){
     Route::get('/submit/{test_id}','AnswerController@index')->name('answerExam');
@@ -67,7 +65,7 @@ Route::get('/apply/{id}/done', function($id){
     return redirect("/response");
 });
 
-Route::get('/response', function(){
+Route::get('/response', function () {
 
     return view('user.response');
 });
@@ -79,7 +77,7 @@ Route::get('/response', function(){
 
 //----------------------------------------------------------------------------------------------------------------------
 //amina
-Route::get('/userprofile','Settingcontroller@received');
+Route::get('/userprofile', 'Settingcontroller@received');
 Route::post('/userprofile,SettingController@store');
 Route::get('/settingsemployee','Settingcontroller@getUpdate');
 Route::post('/settingsemployee','Settingcontroller@update');
@@ -87,6 +85,21 @@ Route::post('/settingsemployee/uploadImage','Settingcontroller@uploadImage');
 
 
 //shaimaa---------------------------------------------------------------------------------------------------------------
+
+
+Route::get('/companyprofile', 'postscontroller@getProfile')->name('shared.index');
+Route::post('/companyprofile', 'postscontroller@doGetProfile')->name('shared.store');
+
+Route::get('/setting', 'postscontroller@getUpdateView');
+Route::post('/setting', 'postscontroller@doUpdate');
+
+
+Route::get('/volform', 'postscontroller@getVolanteerformView');
+Route::post('/volform', 'postscontroller@doVolanteerform');
+Route::get('/vol', 'postscontroller@getVolanteerView');
+
+
+Route::get('/vol', 'postscontroller@doVolanteer');
 
 //for comp prof
 Route::get('/companyprofile','postscontroller@getProfile')->name('shared.index');
@@ -108,31 +121,43 @@ Route::get('/vol','postscontroller@getVolanteerView');
 Route::get('/vol','postscontroller@doVolanteer');
 
 
+
 //Eman
+//<<<<<<< HEAD
 Route::get('/Login','AuthController@getLoginView')->name('login');
 Route::post('/Login', 'AuthController@doLogin');
+//=======
+Route::get('/Login', 'AuthController@getLoginView')->name('login');
+Route::post('/Login', 'AuthController@doLogin');
 
-Route::get('/Register','AuthController@getRegisterView');
-Route::post('/Register','AuthController@doRegistration');
+Route::get('/Register', 'AuthController@getRegisterView');
+Route::post('/Register', 'AuthController@doRegistration');
+//>>>>>>> 4e1f63e38c69f78c66df41db9de7bd47fc79a60f
 
-Route::get('/Logout','AuthController@doLogout');
+Route::get('/Logout', 'AuthController@doLogout');
 
-Route::get('/ContactUs','ContactUsController@getContactUSView');
-Route::post('/ContactUs','ContactUsController@doContact');
+Route::get('/ContactUs', 'ContactUsController@getContactUSView');
+Route::post('/ContactUs', 'ContactUsController@doContact');
 
-Route::get('/MyResume','UserController@getMyResumeView');
+Route::get('/MyResume', 'UserController@getMyResumeView');
 
-Route::get('/ResumeBuilder','ResumeBuilderController@getResumeBuilderView')->name('ResumeBuilder');
+Route::get('/ResumeBuilder', 'ResumeBuilderController@getResumeBuilderView')->name('ResumeBuilder');
+
+
+Route::post('/personal', 'ResumeBuilderController@doUploadImage');
+Route::get('/personal', 'ResumeBuilderController@getPersonalView');
+Route::post('/personal', 'ResumeBuilderController@doPersonal');
 
 //Route::post('/personal/doUploadImage', 'ResumeBuilderController@doUploadImage');
 Route::get('/personal','ResumeBuilderController@getPersonalView');
 Route::post('/personal','ResumeBuilderController@doPersonal');
 
-Route::get('/social','ResumeBuilderController@getSocialView');
-Route::post('/social','ResumeBuilderController@doSocial');
+
+Route::get('/social', 'ResumeBuilderController@getSocialView');
+Route::post('/social', 'ResumeBuilderController@doSocial');
 
 Route::get('/experiences', 'ResumeBuilderController@getExperienceViewBuilder');
-Route::post('/experiences','ResumeBuilderController@doExperience');
+Route::post('/experiences', 'ResumeBuilderController@doExperience');
 Route::delete('/experiences/{id}', 'ResumeBuilderController@deleteExperience');
 
 Route::get('/skills', 'ResumeBuilderController@getSkillViewBuilder');
@@ -151,18 +176,18 @@ Route::get('/certificates', 'ResumeBuilderController@getCertificateViewBuilder')
 Route::post('/certificates', 'ResumeBuilderController@AddCertificate');
 Route::delete('/certificates/{id}', 'ResumeBuilderController@deleteCertificate');
 
-Route::get('/color','ResumeBuilderController@getColorView');
-Route::post('/color','ResumeBuilderController@changeColor');
+Route::get('/color', 'ResumeBuilderController@getColorView');
+Route::post('/color', 'ResumeBuilderController@changeColor');
 
-Route::get('/ChangePassword','UserController@getChangePasswordView');
-Route::post('/ChangePassword','UserController@ChangePassword');
+Route::get('/ChangePassword', 'UserController@getChangePasswordView');
+Route::post('/ChangePassword', 'UserController@ChangePassword');
 
-Route::get('/start','OrderController@start');
-Route::post('/start','OrderController@start');
-Route::get('/ship','OrderController@ship');
-Route::post('/ship','OrderController@ship');
-Route::get('/complete','OrderController@complete');
-Route::post('/complete','OrderController@complete');
+Route::get('/start', 'OrderController@start');
+Route::post('/start', 'OrderController@start');
+Route::get('/ship', 'OrderController@ship');
+Route::post('/ship', 'OrderController@ship');
+Route::get('/complete', 'OrderController@complete');
+Route::post('/complete', 'OrderController@complete');
 
 
 Route::get('/ForgotPassword', 'ForgotPasswordController@index');
@@ -204,10 +229,6 @@ Route::group( [ 'middleware' => 'auth' , 'admin'] , function () {
 //Route::post('/ResetPasswordSendToken/{token}', 'AuthController@resetPassword');
 
 
-
-
-
-
 Route::get('/', function () {
 
 //find the requirements of post with id=444
@@ -228,8 +249,8 @@ Route::get('/', function () {
 //$cat=\App\Category::find(19);
 //dd($cat->posts);
 
-$post=\App\Post::find(1);
-dd($post->User->username);
+    $post = \App\Post::find(1);
+    dd($post->User->username);
 
 ////category of post with id=6 woooork
 // this is select method

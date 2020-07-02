@@ -33,9 +33,7 @@ class TestController extends Controller
             $correct3 = array_key_exists('correct3',$validate)?(array_key_exists($index,$validate['correct3'])?$validate['correct3'][$index]:0):0;
             $correct4 = array_key_exists('correct4',$validate)?(array_key_exists($index,$validate['correct4'])?$validate['correct4'][$index]:0):0;
             $correct1 = strcmp($correct1,'on')==0?1:0;
-
             $correct2 = strcmp($correct2,'on')==0?1:0;
-
             $correct3 = strcmp($correct3,'on')==0?1:0;
             $correct4 = strcmp($correct4,'on')==0?1:0;
             $questionAnswers = [
