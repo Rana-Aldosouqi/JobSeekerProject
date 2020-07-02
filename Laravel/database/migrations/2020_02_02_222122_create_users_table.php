@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('color')->nullable(true)->default('lightblue');
             $table->string('phone_number',20)->nullable(true);
             $table->timestamp('last_activity')->nullable(true);
-            $table->boolean('active')->default(false);
+            $table->boolean('is_active')->default(false);
             $table->string('military_service',8)->nullable(true);
             $table->date('serve_time')->nullable(true);
             $table->string('facebook_url')->nullable(true);
@@ -49,6 +49,7 @@ class CreateUsersTable extends Migration
             $table->date('foundation_date')->nullable(true);
             $table->string('profession',100)->nullable(true);
             $table->string('education',100)->nullable(true);
+            $table->boolean('is_banned')->default(false);
             $table->timestamps();
 
 

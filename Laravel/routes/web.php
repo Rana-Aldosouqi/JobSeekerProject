@@ -110,7 +110,7 @@ Route::get('/vol','postscontroller@doVolanteer');
 
 //Eman
 Route::get('/Login','AuthController@getLoginView')->name('login');
-Route::post('/Login','AuthController@doLogin');
+Route::post('/Login', 'AuthController@doLogin');
 
 Route::get('/Register','AuthController@getRegisterView');
 Route::post('/Register','AuthController@doRegistration');
@@ -190,7 +190,8 @@ Route::group( [ 'middleware' => 'auth' , 'admin'] , function () {
     Route::post('/feedbacks/{id}', 'DashBoardController@publishFeedback');
 
     Route::get('/adminReports', 'DashBoardController@getReportForAdminView');
-    Route::delete('/adminReports/{id}/{user_id}', 'DashBoardController@deleteUser');
+    Route::post('/adminReports/{bid}', 'DashBoardController@banUser');
+    Route::post('/adminReports/{id}', 'DashBoardController@permitUser');
     Route::delete('/adminReports/{id}', 'DashBoardController@deleteReport');
 //    Route::post('/DashBoard', 'DashBoardController@checkActiveUser');
 });

@@ -50,6 +50,11 @@ class AuthController extends Controller
             'password'=>$password
         ]);
         if ($result) {
+            if(auth()->check() && auth()->user()->is_banned == 1)
+            {
+                auth()->logout();
+                return redirect('/Login')->withErrors('Your Account has been banned');
+            }
             return redirect('/Home');
         } else{
             return redirect('/Login')->with(['error'=>'Authentication Failed']);
