@@ -287,6 +287,6 @@ Route::get('/', function () {
 
 //Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/homeController', 'HomeController@index')->name('homeController');
 //=======
 //>>>>>>> 22420e4884048985c0a5b0685363af6e6005178e

@@ -28,23 +28,9 @@ class AlljobsController extends Controller
 //        $topPosts=\App\Post::find($topids);
         //dd($topPosts);
 
-        //Eman
 
-        $feedbacks = Feedback::where('id', '!=', auth()->id())
-            ->where('published', '=' , 1)
-//            ->where('user_id', '!=', auth()->id())
-//            ->where('image_id' ,'=' , 'user_id')
-            ->get()->all();
 
-        $users = User::where('id', '!=', auth()->id())->get()->all();
-
-        $images = Image::where('id', '!=', auth()->id())->get()->all();
-
-        return view('user.Alljobs', ['topPosts' => $topPosts],
-            ['feesbacks' => $feedbacks],
-            ['users' => $users] ,
-            ['images' => $images]
-        );
+        return view('user.Alljobs', ['topPosts' => $topPosts]);
     }
 
     public function getPostDetailsView(){
