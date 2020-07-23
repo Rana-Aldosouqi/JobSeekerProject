@@ -51,8 +51,12 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 {{--                        <a class="dropdown-item" href="/Profile"><h4>Profile</h4></a>--}}
                         <div class="dropdown-divider"></div>
+{{--<<<<<<< HEAD--}}
                         <a class="dropdown-item" href="/companyprofile"><h6>Profile</h6></a>
                         <a class="dropdown-item" href="/ChangePassword"><h6>Change Password</h6></a>
+{{--=======--}}
+                        <a class="dropdown-item" href="/navelogin"><h6>Profile</h6></a>
+{{-->>>>>>> fc1f62ab7643b19932c7746916d172fb66ef918a--}}
                         <a class="dropdown-item" href="/Logout"><h6>LogOut</h6></a>
                     </div>
                 </li>

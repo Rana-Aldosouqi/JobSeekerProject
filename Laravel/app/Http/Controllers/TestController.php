@@ -36,6 +36,7 @@ class TestController extends Controller
             $correct2 = strcmp($correct2,'on')==0?1:0;
             $correct3 = strcmp($correct3,'on')==0?1:0;
             $correct4 = strcmp($correct4,'on')==0?1:0;
+
             $questionAnswers = [
                 $validate['Ans1'][$index]  => $correct1,
                 $validate['Ans2'][$index]  => $correct2,
@@ -44,6 +45,7 @@ class TestController extends Controller
             ];
             TestQuestion::create([
                 'test_id' => $test->id,
+
                 'questionHeader' => $value,
                 'answers'=> serialize($questionAnswers)
             ]);

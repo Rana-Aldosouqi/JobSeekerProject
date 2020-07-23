@@ -163,6 +163,11 @@
       <workItem from="1589408542965" duration="966000" />
       <workItem from="1589409599476" duration="588000" />
       <workItem from="1589410982275" duration="1261000" />
+      <workItem from="1589464531064" duration="1033000" />
+      <workItem from="1589467072688" duration="892000" />
+      <workItem from="1593632176781" duration="5224000" />
+      <workItem from="1595349841521" duration="6101000" />
+      <workItem from="1595403138630" duration="26070000" />
     </task>
     <servers />
   </component>
@@ -170,21 +175,25 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="275" y="26" key="#Notifications" timestamp="1585596165666">
+    <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595493745250">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="26" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1585596165666" />
+    <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1595493745250" />
     <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588718201070">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1588718201070" />
-    <state x="568" y="133" key="FileChooserDialogImpl" timestamp="1584828492108">
+    <state x="489" y="57" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1589464619082">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="568" y="133" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1584828492108" />
-    <state x="291" y="20" key="SettingsEditor" timestamp="1584827165655">
+    <state x="489" y="57" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1589464619082" />
+    <state x="550" y="27" width="561" height="624" maximized="true" key="dock-window-1" timestamp="1593632187808">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="291" y="20" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1584827165655" />
+    <state x="550" y="27" width="561" height="624" maximized="true" key="dock-window-1/0.0.1366.728@0.0.1366.728" timestamp="1593632187808" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1595504467255">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1595504467255" />
   </component>
 </project>

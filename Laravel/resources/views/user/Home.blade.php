@@ -103,7 +103,8 @@
         <br>
 
         {{------------------------------------------------------------------------------------------------------------------------}}
-        <div class="row mt-5 ">
+{{--        <div class="row mt-5 ">--}}
+        <div class="row mt-5 mb-3 " style="">
             <div class="col-lg-3 col-sm-6">
                 <div class="card">
                     <img src="{{asset('assets/img/undraw_reviewed_docs_neeb.png')}}" class="card-img-top" alt="...">
@@ -170,11 +171,12 @@
         {{-- --------------------------------------------Latest added jobs-------------------------------------------------}}
         <div class="row">
             <div class="col-12" style=" border-left: 7px solid #19692c;">
-                <div class="card" style="border: none;">
+                <div class="card" style="border: none;"  >
                     <div class="card-body">
                         <h3>Latest added Jobs</h3>
                     </div>
                 </div>
+
             </div>
         </div>
         <div class="row">
@@ -183,11 +185,7 @@
                 <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mt-3 ">
                     <div class="card " style="width: 16rem;">
                         <div class="card-body">
-                            <h6 class="card-title">{{$topPost->job_title}}
-                                @if (date("Y-m-d",strtotime($topPost['created_at'])) == date("Y-m-d"))
-                                    <span class="badge badge-success">New</span>
-                                @endif
-                            </h6>
+                            <h5 class="card-title">{{$topPost->job_title}}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">
 
                                 <p class="card-text">
@@ -203,29 +201,36 @@
                                 </p>
 
                             </h6>
+{{--                            <a href="#" class="card-link">Show More</a>--}}
                             <a href="/apply/{{$topPost->id}}" class="card-link">Show More</a>
-
                         </div>
                     </div>
                 </div>
             @endforeach
-        </div>
-        <div class="row mt-3 justify-content-center">
-            <div class="col ">
-                <a href="/Alljobs" class="text-center ml-5">See All Jobs</a>
-            </div>
-        </div>
-        {{--                Eman--}}
-        <div class="row mt-3">
-            <div class="col-12" style=" border-left: 7px solid #19692c;">
-                <div class="card" style="border: none;">
-                    <div class="card-body">
-                        <h3>FeedBack</h3>
-                    </div>
+            <div class="row mt-3 justify-content-center">
+                <div class="col ">
+                    <a href="/Alljobs" class="text-center ml-5">See All Jobs</a>
                 </div>
             </div>
         </div>
-        <div class="row mt-3">
+
+
+        {{--                Eman--}}
+                <br>
+                <div style="height: 10%;">
+
+                </div>
+                <div class="row ">
+                    <div class="col-12" style=" border-left: 7px solid #19692c;">
+                        <div class="card" style="border: none;"  >
+                            <div class="card-body">
+                                <h3>FeedBack</h3>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+        <div class="row mt-3 justify-content-center">
             <div class="card">
                 <div class="card-body">
                     @foreach($feesbacks as $feedback )
@@ -243,4 +248,10 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+
 @endsection

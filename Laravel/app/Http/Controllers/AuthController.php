@@ -103,6 +103,15 @@ class AuthController extends Controller
             return redirect('/userprofile');
         }
     }
+    public function navelogin()
+    {
+        if(Auth::user()->user_type == 'Company'){
+            return redirect('/companyprofile');
+        } elseif(Auth::user()->user_type == 'Seeker')
+        {
+            return redirect('/userprofile');
+        }
+    }
 
     //ResetPassword
     public function passwordResetTokenView()

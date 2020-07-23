@@ -34,6 +34,10 @@ Route::prefix('/answer')->middleware(['auth'])->group(function (){
 use App\Post;
 use App\User;
 //use Illuminate\Support\Facades\Auth;
+//Route::get('/navlogin','PostController@getPostView');
+Route::get('/navelogin', 'AuthController@navelogin');
+//---------------------------------------------------
+
 
 
 Route::get('/index','PostController@getPostView');
@@ -51,19 +55,18 @@ Route::get('/Alljobs','AlljobsController@getAllPostsView');
 Route::get('/categories/{id}','CategoryController@getCategoryView');
 Route::get('/categories/{id}', 'CategoryController@getCatPostsView');
 
+//for add test to Post
+Route::get('/CompPost','PostController@addtestview');
+Route::get('/CompPost','PostController@addtest1');
+
+
 //for search
 Route::any('/search','PostController@dosearch');
 
 //for apply page
 Route::get('/apply/{id}','AlljobsController@getPostDetailsView');
 Route::get('/apply/{id}', 'AlljobsController@getPostDetails');
-Route::get('/apply/{id}/done', function($id){
-    $user = DB::table('posts')->where('id', '=', $id)->decrement('vacancies');
-    //register the applied post with user id
-    //i should make apply button disabled until test is done and payment is done
-
-    return redirect("/response");
-});
+Route::get('/apply/{id}/done', 'PostController@postpay');
 
 Route::get('/response', function () {
 
@@ -79,9 +82,13 @@ Route::get('/response', function () {
 //amina
 Route::get('/userprofile', 'Settingcontroller@received');
 Route::post('/userprofile,SettingController@store');
+
 Route::get('/settingsemployee','Settingcontroller@getUpdate');
 Route::post('/settingsemployee','Settingcontroller@update');
+
 Route::post('/settingsemployee/uploadImage','Settingcontroller@uploadImage');
+
+Route::get('/userprofile', 'SettingController@SkillView');
 
 
 //shaimaa---------------------------------------------------------------------------------------------------------------

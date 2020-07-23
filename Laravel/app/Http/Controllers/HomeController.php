@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class homeController extends Controller
 {
+
     public function getHomeView(){
 
         return view('user.Home');
@@ -21,7 +22,7 @@ class homeController extends Controller
 //            ->get()
 //            ->pluck('id')
 //            ->toArray()
-            ->simplePaginate(4);
+            ->simplePaginate(7);
 
         //Eman
 
@@ -41,5 +42,6 @@ class homeController extends Controller
             ['users' => $users] ,
             ['images' => $images]
         );
+
     }
 }
