@@ -3,15 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
-
-
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 class PostApplied extends model
-{
-<<<<<<< HEAD
 
+{
+    public $tables="post_applieds";
 }
-=======
-    public $table="post_applieds";
-}
->>>>>>> 06881e56183928c03755faa832a7a982fe464d39

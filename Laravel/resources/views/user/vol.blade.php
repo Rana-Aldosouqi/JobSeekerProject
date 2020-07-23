@@ -34,7 +34,7 @@
                          <div id="accordion" >
 
                              <div class="card" >
-                                 <div class="card-header" style="background-color: white !important;" >
+                                 <div class="card-header" style="background-color: white !important;border-radius: 10px;" >
                                      <a style="color: dodgerblue;" class="card-link" data-toggle="collapse" href="#collapseOne">
                                          Job Type
                                      </a>
@@ -131,18 +131,19 @@
 
 
 
-                 <div class=" ">
-                             <div class="card bg-light">
-                                 <div class="card-body bg-white " >
+                 <div class=" " >
+                             <div class="card bg-light" >
+                                 <div class="card-body bg-white col-12"  >
                                      <div  id="volPostsContainer" >
                                          @foreach($volposts as $volPost)
-                                             <div class="col mt-3 post-item "  data-groups='["{{$volPost->type}}"{{$volPost->age}}"{{$volPost->city}}"]' >
+                                             <div class="col mt-4 post-item "  data-groups='["{{$volPost->type}}"{{$volPost->age}}"{{$volPost->city}}"]' >
                                                  <div class="row justify-content-center " style=" width:100% !important;" >
-                                                     <div class="col-10 shadow  " >
-                                                         <div class="media mt-2 " style="width:100% !important; ">
-                                                             <img src="{{asset('assets/img1/55.jpg')}}"height="120" width="150" class="mr-3" alt="...">
-                                                             <div class="media-body" >
+                                                     <div class="col-11 shadow  "  style=" border-radius: 10px;" >
+                                                         <div class="media mt-2 " style="width:100% !important;">
+                                                             <img src="{{asset('assets/img1/55.jpg')}}"height="120" width="150" class="mr-3" alt="..." style=";border-radius: 3px; margin-top: 15px;">
+                                                             <div class="media-body" style="margin-top: 15px; margin-bottom: 15px;" >
                                                                  <h5 class="card-text" > {{$volPost->job_title}}</h5>
+                                                                 <p class="card-text" >Company: {{$volPost->company}}</p>
                                                                  <p class="card-text" >City:
                                                                      @if(($volPost->city)==1)
                                                                          Mansoura
@@ -175,11 +176,9 @@
                                                                  <p class="card-text"> We still need {{$volPost->vacancies}} for this job </p>
                                                                  <p class="card-text">  {{$volPost->other}} </p>
 
-
-
-                                                                   <a class="btn btn-primary btn-md ml-4"  href="/apply/" type="submit">Apply</a>
-
-
+                                                             </div>
+                                                             <div class=" container col-2  " style="margin-top: 10px">
+                                                                 <button  class="btn btn-primary  ">Apply</button>
                                                              </div>
                                                          </div>
                                                      </div>
