@@ -212,37 +212,46 @@
                     <a href="/Alljobs" class="text-center ml-5">See All Jobs</a>
                 </div>
             </div>
-
+        </div>
 
 
         {{--                Eman--}}
-{{--        <div class="row mt-3">--}}
-{{--            <div class="col-12" style=" border-left: 7px solid #19692c;">--}}
-{{--                <div class="card" style="border: none;">--}}
-{{--                    <div class="card-body">--}}
-{{--                        <h3>FeedBack</h3>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="row mt-3">--}}
-{{--            <div class="card">--}}
-{{--                <div class="card-body">--}}
-{{--                    @foreach($feesbacks as $feedback )--}}
-{{--                        <div class="media">--}}
-{{--                            <img class="mr-3"--}}
-{{--                                 src="{{Auth::user()->image ? asset(Auth::user()->image->path): ""}}/64x64">--}}
-{{--                            <div class="media-body">--}}
-{{--                                <h5 class="mt-0">{{$feedback->name}}</h5>--}}
-{{--                                <span class="text-justify"> {{$feedback->message}}</span>--}}
-{{--                                <hr>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    @endforeach--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+                <br>
+                <div style="height: 10%;">
+
+                </div>
+                <div class="row ">
+                    <div class="col-12" style=" border-left: 7px solid #19692c;">
+                        <div class="card" style="border: none;"  >
+                            <div class="card-body">
+                                <h3>FeedBack</h3>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+        <div class="row mt-3 justify-content-center">
+            <div class="card">
+                <div class="card-body">
+                    @foreach($feesbacks as $feedback )
+                        <div class="media">
+                            <img class="mr-3"
+                                 src="{{Auth::user()->image ? asset(Auth::user()->image->path): ""}}/64x64">
+                            <div class="media-body">
+                                <h5 class="mt-0">{{$feedback->name}}</h5>
+                                <span class="text-justify"> {{$feedback->message}}</span>
+                                <hr>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
+
+
+
+
+
+
 @endsection

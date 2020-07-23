@@ -22,7 +22,7 @@ class homeController extends Controller
 //            ->get()
 //            ->pluck('id')
 //            ->toArray()
-            ->simplePaginate(6);
+            ->simplePaginate(7);
 
         //Eman
 
