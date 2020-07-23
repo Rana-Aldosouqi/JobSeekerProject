@@ -153,7 +153,6 @@ class DashBoardController extends Controller
     public function publishFeedback(Request $request ,$id){
 
         $feedback = Feedback::find($id);
-//        $feedback -> user_id = user()->id;
         $feedback->published = $request->get('published');
         $feedback->save();
 
@@ -167,18 +166,19 @@ class DashBoardController extends Controller
             'data' => $reports
         ]);
     }
-    public function deleteUser($id,$user_id)
+    public function banUser(Request $request,$bid)
     {
-        $report = Report::where('id',$id)->first();
-        $user = User::where('id',$user_id)->first();
-
-        if ($report != null) {
-
-            $report->delete();
-            $user->delete();
-            return redirect()->back();
-        }
+        $user = User::find($bid);
+        $user->is_banned = $request->get('is_banned');
+        $user->save();
         return redirect()->back();
+    }
+    public function permitUser(Request $request,$id)
+    {
+            $user = User::find($id);
+            $user->is_banned = $request->get('is_banned');
+            $user->save();
+            return redirect()->back();
     }
     public function deleteReport($id)
     {

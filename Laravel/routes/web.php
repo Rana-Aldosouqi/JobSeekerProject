@@ -126,11 +126,16 @@ Route::get('/vol','postscontroller@doVolanteer');
 
 
 //Eman
+//<<<<<<< HEAD
+Route::get('/Login','AuthController@getLoginView')->name('login');
+Route::post('/Login', 'AuthController@doLogin');
+//=======
 Route::get('/Login', 'AuthController@getLoginView')->name('login');
 Route::post('/Login', 'AuthController@doLogin');
 
 Route::get('/Register', 'AuthController@getRegisterView');
 Route::post('/Register', 'AuthController@doRegistration');
+//>>>>>>> 4e1f63e38c69f78c66df41db9de7bd47fc79a60f
 
 Route::get('/Logout', 'AuthController@doLogout');
 
@@ -213,7 +218,8 @@ Route::group( [ 'middleware' => 'auth' , 'admin'] , function () {
     Route::post('/feedbacks/{id}', 'DashBoardController@publishFeedback');
 
     Route::get('/adminReports', 'DashBoardController@getReportForAdminView');
-    Route::delete('/adminReports/{id}/{user_id}', 'DashBoardController@deleteUser');
+    Route::post('/adminReports/{bid}', 'DashBoardController@banUser');
+    Route::post('/adminReports/{id}', 'DashBoardController@permitUser');
     Route::delete('/adminReports/{id}', 'DashBoardController@deleteReport');
 //    Route::post('/DashBoard', 'DashBoardController@checkActiveUser');
 });
@@ -284,6 +290,6 @@ Route::get('/', function () {
 
 //Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/homeController', 'HomeController@index')->name('homeController');
 //=======
 //>>>>>>> 22420e4884048985c0a5b0685363af6e6005178e

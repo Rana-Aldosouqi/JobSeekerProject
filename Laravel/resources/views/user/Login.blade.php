@@ -44,6 +44,9 @@
                         <div class="row">
                             <div class="col-1 ml-3"></div>
                             <div class="col-9">
+                                @if (session('message'))
+                                    <div class="alert alert-danger">{{ session('message') }}</div>
+                                @endif
                                 @if (Session::has('error'))
                                     <div class="alert alert-danger">
                                         <p class="m-0">

@@ -260,7 +260,7 @@ buildings:
     - clinic-medical
     - dungeon
     - gopuram
-    - home
+    - homeController
     - hospital
     - hospital-alt
     - hotel
@@ -1231,7 +1231,7 @@ interfaces:
     - hashtag
     - heart
     - history
-    - home
+    - homeController
     - i-cursor
     - info
     - info-circle
@@ -1386,7 +1386,7 @@ maps:
     - heart
     - heartbeat
     - helicopter
-    - home
+    - homeController
     - hospital
     - image
     - images
@@ -1722,7 +1722,7 @@ objects:
     - helicopter
     - highlighter
     - holly-berry
-    - home
+    - homeController
     - hospital
     - hourglass
     - igloo

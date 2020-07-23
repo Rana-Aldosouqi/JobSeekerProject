@@ -367,8 +367,7 @@
                                                         <th scope="row">{{$newPost->id}}</th>
                                                         <td>{{$newPost->user_id}}</td>
                                                         <td>{{$newPost->type}}</td>
-                                                        <td><a href="#" class="text-dark">{{$newPost->job_title}}</a>
-                                                        </td>
+                                                        <td>{{$newPost->job_title}}</td>
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">
@@ -485,10 +484,10 @@
                                         <tr class="text-center">
                                             <th scope="col">ID</th>
                                             <th scope="col">User ID</th>
-{{--                                            <th scope="col">username</th>--}}
-{{--                                            <th scope="col">email</th>--}}
-                                            <th scope="col">Delete User</th>
-                                            <th scope="col">ignore</th>
+{{--                                            <th scope="col">Ban User</th>--}}
+                                            <th scope="col">Ban User</th>
+                                            <th scope="col">Permit User</th>
+                                            <th scope="col">Delete</th>
                                         </tr>
                                         </thead>
                                         @foreach($data as $report)
@@ -496,22 +495,35 @@
                                             <tr class="text-center">
                                                 <th scope="row">{{$report->id}}</th>
                                                 <td>{{$report->user_id}}</td>
-{{--                                                <td>{{$report->name}}</td>--}}
-{{--                                                <td>{{$report->email}}</td>--}}
                                                 <td>
-                                                    <form action="{{ url('/adminReports',['id'=> $report->id ] ,
-                                                         ['user_id' => $report->user_id ])}}"
+                                                    <form action="{{ url('/adminReports',['bid'=> $report->user_id])}}"
                                                           method="POST">
-                                                        @method('delete')
                                                         @csrf
                                                         <div class="btn-group" role="group"
                                                              aria-label="Basic example">
-                                                            <button type="submit" class="btn btn-danger"><i
-                                                                        class="fa fa-times"></i>
+                                                            <input name="is_banned"  value="1" hidden/>
+                                                            <button type="submit" class="btn btn-warning">
+                                                                <i class="fa fa-ban"
+                                                                   aria-hidden="true"></i>
                                                             </button>
                                                         </div>
                                                     </form>
                                                 </td>
+                                                <td>
+                                                    <form action="{{ url('/adminReports',['id'=> $report->user_id])}}"
+                                                          method="POST">
+                                                        @csrf
+                                                        <div class="btn-group" role="group"
+                                                             aria-label="Basic example">
+                                                            <input name="is_banned" value="0" hidden/>
+                                                            <button type="submit" class="btn btn-info">
+                                                                <i class="fa fa-check"
+                                                                   aria-hidden="true"></i>
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </td>
+
                                                 <td>
                                                     <form action="{{ url('/adminReports',['id'=> $report->id])}}"
                                                           method="POST">
@@ -519,8 +531,9 @@
                                                         @csrf
                                                         <div class="btn-group" role="group"
                                                              aria-label="Basic example">
-                                                            <button type="submit" class="btn btn-info">
-                                                                <i class="fa fa-check"
+                                                            {{--                                                            <input name="is_banned" value="1"/>--}}
+                                                            <button type="submit" class="btn btn-danger">
+                                                                <i class="fa fa-times"
                                                                    aria-hidden="true"></i>
                                                             </button>
                                                         </div>
