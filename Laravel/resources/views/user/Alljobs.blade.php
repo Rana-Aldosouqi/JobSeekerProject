@@ -176,7 +176,7 @@
                             <div id="postsContainer">
                                 @foreach($topPosts as $topPost)
                                     <div class="col mt-3 post-item"
-                                         data-groups='["{{$topPost->type}}","{{(($topPost->career_level)==1) ? 'senior': ''}}{{(($topPost->career_level)==2) ? 'student': ''}}{{(($topPost->career_level)==3) ? 'manger': ''}}"
+                                         data-groups='["{{$topPost->jobtype}}","{{(($topPost->career_level)==1) ? 'senior': ''}}{{(($topPost->career_level)==2) ? 'student': ''}}{{(($topPost->career_level)==3) ? 'manger': ''}}"
                                          ]'>
 
 {{--                                         data-groups='[{{(($topPost->career_level)==1) ? '"senior"': ''}}--}}
@@ -203,9 +203,9 @@
                                                             @endif
                                                         </h5>
                                                         <p > Job Type:
-                                                            @if(($topPost->type)==1)
+                                                            @if(($topPost->jobtype)==1)
                                                                 Full Time-
-                                                            @elseif(($topPost->type)==2)
+                                                            @elseif(($topPost->jobtype)==2)
                                                                 Part Time-
                                                             @else
                                                                 Freelancer-

@@ -51,7 +51,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 {{--                        <a class="dropdown-item" href="/Profile"><h4>Profile</h4></a>--}}
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/companyprofile"><h6>Profile</h6></a>
+                        <a class="dropdown-item" href="/navelogin"><h6>Profile</h6></a>
                         <a class="dropdown-item" href="/Logout"><h6>LogOut</h6></a>
 
 

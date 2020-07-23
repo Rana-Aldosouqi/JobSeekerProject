@@ -78,6 +78,35 @@
                 </div>
 
 
+
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-4 col-form-label"><h5>Has test:</h5></label>
+                    <div class="form-check-inline">
+                        <label class="form-check-label ml-2" for="radio1">
+                            <input type="radio" class="form-check-input" id="radio1" name="hastest" value="1" checked>Has test
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label" for="radio2">
+                            <input type="radio" class="form-check-input" id="radio2" name="hastest" value="0"> No test
+                        </label>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <!-- JOB Requirments-->
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-4 col-form-label"><h5>Languages:</h5></label>
@@ -139,11 +168,14 @@
 
 
                 <!--Buttons-->
-                <div class="row">
+                <div class="row justify-content-center mb-3 mt-5">
 
-                    <div class="container mt-4 mb-3 col-3 h6">
-                        <button type="submit" name="submit" value="add" class="btn btn-primary btn-md btn-block ">Post</button>
-                    </div>
+
+{{--                    <span class="col-3 ml-2"></span>--}}
+                    <div class=" btn-md btn-block col-3 ml-2  "></div>
+{{--                    <button type="submit" name="submit" value="add" class="btn btn-success btn-md btn-block col-3 ml-2  ">Add Test</button>--}}
+                    <button type="submit" name="submit" value="add" class="btn btn-primary btn-md btn-block col-3 ml-2  ">Post</button>
+
                 </div>
                 <div class="col-sm-1"></div>
             </form>

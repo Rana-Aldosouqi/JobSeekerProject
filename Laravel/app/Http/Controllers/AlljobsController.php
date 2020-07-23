@@ -56,9 +56,11 @@ class AlljobsController extends Controller
 
     public function getPostDetails( $id){
 
-        $post=\App\Post::where('id', $id)->get()->first();
+        $post=\App\Post::where('id', $id)->get();
+        $postt=\App\Post::where('id', $id)->get()->first();
 
-        if ($post === null) {
+
+        if ($postt === null) {
             return redirect("/Alljobs");
         }else{
             return view('user.Apply', ['post' => $post]);

@@ -25,6 +25,6 @@ class Post extends Model
     }
 
     public function test(){
-        return $this->hasOne('App\Test','post_id');
+        return $this->hasOne(Test::class,'post_id');
     }
 }

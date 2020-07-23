@@ -185,9 +185,9 @@
 
                         <p class="card-text">
                             Job Type:
-                            @if(($topPost->type)==1)
+                            @if(($topPost->jobtype)==1)
                                 Full Time
-                            @elseif(($topPost->type)==2)
+                            @elseif(($topPost->jobtype)==2)
                                 Part Time
                             @else
                                 Freelancer
