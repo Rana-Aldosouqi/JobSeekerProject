@@ -32,7 +32,7 @@
     background-color: #3AC587;
 }
 .custom-radios input[type="radio"]#color-2 + label span {
-    background-color: #002B5B;
+    background-color:#CCCCCA;
 }
 .custom-radios input[type="radio"]#color-3 + label span {
     background-color: #F85C50;
@@ -44,7 +44,7 @@
     background-color: #F69779;
 }
 .custom-radios input[type="radio"]#color-6 + label span {
-    background-color: #645B60;
+    background-color: #95C6C9;
 }
 .custom-radios input[type="radio"]#color-7 + label span {
     background-color: #0999DC;

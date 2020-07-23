@@ -8,7 +8,7 @@
 @endsection
 @section('content')
     <body>
-    <div class="row mt-3 ml-auto" style="font-family: 'Permanent Marker', cursive;font-family: 'Alegreya', serif;">
+    <div class="row mt-3 ml-auto mt-5" style="font-family: 'Permanent Marker', cursive;font-family: 'Alegreya', serif;">
         <div class="col-3">
             <div class="card">
                 <div class="card-header text-center">
@@ -17,28 +17,21 @@
                 <div class="card-body shadow-sm">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                          aria-orientation="vertical">
-                        <a class="nav-link card rounded bg-light {{request()->is('adminHome') ? 'active' : null}}"
-                           href="{{url('adminHome')}}" role="tab"><h6>
-                                Visitors</h6></a>
+{{--                        <a class="nav-link card rounded bg-light {{request()->is('adminHome') ? 'active' : null}}"--}}
+{{--                           href="{{url('adminHome')}}" role="tab"><h6>--}}
+{{--                                Visitors</h6></a>--}}
                         <a class="nav-link card rounded bg-light {{request()->is('adminProfile') ? 'active' : null}}"
-                           href="{{url('adminProfile')}}" role="tab"><h6>
-                                Profile</h6></a>
+                           href="{{url('adminProfile')}}" role="tab"><b>Profile</b></a>
                         <a class="nav-link card rounded bg-light {{request()->is('adminSettings') ? 'active' : null}}"
-                           href="{{url('adminSettings')}}" role="tab"><h6>
-                                Settings</h6></a>
+                           href="{{url('adminSettings')}}" role="tab"><b>Settings</b></a>
                         <a class="nav-link card rounded bg-light {{request()->is('adminUsers') ? 'active' : null}}"
-                           href="{{url('adminUsers')}}" role="tab"><h6>
-                                Users</h6></a>
+                           href="{{url('adminUsers')}}" role="tab"><b>Users</b> </a>
                         <a class="nav-link card rounded bg-light {{request()->is('adminPosts') ? 'active' : null}}"
-                           href="{{url('adminPosts')}}" role="tab"><h6>
-                                Posts</h6></a>
+                           href="{{url('adminPosts')}}" role="tab"><b>Posts</b></a>
                         <a class="nav-link card rounded bg-light {{request()->is('feedbacks') ? 'active' : null}}"
-                           href="{{url('feedbacks')}}" role="tab"><h6>
-                                Feedback</h6></a>
-
+                           href="{{url('feedbacks')}}" role="tab"><b>Feedback</b></a>
                         <a class="nav-link card rounded bg-light {{request()->is('adminReports') ? 'active' : null}}"
-                           href="{{url('adminReports')}}" role="tab"><h6>
-                                Reports</h6></a>
+                           href="{{url('adminReports')}}" role="tab"><b>Reports</b></a>
                     </div>
                 </div>
             </div>

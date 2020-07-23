@@ -17,7 +17,7 @@ class ContactUsController extends Controller
         $rules = [
             'name' => 'required|min:3',
             'email' => 'required',
-            'message' => '',
+            'message' => 'required',
 //            'published'=>'',
         ];
         $validator = Validator::make($request->all(), $rules);

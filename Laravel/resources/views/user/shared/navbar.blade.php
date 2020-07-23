@@ -52,9 +52,8 @@
 {{--                        <a class="dropdown-item" href="/Profile"><h4>Profile</h4></a>--}}
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/companyprofile"><h6>Profile</h6></a>
+                        <a class="dropdown-item" href="/ChangePassword"><h6>Change Password</h6></a>
                         <a class="dropdown-item" href="/Logout"><h6>LogOut</h6></a>
-
-
                     </div>
                 </li>
             @else
