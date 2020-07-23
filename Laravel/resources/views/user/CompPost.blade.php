@@ -74,9 +74,11 @@
                                                 Freelancer-
                                             @endif
                                             Minimum Salary:{{$post->min_salary}}- Maximum Salary:{{$post->max_salary}}</p>
+
 {{--                                        <div class="mb-4 mt-4"><a href="/apply/{{$post->id}}" >SHOW MORE</a></div>--}}
 
-                                        @if($post->hastest)==1)
+
+                                        @if(($post->hastest)==1)
                                         <a href="/test/create/{{$post->id}}" class="btn btn-success btn-md btn-block col-2 ml-2 mb-2 ">ADD TEST</a>
                                         @else
                                             <div class="mb-4 mt-4"><a href="/apply/{{$post->id}}" >SHOW MORE</a></div>

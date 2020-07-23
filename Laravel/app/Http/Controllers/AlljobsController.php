@@ -30,7 +30,7 @@ class AlljobsController extends Controller
         //dd($topPosts);
 
 
-<<<<<<< HEAD
+
     //    $feedbacks = Feedback::where('id', '!=', auth()->id())
        //     ->where('published', '=' , 1)
 //            ->where('user_id', '!=', auth()->id())
@@ -46,10 +46,10 @@ class AlljobsController extends Controller
          //   ['users' => $users] ,
          //   ['images' => $images]
         );
-=======
+
 
         return view('user.Alljobs', ['topPosts' => $topPosts]);
->>>>>>> 011e3b91ddb7ac969408ac56a80cae0eba2bed9e
+
     }
 
     public function getPostDetailsView(){

@@ -70,9 +70,9 @@
                                                 </div>
                                                 <div class="modal-footer">
 
-                                                    <a href="/apply/{{$post->id}}/done" class="btn btn-dark">Apply</a>
+                                                    <a href="/apply/{{$post->id}}/done" class="btn btn-dark">Pay</a>
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
+
                                                 </div>
                                             </div>
                                         </div>
