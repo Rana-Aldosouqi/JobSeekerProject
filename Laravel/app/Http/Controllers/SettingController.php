@@ -95,6 +95,15 @@ class SettingController extends Controller
 
         return redirect("/settingsemployee");
     }
+    public function SkillView()
+    {
+        $allSkills = Skill::orderBy('created_at', 'ASC')
+            ->where('user_id', Auth::user()->id)->get();
+        return view('user.userprofile',[
+            'data' => $allSkills
+        ]);
+
+    }
 
 
 //    public function addSkill(Request $request){
@@ -114,15 +123,7 @@ class SettingController extends Controller
 //        return view('/user.settingsemployee',compact('adskills'));
 //    }
 
-    public function SkillView()
-    {
-        $allSkills = Skill::orderBy('created_at', 'ASC')
-            ->where('user_id', Auth::user()->id)->get();
-        return view('user.userprofile',[
-            'data' => $allSkills
-        ]);
 
-    }
 
 
 }

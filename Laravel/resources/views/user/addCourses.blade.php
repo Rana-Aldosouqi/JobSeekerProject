@@ -13,6 +13,7 @@
                     <h1> <u>Add course</u> </h1>
                 </div>
                 </br>
+                <div class="container">@include('user.massege')</div>
                 <div class="container col-12 mt-3">
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 ml-4"><h5>Course name</h5></label>

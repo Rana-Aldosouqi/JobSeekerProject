@@ -20,7 +20,7 @@
             <a href="#">Privacy policy</a>
         </p>
 
-        <p class="footer-company-name">Job seeker &copy; 2019</p>
+        <p class="footer-company-name">Job seeker &copy; 2020</p>
     </div>
 
     <div class="footer-center">

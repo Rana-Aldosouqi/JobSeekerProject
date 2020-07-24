@@ -16,8 +16,8 @@
                              class="card-img rounded profile-img" height="140" width="140"/>
                     </div>
                 </div>
-                <div class="col-6">
-                    <p class="" style="font-size:40px;">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</p>
+                <div class="col-4">
+                    <h4 class="">{{Auth::user()->first_name}} {{Auth::user()->last_name}}</h4>
                 </div>
             </div>
             <div class="row ml-5 my-2">
@@ -75,7 +75,7 @@
                     @foreach($skills as $skill)
                         <div class="row">
                             <div class="col-4">
-                                <ul class="ml-0">
+                                <ul class="ml-4">
                                     <li><p class="h5">{{$skill->skill}}</p></li>
                                 </ul>
                             </div>
@@ -109,19 +109,27 @@
                         <div class="row mb-3">
                             <div class="col-3 mr-0">
                                 <div class="row">
-                                    <p class="h5" style="color:#b3b7bb;">
-                                        <span class="h6" style="color: white">To &nbsp; &nbsp;</span>
+                                    <p class="h5">
+                                        <span style="color: white">To &nbsp; &nbsp;</span>
                                         {{$experience->start_date}}</p>
                                 </div>
                                 <div class="row">
                                     <p class="h5">
-                                        <span class="h6">To &nbsp; &nbsp;</span>
+                                        <span>To &nbsp; &nbsp;</span>
                                         {{$experience->end_date}}</p>
                                 </div>
                             </div>
                             <div class="col-9 ml-0">
-                                <p class="h5"><b>{{$experience->job_name}}</b></p>
-                                <p class="h6">{{$experience->company}}</p>
+                                <div class="row">
+                                    <p class="h5">
+                                        <span>{{$experience->job_name}}</span>
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <p class="h5">
+                                        <span>{{$experience->company}}</span>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     @endforeach
@@ -145,19 +153,26 @@
                             <div class="col-3 mr-0">
                                 <div class="row">
                                     <p class="h5">
-                                        <span class="h6" style="color: white">To &nbsp; &nbsp;</span>
+                                        <span style="color: white">To &nbsp; &nbsp;</span>
                                         {{$eduction->start_date}}</p>
                                     </p>
                                 </div>
                                 <div class="row">
                                     <p class="h5">
-                                        <span class="h6">To &nbsp; &nbsp;</span>
+                                        <span >To &nbsp; &nbsp;</span>
                                         {{$eduction->end_date}}</p>
                                 </div>
                             </div>
                             <div class="col-9 ml-0">
-                                <p class="h5" style="color:#b3b7bb;"><b>{{$eduction->school}}</b></p>
-                                <p class="h6" style="color:#b3b7bb;">{{$eduction->degree}}</p>
+                                <div class="row">
+                                    <p class="h5">
+                                        <span>{{$eduction->school}}</span>
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <p class="h5">
+                                        <span>{{$eduction->degree}}</span></p>
+                                </div>
                             </div>
                         </div>
                     @endforeach
@@ -181,7 +196,7 @@
                             <div class="col-3 mr-0">
                                 <div class="row">
                                     <p class="h5">
-                                        <span class="h6" > &nbsp; &nbsp;</span>
+                                        <span style="color: #ffffff;">To &nbsp; &nbsp;</span>
                                         {{$course->date}}</p>
                                     </p>
                                 </div>
@@ -211,7 +226,7 @@
                             <div class="col-3 mr-0">
                                 <div class="row">
                                     <p class="h5">
-                                        <span class="h6" style="color: white"> &nbsp; &nbsp;</span>
+                                        <span style="color: #ffffff;">To &nbsp; &nbsp;</span>
                                         {{$certificate->date}}</p>
                                     </p>
                                 </div>

@@ -28,34 +28,38 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-9">
-                <div class="card">
-                    <div class="card-body">
-                        <h4>Filter</h4>
-                        <hr>
-                        <div class="col-12 col-lg-6 ">
-                            <div class="btn-group">
-                                <button class="btn btn-info">
-                                    full time
-                                </button>
-                                <button class="btn btn-primary">
-                                    Part-time
-                                </button>
-                                <button class="btn btn-success">
-                                    Freelance
-                                </button>
-                            </div>
+{{--            <div class="col-9">--}}
+{{--                <div class="card">--}}
+{{--                    <div class="card-body">--}}
+{{--                        <h4>Filter</h4>--}}
+{{--                        <hr>--}}
+{{--                        <div class="col-12 col-lg-6 ">--}}
+{{--                            <div class="btn-group">--}}
+{{--                                <button class="btn btn-info">--}}
+{{--                                    full time--}}
+{{--                                </button>--}}
+{{--                                <button class="btn btn-primary">--}}
+{{--                                    Part-time--}}
+{{--                                </button>--}}
+{{--                                <button class="btn btn-success">--}}
+{{--                                    Freelance--}}
+{{--                                </button>--}}
+{{--                            </div>--}}
 
-                        </div>
+{{--                        </div>--}}
 
-                    </div>
+{{--                    </div>--}}
 
-                </div>
+{{--                </div>--}}
 
-            </div>
+{{--            </div>--}}
 
         </div>
         <div class="card-body">
+{{--            <div style="background-color: ">--}}
+{{--                <a class="navbar-brand" href="#"><h1 style="color: #004bff;" id="lgoo"><span style="color: black">Job</span >seeker</h1></a>--}}
+
+{{--            </div>--}}
             <div class="justify-content-center ">
 
 {{--                @if(Session::has('message'))--}}

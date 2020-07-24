@@ -104,7 +104,6 @@
                                 </div>
 
 
-
                             </div>
 
 
@@ -124,6 +123,30 @@
                         </div>
                     </div>
                 </div>
+
+
+{{--                Eman--}}
+
+               {{-- <div class="row mt-3">
+                    <div class="card" style="width: 100%;">
+                        <div class="card-header">
+                            <h5>Feedback</h5>
+                        </div>
+                            @foreach($feesbacks as $feedback )
+                                <div class="card-body">
+                                    <div class="media">
+                                        <img class="mr-3"
+                                        src="{{Auth::user()->image ? asset(Auth::user()->image->path): ""}}/64x64">
+                                        <div class="media-body">
+                                            <h5 class="mt-0">{{$feedback->name}}</h5>
+                                           <span class="text-justify"> {{$feedback->message}}</span>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                    </div>
+                </div>--}}
 
             </div>
 
@@ -154,7 +177,7 @@
                             <div id="postsContainer">
                                 @foreach($topPosts as $topPost)
                                     <div class="col mt-3 post-item"
-                                         data-groups='["{{$topPost->type}}","{{(($topPost->career_level)==1) ? 'senior': ''}}{{(($topPost->career_level)==2) ? 'student': ''}}{{(($topPost->career_level)==3) ? 'manger': ''}}"
+                                         data-groups='["{{$topPost->jobtype}}","{{(($topPost->career_level)==1) ? 'senior': ''}}{{(($topPost->career_level)==2) ? 'student': ''}}{{(($topPost->career_level)==3) ? 'manger': ''}}"
                                          ]'>
 
 {{--                                         data-groups='[{{(($topPost->career_level)==1) ? '"senior"': ''}}--}}
@@ -181,9 +204,9 @@
                                                             @endif
                                                         </h5>
                                                         <p > Job Type:
-                                                            @if(($topPost->type)==1)
+                                                            @if(($topPost->jobtype)==1)
                                                                 Full Time-
-                                                            @elseif(($topPost->type)==2)
+                                                            @elseif(($topPost->jobtype)==2)
                                                                 Part Time-
                                                             @else
                                                                 Freelancer-

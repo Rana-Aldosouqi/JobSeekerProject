@@ -51,7 +51,10 @@
                                     <div id="collapseTwo" class="collapse"  data-parent="#accordion">
                                         <div class="card-body">
 
-                                       @foreach($data as $skill)
+
+
+
+                                                   @foreach($data as $skill)
                                                 <div class="">
                                                     <ul class="">
                                                         <li><p class="h5">{{$skill->skill}}</p></li>

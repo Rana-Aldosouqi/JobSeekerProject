@@ -22,6 +22,7 @@ class isCompany
                 return $next($request);
             }
         }
-        return abort(404);
+        return redirect('/Login');
+//        return abort(404);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\PostApplied;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -49,6 +50,11 @@ class AuthController extends Controller
             'password'=>$password
         ]);
         if ($result) {
+            if(auth()->check() && auth()->user()->is_banned == 1)
+            {
+                auth()->logout();
+                return redirect('/Login')->withErrors('Your Account has been banned');
+            }
             return redirect('/Home');
         } else{
             return redirect('/Login')->with(['error'=>'Authentication Failed']);
@@ -90,6 +96,15 @@ class AuthController extends Controller
             'password'=>$request->get('password')
         ]);
 
+        if(Auth::user()->user_type == 'Company'){
+            return redirect('/companyprofile');
+        } elseif(Auth::user()->user_type == 'Seeker')
+        {
+            return redirect('/userprofile');
+        }
+    }
+    public function navelogin()
+    {
         if(Auth::user()->user_type == 'Company'){
             return redirect('/companyprofile');
         } elseif(Auth::user()->user_type == 'Seeker')

@@ -51,20 +51,28 @@
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">attention</h5>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    for test if found
-                                                    <hr>
-                                                    for payment
+                                                   You need To Pay first
+{{--                                                    {{$test=$post->id}}--}}
+
+
+                                                    @if(($post->hastest)==1)
+                                                        and answer the test
+                                                    @else
+
+                                                    @endif
+
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <a href="/apply/{{$post->id}}/done" class="btn btn-dark">Apply</a>
+
+                                                    <a href="/apply/{{$post->id}}/done" class="btn btn-dark">Pay</a>
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -109,9 +117,9 @@
                                 <tr>
                                 <th><h5>Job Type:</h5></th>
                                 <th><h6>
-                                        @if(($post->type)==1)
+                                        @if(($post->jobtype)==1)
                                             Full Time
-                                        @elseif(($post->type)==2)
+                                        @elseif(($post->jobtype)==2)
                                             Part Time
                                         @else
                                             Freelancer
@@ -143,7 +151,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-4 mt-3">
+            <div class="col-sm-4 mt-5">
                 <div class="card bg-light shadow " >
                     <div class="card-body">
                         <h4><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>About this Company</h4>

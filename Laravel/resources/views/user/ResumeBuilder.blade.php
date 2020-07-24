@@ -10,52 +10,51 @@
 
 @endsection
 @section('content')
-
-    <div class="container container-fluid"
+    <div class="container"
          style=" font-family: 'Permanent Marker', cursive; font-family: 'Alegreya', serif;">
         <div class="row mt-4"></div>
-        <div class="row">
+        <div class="row mt-1">
             <div class="col-12 text-center"
                  style=" font-family: 'Permanent Marker', cursive; font-family: 'Alegreya', serif;">
-                <h1><u>Resume Builder</u></h1>
+                <h1>Resume Builder</h1>
             </div>
         </div>
-        <div class="row mt-4"></div>
-        <div class="row">
-            <div class="card col-md-10 p-3 rounded bg-light shadow offset-1 offset-md-1 mb-5">
+        <div class="row mt-1">
+            <div class="col-1"></div>
+            <div class="card bg-light shadow-sm mt-4 col-10">
                 <div class="card-body">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link {{request()->is('personal') ? 'active' : null}}"
-                               href="{{url('personal')}}" role="tab">Personal Details</a>
+                               href="{{url('personal')}}" role="tab"><b>Personal Details</b></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{request()->is('social') ? 'active' : null}}"
-                               href="{{url('social')}}" role="tab">Social Links</a>
+                               href="{{url('social')}}" role="tab"><b>Social Links</b></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{request()->is('experiences') ? 'active' : null}}"
-                               href="{{url('experiences')}}" role="tab">Work Experience</a>
+                               href="{{url('experiences')}}" role="tab"><b>Work Experience</b></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{request()->is('skills') ? 'active' : null}}"
-                               href="{{url('skills')}}" role="tab">Skills</a>
+                               href="{{url('skills')}}" role="tab"><b>Skills</b></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{request()->is('education') ? 'active' : null}}"
-                               href="{{url('education')}}" role="tab">Education</a>
+                               href="{{url('education')}}" role="tab"><b>Education History</b></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{request()->is('courses') ? 'active' : null}}"
-                               href="{{url('courses')}}" role="tab">Courses</a>
+                               href="{{url('courses')}}" role="tab"><b>Courses</b></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{request()->is('certificates') ? 'active' : null}}"
-                               href="{{url('certificates')}}" role="tab">Certificates</a>
+                               href="{{url('certificates')}}" role="tab"><b>Certificates</b></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{request()->is('color') ? 'active' : null}}"
-                               href="{{url('color')}}" role="tab">Color</a>
+                               href="{{url('color')}}" role="tab"><b>Choose Color</b></a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
@@ -63,17 +62,17 @@
                              id="{{url('personal')}}" role="tabpanel">
                             <form action="" method="POST">
                                 @csrf
-                                <div class="row">
-                                    <div class="col-12">
-                                        @if (Session::has('error'))
+                                @if (Session::has('error'))
+                                    <div class="form-row mt-3">
+                                        <div class="col-12">
                                             <div class="alert alert-danger">
                                                 <p class="m-0">
                                                     {{Session::get('error')}}
                                                 </p>
                                             </div>
-                                        @endif
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                                 @include('user.shared.errors')
                                 <div class="form-row mt-3">
                                     <div class="form-group col-md-6">
@@ -91,7 +90,7 @@
                                         </fieldset>
                                     </div>
                                 </div>
-                                <div class="form-row ">
+                                <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Email</label>
                                         <fieldset disabled>
@@ -149,45 +148,45 @@
                         </div>
                         <div class="tab-pane  {{request()->is('social') ? 'active' : null}}"
                              id="{{url('social')}}" role="tabpanel">
-                            <form action="" method="POST">
+                            <form action="" method="POST" class="pt-3">
                                 @csrf
-                                <div class="row mt-3">
-                                    <div class="col-12">
-                                        @if (Session::has('error'))
+                                @if (Session::has('error'))
+                                    <div class="form-row mt-3">
+                                        <div class="col-12">
                                             <div class="alert alert-danger">
                                                 <p class="m-0">
                                                     {{Session::get('error')}}
                                                 </p>
                                             </div>
-                                        @endif
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                                 @include('user.shared.errors')
-                                <div class="form-group row mt-3">
-                                    <div class="col-md-6">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
                                         <label for="faceBookUrl">FaceBook Url</label>
                                         <input type="text" class="form-control" id="faceBookUrl"
                                                name="faceBookUrl" placeholder="FaceBook Url">
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="form-group col-md-6">
                                         <label for="linkedInUrl">LinkedIn Url</label>
                                         <input type="text" class="form-control" id="linkedInUrl"
                                                name="linkedInUrl" placeholder="LinkedIn Url">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-md-6">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
                                         <label for="askUrl">Ask Url</label>
                                         <input type="text" class="form-control" id="askUrl"
                                                name="askUrl" placeholder="Ask Url">
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="form-group col-md-6">
                                         <label for="twitterUrl">Twitter Url</label>
                                         <input type="text" class="form-control" id="twitterUrl"
                                                name="twitterUrl" placeholder="Twitter Url">
                                     </div>
                                 </div>
-                                <div class="form-row mt-4">
+                                <div class="form-row mt-3">
                                     <div class="col-5"></div>
                                     <div class="col-2">
                                         <button type="submit" class="btn btn-primary btn-block"
@@ -244,6 +243,18 @@
                             @endif
                             <form action="" method="POST">
                                 @csrf
+                                @if (Session::has('error'))
+                                    <div class="form-row mt-3">
+                                        <div class="col-12">
+                                            <div class="alert alert-danger">
+                                                <p class="m-0">
+                                                    {{Session::get('error')}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @include('user.shared.errors')
                                 <div class="form-row mt-3">
                                     <div class="col-6">
                                         <label for="jobTitle">Job Title</label>
@@ -283,11 +294,12 @@
                              id="{{url('skills')}}" role="tabpanel">
                             @foreach($data as $skill)
                                 <form action="{{ url('/skills',['id'=> $skill->id])}}"
-                                      method="post">
+                                      method="post" class="pt-1">
                                     @method('delete')
                                     @csrf
                                     <div class="form-row mt-3">
-                                        <div class="col-8">
+                                        <div class="col-1"></div>
+                                        <div class="form-group ml-1 col-9">
                                             <input class="form-control" value="{{$skill->skill}}" disabled/>
                                         </div>
                                         <div class="col-1">
@@ -299,8 +311,22 @@
                             @endforeach
                             <form action="" method="POST">
                                 @csrf
+                                @if (Session::has('error'))
+                                    <div class="form-row mt-3">
+                                        <div class="col-1"></div>
+                                        <div class="form-group ml-1 col-9">
+                                            <div class="alert alert-danger">
+                                                <p class="m-0">
+                                                    {{Session::get('error')}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @include('user.shared.errors')
                                 <div class="form-row mt-3">
-                                    <div class="col-8">
+                                    <div class="col-1"></div>
+                                    <div class="form-group ml-1 col-9">
                                         <input type="text" class="form-control" id="skill"
                                                name="skill" placeholder="Enter Skill">
                                     </div>
@@ -538,28 +564,25 @@
                                         </div>
                                     </form>
                                 @endforeach
-                            @else
-
                             @endif
-                                    <form action="" method="POST">
+                            <form action="" method="POST" class="pt-3">
                                 @csrf
-                                <div class="row mt-3">
-                                    <div class="col-12">
-                                        @if (Session::has('error'))
-                                            <div class="alert alert-danger">
-                                                <p class="m-0">
+                                @if (Session::has('error'))
+                                    <div class="form-row mt-3">
+                                        <div class="col-12">
+                                            <div class="alert alert-danger"><p class="m-0">
                                                     {{Session::get('error')}}
                                                 </p>
                                             </div>
-                                        @endif
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                                 @include('user.shared.errors')
                                 <div class="form-row mt-3">
                                     <div class="col-6">
                                         <label for="inputState6">Degree</label>
                                         <select class="custom-select" name="degree">
-                                            <option >Degree</option>
+                                            <option>Degree</option>
                                             <option value="High School Deploma1">High School Deploma1</option>
                                             <option value="High School Deploma2">High School Deploma2</option>
                                             <option value="High School Deploma3">High School Deploma3</option>
@@ -598,20 +621,20 @@
                              id="{{url('courses')}}" role="tabpanel">
                             @foreach($data as $course)
                                 <form action="{{ url('/courses',['id'=> $course->id])}}"
-                                      method="post">
+                                      method="post" class="pt-1">
                                     @method('delete')
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
                                     <div class="form-row mt-3">
-                                        <div class="col-5">
+                                        <div class="form-group  ml-5 col-5">
                                             <input class="form-control" value="{{$course->course}}" disabled/>
                                         </div>
-                                        <div class="col-5">
+                                        <div class="form-group  col-5">
                                             <input type="date" id="inputState9"
                                                    class="form-control" name="date"
                                                    value="{{$course->date}}" disabled/>
                                         </div>
-                                        <div class="col-2">
+                                        <div class="form-group col-1">
                                             <button class="btn-sm btn-danger rounded"  type="submit">
                                                 <i class="fa fa-times"></i></button>
                                         </div>
@@ -621,16 +644,27 @@
                             {{--                            @endif--}}
                             <form action="" method="POST">
                                 @csrf
+                                @if (Session::has('error'))
+                                    <div class="form-row mt-3">
+                                        <div class="col-12">
+                                            <div class="alert alert-danger"><p class="m-0">
+                                                    {{Session::get('error')}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @include('user.shared.errors')
                                 <div class="form-row mt-3">
-                                    <div class="col-5">
+                                    <div class="form-group ml-5 col-5">
                                         <input type="text" class="form-control" id="course"
                                                name="course" placeholder="Enter Course">
                                     </div>
-                                    <div class="col-5">
+                                    <div class="form-group col-5">
                                         <input type="date" id="inputState9"
                                                class="form-control" name="date" placeholder="Enter date">
                                     </div>
-                                    <div class="col-1">
+                                    <div class="form-group col-1">
                                         <button type="submit" class="btn-sm btn-success rounded">
                                             <i class="fa fa-plus"></i>
                                         </button>
@@ -642,20 +676,20 @@
                              id="{{url('certificates')}}" role="tabpanel">
                             @foreach($data as $certificate)
                                 <form action="{{ url('/certificates',['id'=> $certificate->id])}}"
-                                      method="post">
+                                      method="post" class="pt-1">
                                     @method('delete')
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
                                     <div class="form-row mt-3">
-                                        <div class="col-5">
+                                        <div class="form-group ml-5 col-5">
                                             <input class="form-control" value="{{$certificate->certificate}}" disabled/>
                                         </div>
-                                        <div class="col-5">
+                                        <div class="form-group col-5">
                                             <input type="date" id="inputState8"
                                                    class="form-control" name="date"
                                                     value="{{$certificate->date}}" disabled/>
                                         </div>
-                                        <div class="col-2">
+                                        <div class="form-group col-1">
                                             <button class="btn-sm btn-danger rounded"  type="submit">
                                                 <i class="fa fa-times"></i></button>
                                         </div>
@@ -665,16 +699,27 @@
                             {{--                            @endif--}}
                             <form action="" method="POST">
                                 @csrf
+                                @if (Session::has('error'))
+                                    <div class="form-row mt-3">
+                                        <div class="col-12">
+                                            <div class="alert alert-danger"><p class="m-0">
+                                                    {{Session::get('error')}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @include('user.shared.errors')
                                 <div class="form-row mt-3">
-                                    <div class="col-5">
+                                    <div class="form-group ml-5 col-5">
                                         <input type="text" class="form-control" id="certificate"
                                                name="certificate" placeholder="Enter Certificate">
                                     </div>
-                                    <div class="col-5">
+                                    <div class="form-group col-5">
                                         <input type="date" id="inputState8"
                                                class="form-control" name="date" placeholder="Enter date">
                                     </div>
-                                    <div class="col-1">
+                                    <div class="form-group col-1">
                                         <button type="submit" class="btn-sm btn-success rounded">
                                             <i class="fa fa-plus"></i>
                                         </button>
@@ -726,6 +771,17 @@
                              id="{{url('color')}}" role="tabpanel">
                             <form action="" method="POST" class="mt-3 form cf">
                                 @csrf
+                                @if (Session::has('error'))
+                                    <div class="form-row mt-3">
+                                        <div class="col-12">
+                                            <div class="alert alert-danger"><p class="m-0">
+                                                    {{Session::get('error')}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @include('user.shared.errors')
                                 <div class="form-row mt-4">
                                     <div class="col-6 offset-3 ">
                                         <div class="custom-radios">
@@ -739,7 +795,7 @@
                                                 </label>
                                             </div>
                                             <div>
-                                                <input type="radio" id="color-2" name="color" value="#002B5B">
+                                                <input type="radio" id="color-2" name="color" value="#CCCCCA">
                                                 <label for="color-2">
                                                     <span>
                                                         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg"
@@ -775,7 +831,7 @@
                                                 </label>
                                             </div>
                                             <div>
-                                                <input type="radio" id="color-6" name="color" value="#645B60">
+                                                <input type="radio" id="color-6" name="color" value="#95C6C9">
                                                 <label for="color-6">
                                                     <span>
                                                         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg"

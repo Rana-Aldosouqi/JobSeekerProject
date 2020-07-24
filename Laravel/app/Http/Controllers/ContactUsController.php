@@ -10,13 +10,15 @@ use Illuminate\Support\Facades\Validator;
 class ContactUsController extends Controller
 {
     public function getContactUSView(){
+//        $feedbacks = Feedback::latest()->approved()->published()->paginate(6);
         return view('user.ContactUs');
     }
     public function doContact(Request $request){
         $rules = [
             'name' => 'required|min:3',
             'email' => 'required',
-            'message' => ''
+            'message' => 'required',
+//            'published'=>'',
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
@@ -30,6 +32,7 @@ class ContactUsController extends Controller
             $feedback -> name = $request -> get('name');
             $feedback -> email = $request -> get('email');
             $feedback -> message = $request -> get('message');
+//            $feedback -> published = $request -> get('published');
             $feedback ->save();
         }
         else{
@@ -38,6 +41,7 @@ class ContactUsController extends Controller
             $feedback -> name = $request -> get('name');
             $feedback -> email = $request -> get('email');
             $feedback -> message = $request -> get('message');
+//            $feedback -> published = $request -> get('published');
             $feedback ->save();
         }
 

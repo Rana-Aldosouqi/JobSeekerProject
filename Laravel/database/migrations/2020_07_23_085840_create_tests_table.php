@@ -16,10 +16,20 @@ class CreateTestsTable extends Migration
         Schema::create('tests', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->integer('post_id');
-
+            $table->unsignedBigInteger('post_id')->nullable(true);
             $table->timestamps();
         });
+
+            Schema::table('tests', function (Blueprint $table)
+            {
+                $table->foreign('post_id')
+                    ->references('id')
+                    ->on('posts')
+                    ->onUpdate('CASCADE')
+                    ->onDelete('SET NULL');
+            });
+
+
     }
 
     /**
@@ -29,6 +39,11 @@ class CreateTestsTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('tests');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+
+
+//        Schema::dropIfExists('tests');
     }
 }
