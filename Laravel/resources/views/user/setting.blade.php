@@ -11,27 +11,19 @@
                     <div class="col-md-3 ml-5 mt-4 mb-3">
                         <div class="row">
                             <div class="form">
-                                <div class="card p-0 shadow-sm" style="position:relative;">
-                                    <img src="{{asset('/assets/images/images.png')}}" style="height:227px;">
-                                    <div class="file btn btn-lg btn-secondary"  style="position: absolute; margin-top: 175px;height:52px; width:228px;opacity: 40%;">
-                                       <input type="file"/>
+                                <form action="/setting/uploadImage" method="post" id="imageForm" enctype="multipart/form-data">
+                                    @csrf
+                                <div class="card p-0 shadow-sm profile-img" style="position:relative;">
+                                    <img src="{{Auth::user()->img ? asset(Auth::user()->img->path): ""}}" style="height:227px; width: 270px"/>
+                                    <div class="file btn btn-lg btn-secondary"  style="position: absolute; margin-top: 175px;height:52px; width:270px;opacity: 40%;">
+                                      change photo <input type="file" id="img" name="img"/>
                                     </div>
                                 </div>
+                                </form>
                             </div>
                         </div>
 
-                        <div class="row ">
-                                <div class="form-row mt-4">
-                                    <div class="card" >
-                                        <img src="{{asset('assets/img/undraw_updated_resume_u4fy.png')}}" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h4 class="card-title text-center">Build Your Resume</h4>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
+
 
                     </div>
                     <div class="col-8 ml-3" >

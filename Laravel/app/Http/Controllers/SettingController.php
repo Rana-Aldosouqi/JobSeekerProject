@@ -71,10 +71,13 @@ class SettingController extends Controller
     {
         return view('/user.settingsemployee');
     }
+
+
     public function uploadImage(Request $request)
     {
         //        Upload image
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('image'))
+        {
             $image = $request->file('image');
             $filename = sha1(time()) . '.' . $image->getClientOriginalExtension();
 

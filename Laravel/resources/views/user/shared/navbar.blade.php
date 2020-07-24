@@ -35,7 +35,7 @@
                 <a class="nav-link" href="/vol">Volunteer work</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/training">Training</a>
+                <a class="nav-link" href="/Train">Training</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto  text-center" style="font-size: large;">

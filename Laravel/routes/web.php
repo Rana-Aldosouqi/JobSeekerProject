@@ -124,20 +124,30 @@ Route::get('/vol', 'postscontroller@doVolanteer');
 Route::get('/companyprofile','postscontroller@getProfile')->name('shared.index');
 Route::post('/companyprofile','postscontroller@doGetProfile')->name('shared.store');
 
-//for notif
-Route::get('/companyprofile','postscontroller@create');
-Route::post('/companyprofile','postscontroller@show');
+//for notifications
+Route::get('/companyprofile/{id}','postscontroller@getPostAppliedDetailsView');
+Route::get('/companyprofile/{id}', 'postscontroller@getPostAppliedDetails');
 
 
 //sett
 Route::get('/setting','postscontroller@getUpdateView');
 Route::post('/setting','postscontroller@doUpdate');
+Route::post('/setting/uploadImage','postscontroller@uploadImage');
 
 //vol
 Route::get('/volform','postscontroller@getVolanteerformView');
 Route::post('/volform','postscontroller@doVolanteerform');
 Route::get('/vol','postscontroller@getVolanteerView');
 Route::get('/vol','postscontroller@doVolanteer');
+
+//Training
+Route::get('/Trainform','Trainningcontroller@getTrainFormView');
+Route::post('/Trainform','Trainningcontroller@doTrainForm');
+Route::get('/Train','Trainningcontroller@getTrainView');
+Route::get('/Train','Trainningcontroller@doTrain');
+
+
+//..............................................................................................................
 
 
 

@@ -30,6 +30,13 @@
   </div>
 
     <div class="form-group row">
+        <label for="company" class="col-sm-3 ml-5"><h5>Company name:</h5></label>
+
+        <input  name="company" type="text" class="form-control col-sm-7" id="usr" >
+
+    </div>
+
+    <div class="form-group row">
         <label for="type" class=" col-sm-3 ml-5"><h5>Job Type :</h5></label>
 
         <select name="type" class="form-control col-md-7">

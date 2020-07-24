@@ -7,11 +7,13 @@ use Validate;
 use App\User;
 use App\PostApplied;
 use App\Post;
+use App\Image;
 use App\Experience;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
 use Carbon;
 class postscontroller extends Controller
@@ -25,7 +27,7 @@ class postscontroller extends Controller
 
         }
 
-    public function doGetProfile(Request $request)
+    public function doGetProfile(Request $request , $user)
     {
         $user = Auth::User();
         $user->first_name = $request->get('first_name');
@@ -41,18 +43,20 @@ class postscontroller extends Controller
         $user->foundation_date = $request->get('foundation_date');
         $user->description = $request->get('description');
 
-
-
-
         return redirect('/setting');
     }
     //notifications
+    public function getPostAppliedDetailsView(){
+        $postsapp= Auth::user();
+        return view('user.companyprofile') ;
 
-    public function create()
-    {
-         $tables=PostApplied::all();
+    }
+    public function getPostAppliedDetails(Request $request ){
 
-        return view('user.companyprofile',compact('tables'));
+        $postsapp= Auth::user();
+        $postsapp->username = $request->get('username');
+        $postsapp->email = $request->get('email');
+        return view('user.companyprofile',compact('postsapp'));
     }
 
 
@@ -80,26 +84,37 @@ class postscontroller extends Controller
         $user->Hourly_Rate = $request->get('Hourly_Rate');
         $user->Availability = $request->get('Availability');
         $user->description = $request->get('description');
-
-        if ($request->hasFile('name')) {
-            $name = $request->input(name);
-            $filename = time() .'-'. $name->getClientOriginalName();
-            $location = public_path('assets/images/'.$filename);
-
-            Image::make($name)->resize(800, 400)->save($location);
-
-            $user->name = $filename;
-
-        } else {
-            $name = 'images.png';
-        }
-
         $user->save();
         $result = Auth::attempt([
             'username' => $request->get('username'),
             'password' => $request->get('password')
         ]);
         return redirect('/companyprofile');
+    }
+
+    public function uploadImage(Request $request)
+    {
+        //        Upload image
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = sha1(time()) . '.' . $image->getClientOriginalExtension();
+
+        //  $location = 'images/' . $filename;
+            $Stored = $image->storeAs("assets/uploads", $filename, ["disk" => "public"]);
+           // Image::make($image)->resize(800, 400)->save($location);
+
+            $imageRec = new Image();
+            $imageRec->name = $filename;
+            $imageRec->extension = $image->getClientOriginalExtension();
+            $imageRec->path = "assets/uploads/" . $filename;
+            $imageRec->save();
+
+            $authUser = Auth::user();
+            $authUser->image_id = $imageRec->id;
+            $authUser->save();
+        }
+
+        return redirect("/setting");
     }
 
 
@@ -113,7 +128,7 @@ class postscontroller extends Controller
     }
 
     public function doVolanteer(){
-        $volposts=Post::orderBy('created_at','DESC')->Paginate(8);
+        $volposts=Post::orderBy('created_at','DESC')->Paginate(4);
 
         return view('user.vol', compact('volposts'));
 
@@ -134,9 +149,13 @@ class postscontroller extends Controller
             'type'=>'required|max:200',
             'age'=>'required|max:5',
             'date_start_at'=>'required|max:200',
+            'time_start_at'=>'required|max:200',
+            'time_end_at'=>'required|max:200',
             'vacancies'=>'required|max:5',
+            'company'=>'required|max:200',
         ]);
         $volPost= new Post();
+        $volPost->company=$request->get('company');
         $volPost->job_title=$request->get('job_title');
         $volPost->city=$request->get('city'); //filt
         $volPost->type=$request->get('type');//filt full or part time
@@ -149,7 +168,7 @@ class postscontroller extends Controller
         $volPost->other=$request->get('other');
 
         $volPost->save();
-        return redirect("/vol")->with(['status' => 'Posting Success']);
+        return redirect("/volform")->with(['status' => 'Posting Success']);
 
     }
 

@@ -1,9 +1,5 @@
 @extends('user.shared.template')
 @section('content')
-
-
-
-
     <div class="card container emp-profile bg-light shadow mt-5 col-8 h6 "
          style="font-family: 'Permanent Marker', cursive; font-family: 'Alegreya', serif;"
          xmlns="http://www.w3.org/1999/html">
@@ -22,7 +18,7 @@
                     <div class="row">
                 <div class="col-4">
                     <div class="profile-img">
-                        <img src="{{asset('/assets/images/profil.jpg')}}"/>
+                        <img src="{{Auth::user()->image ? asset(Auth::user()->image->path): ""}}"/>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -66,7 +62,7 @@
                                         <div class="card-body">
                                             <a  class="btn btn-light btn-block" href="/vol/">Volunteer works</a><br/>
                                             <a class="btn btn-light btn-block" href="/Category/"> jobs</a><br>
-                                            <a  class="btn btn-light btn-block" href="">Training</a>
+                                            <a  class="btn btn-light btn-block" href="/Train">Training</a>
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +76,7 @@
                                     <div id="collapseTwo" class="collapse" data-parent="#accordion">
                                         <div class="card-body">
                                             <a class="btn btn-light btn-block" href="/index/">Job</a><br>
-                                            <a  class="btn btn-light btn-block"href="#">Training</a><br>
+                                            <a  class="btn btn-light btn-block"href="/Trainform">Training</a><br>
                                             <a class="btn btn-light btn-block" href="#">Course</a><br>
                                             <a  class="btn btn-light btn-block" href="/volform/">Volunteer Job</a><br>
 
@@ -223,27 +219,25 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">User ID</th>
-            <th scope="col"> Post ID</th>
+            <th scope="col">user name</th>
+            <th scope="col"> job name</th>
+            <th scope="col"> user profile</th>
 
 
         </tr>
         </thead>
-        @foreach($tables as $table)
+
         <tbody>
         <tr>
-            <th scope="row">{{$table-> id}}</th>
-            <td>{{$table-> user_id}}</td>
-            <td>{{$table-> post_id}}</td>
-
-
-
+            <th scope="row">{{Auth::user()->id}}</th>
+            <td>{{Auth::user()->username}}</td>
+            <td>{{Auth::user()->email}}</td>
+            <td>{{Auth::user()->email}}</td>
 
         </tr>
-
         </tbody>
-         @endforeach
-    </table>
+
+  </table>
 
 
 

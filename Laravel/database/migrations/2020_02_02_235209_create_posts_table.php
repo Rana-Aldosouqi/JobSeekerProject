@@ -19,9 +19,14 @@ class CreatePostsTable extends Migration
             $table->string('job_title')->nullable(true);
             $table->unsignedBigInteger('category_id')->nullable(true);
             $table->string('experience')->nullable(true);
-            $table->unsignedInteger('career_level')->nullable(true);
+
+            $table->string('career_level')->nullable(true);
+
+
             $table->unsignedInteger('jobtype')->nullable(true);
+
             $table->string('type')->nullable(true);
+            $table->string('company')->nullable(true);
 
             //$table->unsignedBigInteger('language_id')->nullable(true);
             $table->float('min_salary')->nullable(true);
