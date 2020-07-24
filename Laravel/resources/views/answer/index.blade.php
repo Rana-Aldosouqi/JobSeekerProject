@@ -35,6 +35,7 @@
                                     </ul>
                                 </div>
                             @endif
+
                             <form action="{{route('storeResult')}}" method="POST">
                                 <input type="hidden" name="_testID" value="{{$test->id}}">
                                 @csrf

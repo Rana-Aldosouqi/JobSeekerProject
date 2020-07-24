@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Skill;
 use App\Certificate;
 use App\Course;
@@ -11,16 +12,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Hash;
 use App\User;
+
 class UserController extends Controller
 {
 
     public function getChangePasswordView()
     {
-        return view('user.ChangePassword');
+        if (Auth::Check()) {
+            return view('user.ChangePassword');
+        } else {
+            return view('user.Login');
+        }
     }
     public function ChangePassword(Request $request)
     {
-        $rules =[
+        $rules = [
             'current-password' => 'required',
             'password' => 'required|same:password',
             'password_confirmation' => 'required|same:password',
@@ -32,8 +38,7 @@ class UserController extends Controller
                 return redirect()->back()
                     ->withInput($request->all())
                     ->withErrors($validator->errors()->all());
-            }
-            else {
+            } else {
 
                 $current_password = Auth::User()->password;
 
@@ -42,18 +47,18 @@ class UserController extends Controller
                     $obj_user = User::find($user_id);
                     $obj_user->password = Hash::make($request_data['password']);
                     $obj_user->save();
-                    return view('Home');
+                    return redirect('/Home');
                 } else {
                     return redirect()->back()
                         ->withInput($request->all())
                         ->withErrors('Please enter correct current password');
                 }
             }
-        }
-        else {
-            return redirect('/user.login');
+        } else {
+            return view('user.Login');
         }
     }
+
     public function getMyResumeView()
     {
         $skills = Skill::orderBy('created_at', 'DESC')

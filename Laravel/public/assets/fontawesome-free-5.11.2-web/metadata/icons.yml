@@ -9774,7 +9774,7 @@ home:
     - '1'
     - 5.0.0
     - 5.7.0
-  label: home
+  label: homeController
   search:
     terms:
       - abode
@@ -10020,7 +10020,7 @@ house-damage:
       - building
       - devastation
       - disaster
-      - home
+      - homeController
       - insurance
   styles:
     - solid
@@ -10206,7 +10206,7 @@ igloo:
       - dome
       - dwelling
       - eskimo
-      - home
+      - homeController
       - house
       - ice
       - snow

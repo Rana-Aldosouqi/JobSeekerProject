@@ -219,22 +219,24 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col"></th>
-            <th scope="col"> Post ID</th>
+            <th scope="col">user name</th>
+            <th scope="col"> job name</th>
+            <th scope="col"> user profile</th>
 
 
         </tr>
         </thead>
-      @foreach($users as $user)
+
         <tbody>
         <tr>
-            <th scope="row">{{$user->User->id}}</th>
-            <td>{{$user->User->username}}</td>
-            <td>{{$user->User->email}}</td>
+            <th scope="row">{{Auth::user()->id}}</th>
+            <td>{{Auth::user()->username}}</td>
+            <td>{{Auth::user()->email}}</td>
+            <td>{{Auth::user()->email}}</td>
 
         </tr>
         </tbody>
-        @endforeach
+
   </table>
 
 

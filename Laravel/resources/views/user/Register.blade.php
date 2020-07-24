@@ -10,7 +10,7 @@
         <div class="row mt-5"></div>
         <div class="row mt-1">
             <div class="col-2"></div>
-            <div class="card bg-light shadow col-8"
+            <div class="card bg-light shadow-sm col-8"
                  style="font-family: 'Permanent Marker', cursive; font-family: 'Alegreya', serif;">
                 <div class="row">
                     <div class="card-body">
@@ -73,24 +73,14 @@
                                             <label for="Seeker">Seeker</label>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-12 mb-1">
-                                            <button type="submet" class="btn btn-primary btn-md mb-2 mt-2 marg">
+                                    <div class="form-group siz marg">
+                                        <div class="col-sm-12">
+                                            <button type="submet" class="btn btn-primary btn-md">
                                                 Register
                                             </button>
-                                            <div class="col-12" style="mx-auto !important mt-2 mb-4">
-                                                <a href="/Login"
-                                                   class="stretched-link"
-                                                   id="btn"><h6>Already have an
-                                                        Account?</h6>
-                                                </a>
-                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-1 ml-3"></div>
-                                    <div class="col-9">
+                                    <div class="form-group siz marg text-left">
                                         @if (Session::has('error'))
                                             <div class="alert alert-danger">
                                                 <p class="m-0">

@@ -11,13 +11,12 @@
                     <div class="col-md-3 ml-5 mt-4 mb-3">
                         <div class="row">
                             <div class="form">
-                                <form action="/setting/uploadImage"
-                                      method="post" id="imageForm" enctype="multipart/form-data">
+                                <form action="/setting/uploadImage" method="post" id="imageForm" enctype="multipart/form-data">
                                     @csrf
                                 <div class="card p-0 shadow-sm profile-img" style="position:relative;">
-                                    <img src="{{Auth::user()->image ? asset(Auth::user()->image->path): ""}}" style="height:227px; width: 270px"/>
+                                    <img src="{{Auth::user()->img ? asset(Auth::user()->img->path): ""}}" style="height:227px; width: 270px"/>
                                     <div class="file btn btn-lg btn-secondary"  style="position: absolute; margin-top: 175px;height:52px; width:270px;opacity: 40%;">
-                                      change photo <input type="file" id="image" name="image"/>
+                                      change photo <input type="file" id="img" name="img"/>
                                     </div>
                                 </div>
                                 </form>

@@ -25,10 +25,12 @@ class CreateUsersTable extends Migration
             $table->date('birth_date')->nullable(true);
             $table->integer('age')->nullable(true);
             $table->string('address')->nullable(true);
-            $table->boolean('is_admin')->nullable(true)->default(false);
+            $table->boolean('is_admin')->default(false);
             $table->string('user_type',7)->nullable(true);
             $table->string('color')->nullable(true)->default('lightblue');
             $table->string('phone_number',20)->nullable(true);
+            $table->Timestamp('last_activity')->nullable(true);
+            $table->boolean('is_active')->default(false);
             $table->string('military_service',8)->nullable(true);
             $table->date('serve_time')->nullable(true);
             $table->string('facebook_url')->nullable(true);
@@ -47,6 +49,7 @@ class CreateUsersTable extends Migration
             $table->date('foundation_date')->nullable(true);
             $table->string('profession',100)->nullable(true);
             $table->string('education',100)->nullable(true);
+            $table->boolean('is_banned')->default(false);
             $table->timestamps();
 
 
@@ -71,6 +74,10 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('users');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+
+
     }
 }

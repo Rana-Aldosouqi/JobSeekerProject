@@ -47,14 +47,16 @@ class postscontroller extends Controller
     }
     //notifications
     public function getPostAppliedDetailsView(){
-
+        $postsapp= Auth::user();
         return view('user.companyprofile') ;
 
     }
-    public function getPostAppliedDetails($id){
+    public function getPostAppliedDetails(Request $request ){
 
-        $user=\App\PostApplied::where('id', $id)->get();
-        return view('user.companyprofile',['user' => $user]);
+        $postsapp= Auth::user();
+        $postsapp->username = $request->get('username');
+        $postsapp->email = $request->get('email');
+        return view('user.companyprofile',compact('postsapp'));
     }
 
 
