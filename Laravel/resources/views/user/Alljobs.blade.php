@@ -26,7 +26,7 @@
 {{--                <h4 class="card-text">lead-in to additional content. This content is a little bit longer</h4>--}}
 
 {{--                <div class="btn-group btn-group-lg mt-3" role="group" aria-label="Basic example">--}}
-{{--                    <button type="button" class="btn btn-dark">Course</button>--}}
+{{--                    <button type="button" class="btn btn-dark">CourseController</button>--}}
 {{--                    <button type="button" class="btn btn-dark">Voulnteer</button>--}}
 {{--                    <button type="button" class="btn btn-dark">Training</button>--}}
 {{--                    <button type="button" class="btn btn-dark">Job</button>--}}

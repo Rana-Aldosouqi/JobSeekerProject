@@ -13,12 +13,11 @@
     <link rel="stylesheet" href="{{asset('/assets/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/css/fontawesome.min.css')}}">
 
-
     <link rel="stylesheet" href="{{asset('/assets/css/homestyle.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/css/demo.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/css/footer-distributed-with-address-and-phones.css')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/jquery.rateyo.min.css')}}">
-
+    <link rel="stylesheet" href="{{asset('/assets/css/jquery.rateyo.min.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('/assets/css/addremskill.css')}}" type="text/css">
 
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
@@ -43,12 +42,10 @@
 <script  src="{{'/assets/js/bootstrap.js'}}"></script>
 <script src="{{asset('/assets/js/ajaxscript.js')}}"></script>
 
-{{--<<<<<<< HEAD--}}
+
 <script  src="{{'/assets/js/shuffle.min.js'}}"></script>
-{{--=======--}}
 <script  src="{{'/assets/js/jquery.rateyo.min.js'}}"></script>
 
-{{-->>>>>>> e86a55f20ea09e4b65f35c66709b52b16247071a--}}
 @yield('more_js')
 
 </body>

@@ -13,6 +13,13 @@ $factory->define(\App\Course::class, function (Faker $faker) {
     return [
         'user_id'=>$userIDs[$randIndex],
         'course'=>$faker->text(30),
-        'date'=>$faker->date(),
+        'start_date'=>$faker->date(),
+        'end_date'=>$faker->date(),
+        'specialization'=>$faker->text(50),
+        'course_level'=>$faker->text(20),
+        'language'=>$faker->text(30),
+        'salary'=>$faker->ean8,
+        'time'=>$faker->ean8,
+        'phone'=>$faker->e164PhoneNumber,
     ];
 });

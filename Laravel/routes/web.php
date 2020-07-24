@@ -80,12 +80,25 @@ Route::get('/response', function(){
 //----------------------------------------------------------------------------------------------------------------------
 //amina
 Route::get('/userprofile','Settingcontroller@received');
-Route::post('/userprofile,SettingController@store');
+Route::post('/userprofile','SettingController@store');
+
 Route::get('/settingsemployee','Settingcontroller@getUpdate');
 Route::post('/settingsemployee','Settingcontroller@update');
+
 Route::post('/settingsemployee/uploadImage','Settingcontroller@uploadImage');
 
+////Route::post('/settingsemployee/addSkill','Settingcontroller@addskill');
+////Route::get('/settingsemployee','Settingcontroller@viewskill');
 
+Route::get('/userprofile', 'SettingController@SkillView');
+
+
+Route::get('/addCourses','CourseController@getcourseView');
+Route::post('/addCourses','CourseController@addCourses');
+
+Route::get('/course','CourseController@courseView');
+
+Route::get('/course','CourseController@postcourse');
 //shaimaa---------------------------------------------------------------------------------------------------------------
 
 Route::get('/companyprofile','postscontroller@getProfile')->name('shared.index');

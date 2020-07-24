@@ -17,10 +17,14 @@ class CreateCoursesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable(true);
             $table->string('course',30)->nullable(true);
-            $table->date('date')->nullable(true);
-//            $table->string('file_path',125)->nullable(true);
-//            $table->string('file_extension',6)->nullable(true);
-//            $table->float('size')->default(0)->nullable(true);
+            $table->date('start_date')->nullable(true);
+            $table->date('end_date')->nullable(true);
+            $table->string('specialization',50)->nullable(true);
+            $table->string('course_level',20)->nullable(true);
+            $table->string('language',30)->nullable(true);
+            $table->integer('salary')->nullable(true);
+            $table->integer('time')->nullable(true);
+            $table->bigInteger('phone')->nullable(true);
             $table->timestamps();
 
             $table->foreign('user_id')->

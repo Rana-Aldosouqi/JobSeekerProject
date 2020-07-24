@@ -45,7 +45,7 @@ $factory->define(\App\User::class, function (Faker $faker) {
         'Total_Projects'=>$faker->date(),
         'Availability'=>$faker->date(),
         'profession'=>$faker->text(100),
-        'education'=>$faker->text(100)
+        'education'=>$faker->text(100),
 
     ];
 });

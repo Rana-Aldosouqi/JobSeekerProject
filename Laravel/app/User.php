@@ -102,5 +102,6 @@ class User extends Authenticatable
     public function answers(){
         return $this->hasMany('App\UserAnswer','user_id');
     }
+
 }
 

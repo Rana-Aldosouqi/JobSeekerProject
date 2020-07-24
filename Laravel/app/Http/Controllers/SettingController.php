@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -17,7 +18,7 @@ use App\Image;
 class SettingController extends Controller
 {
     public function store(Request $request , $user  ) {
-
+        $request->validate(['email'=> 'required','phone_number'=> 'required','firstname'=>'required']);
         $user = Auth::User();
         $user->first_name=$request->get('first_name');
         $user->username=$request->get('username');
@@ -29,6 +30,7 @@ class SettingController extends Controller
         $user->Total_Projects = $request->get('Total_Projects');
         $user->education= $request->get('education');
         $user->profession = $request->get('profession');
+        //$user->skill = $request->get('skill');
 
         return redirect('/settingsemployee');
 
@@ -55,6 +57,7 @@ class SettingController extends Controller
         $user->Total_Projects = $request->get('Total_Projects');
         $user->education = $request->get('education');
         $user->profession = $request->get('profession');
+
         $user->save();
 
         $result = Auth::attempt([
@@ -92,5 +95,34 @@ class SettingController extends Controller
 
         return redirect("/settingsemployee");
     }
+
+
+//    public function addSkill(Request $request){
+//
+//        $adskill= new Skill();
+//        $adskill->user_id =Auth::user()->id;
+//        $adskill->skill=$request->get('skill');
+//        $adskill->save();
+//
+//
+//        return redirect('/settingsemployee');
+//    }
+//    public function viewSkill(){
+//        $user = Auth::User();
+//        $adskills = Skill::orderBy('created_at','DESC')->where('user_id',Auth::user()->id)->get();
+//
+//        return view('/user.settingsemployee',compact('adskills'));
+//    }
+
+    public function SkillView()
+    {
+        $allSkills = Skill::orderBy('created_at', 'ASC')
+            ->where('user_id', Auth::user()->id)->get();
+        return view('user.userprofile',[
+            'data' => $allSkills
+        ]);
+
+    }
+
 
 }

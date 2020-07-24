@@ -50,11 +50,15 @@
                                     </div>
                                     <div id="collapseTwo" class="collapse"  data-parent="#accordion">
                                         <div class="card-body">
-                                            <span>Web Designer</span><br/>
-                                            <span>Web Developer</span><br/>
-                                            <span>WordPress</span><br/>
-                                            <span>WooCommerce</span><br/>
-                                            <span>PHP, .Net</span><br/>
+
+                                       @foreach($data as $skill)
+                                                <div class="">
+                                                    <ul class="">
+                                                        <li><p class="h5">{{$skill->skill}}</p></li>
+                                                    </ul>
+                                                </div>
+                                       @endforeach
+
                                         </div>
                                     </div>
                                 </div>
