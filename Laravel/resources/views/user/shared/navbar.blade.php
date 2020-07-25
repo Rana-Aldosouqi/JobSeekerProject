@@ -37,6 +37,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/Train">Training</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/course">Courses</a>
+            </li>
         </ul>
         <ul class="navbar-nav ml-auto  text-center" style="font-size: large;">
             @if(Auth::check())
