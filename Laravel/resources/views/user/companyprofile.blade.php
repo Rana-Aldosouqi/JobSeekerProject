@@ -63,6 +63,7 @@
                                             <a  class="btn btn-light btn-block" href="/vol/">Volunteer works</a><br/>
                                             <a class="btn btn-light btn-block" href="/Category/"> jobs</a><br>
                                             <a  class="btn btn-light btn-block" href="/Train">Training</a>
+                                             <a  class="btn btn-light btn-block" href="/course">Courses</a>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +78,7 @@
                                         <div class="card-body">
                                             <a class="btn btn-light btn-block" href="/index/">Job</a><br>
                                             <a  class="btn btn-light btn-block"href="/Trainform">Training</a><br>
-                                            <a class="btn btn-light btn-block" href="#">Course</a><br>
+                                            <a class="btn btn-light btn-block" href="/addCourses">Course</a><br>
                                             <a  class="btn btn-light btn-block" href="/volform/">Volunteer Job</a><br>
 
                                         </div>
